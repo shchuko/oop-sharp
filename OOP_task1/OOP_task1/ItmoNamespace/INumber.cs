@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ItmoNamespace
 {
-    interface INumber<T>
+    public interface INumber
     {
         double GetDouble();
         int GetInt();
-        bool IsGreaterThan(T objToCompare);
+        bool IsGreaterThan(INumber objToCompare);
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ItmoNamespace
 {
-    interface ICloneable<T>
+    public interface ICloneable<T>
     {
         T GetClone();
     }

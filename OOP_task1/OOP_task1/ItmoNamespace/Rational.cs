@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ItmoNamespace
 {
-    public class Rational : ItmoNamespace.ICloneable<Rational>, INumber<Rational>
+    public class Rational : ItmoNamespace.ICloneable<Rational>, INumber
     {
         public Rational(int numerator, int denominator) 
         {
@@ -36,6 +36,11 @@ namespace ItmoNamespace
         public bool IsGreaterThan(Rational rational)
         {
             return this.GetDouble() > rational.GetDouble();
+        }
+
+        public bool IsGreaterThan(INumber objToCompare)
+        {
+            return this.GetDouble() > objToCompare.GetDouble();
         }
 
         public void SetNumerator(int numerator)
