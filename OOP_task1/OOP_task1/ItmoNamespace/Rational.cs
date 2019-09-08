@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ItmoNamespace
 {
-    public class Rational : ItmoNamespace.ICloneable<Rational>, INumber
+    public class Rational : ItmoNamespace.ICloneable<Rational>, INumber, IEquatable<Rational>
     {
         public Rational(int numerator, int denominator) 
         {
@@ -71,14 +71,23 @@ namespace ItmoNamespace
             return numerator + "/" + denominator;
         }
 
-        public bool Equals(Rational obj)
-        {
-            return obj.denominator == this.denominator && obj.numerator == this.numerator;
-        }
-
         public Rational GetClone()
         {
             return new Rational(numerator, denominator);
+        }
+
+        public bool Equals(Rational other)
+        {
+            return other.denominator == this.denominator && other.numerator == this.numerator;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj.GetType() == this.GetType())
+            {
+                return Equals((Rational)obj);
+            }
+            return base.Equals(obj);
         }
 
         private int numerator;
