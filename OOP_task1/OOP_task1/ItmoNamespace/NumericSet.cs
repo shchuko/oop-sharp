@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ItmoNamespace
 {
-    public class NumericSet<T> where T : INumber
+    public class NumericSet<T> : System.Collections.Generic.IEnumerable<T> where T : INumber, ICloneable<T>
     {
         public bool IsEmpty()
         {
@@ -34,6 +35,16 @@ namespace ItmoNamespace
             Node temp = Emplace(element);
             UpdateMinMax(temp);
             ++size;
+        }
+
+        public T GetMin()
+        {
+            return minValCache.data.GetClone();
+        }
+
+        public T GetMax()
+        {
+            return maxValCache.data.GetClone();
         }
 
         public int HowManyIsLesserThan(T element)
@@ -76,7 +87,7 @@ namespace ItmoNamespace
             greaterRequestResultCache = greaterElementsCounter;
             return greaterElementsCounter;
         }
-
+       
         private int size = 0;
         private Node dataHead = null;
         
@@ -109,7 +120,7 @@ namespace ItmoNamespace
             Node nodeToCompare = dataHead;
             Node nodeToComparePrev = null;
 
-            while (nodeToCompare.next != null && element.IsGreaterThan(nodeToCompare.data))
+            while (nodeToCompare != null && element.IsGreaterThan(nodeToCompare.data))
             {
                 nodeToComparePrev = nodeToCompare;
                 nodeToCompare = nodeToCompare.next;
@@ -137,6 +148,26 @@ namespace ItmoNamespace
             if (minValCache == null || !element.data.IsGreaterThan(minValCache.data))
             {
                 minValCache = element;
+            }
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            Node temp = dataHead;
+            while (temp != null)
+            {
+                yield return temp.data.GetClone();
+                temp = temp.next;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            Node temp = dataHead;
+            while (temp != null)
+            {
+                yield return temp.data.GetClone();
+                temp = temp.next;
             }
         }
 
