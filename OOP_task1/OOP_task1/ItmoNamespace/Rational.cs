@@ -66,6 +66,11 @@ namespace ItmoNamespace
             return numerator + "/" + denominator;
         }
 
+        public bool Equals(Rational obj)
+        {
+            return obj.denominator == this.denominator && obj.numerator == this.numerator;
+        }
+
         public Rational GetClone()
         {
             return new Rational(numerator, denominator);
