@@ -14,6 +14,11 @@ namespace ItmoNamespace
             return size == 0;
         }
 
+        public int Size()
+        {
+            return size;
+        }
+
         public bool Contains(T element)
         {
             return Find(element) != null;
@@ -59,21 +64,17 @@ namespace ItmoNamespace
 
             int lesserOrEqualElementsCounter = 0;
             Node temp = dataHead;
-            while (temp != null && element.IsGreaterThan(temp.data))
+            while (temp != null && (element.IsGreaterThan(temp.data) || element.Equals(temp.data)))
             {
                 temp = temp.next;
                 ++lesserOrEqualElementsCounter;
             }
 
             int greaterElementsCounter = size - lesserOrEqualElementsCounter;
-            if (temp != null && temp.data.Equals(element))
-            {
-                --greaterElementsCounter
-            }
 
-            lesserRequestElementCache = element;
-            lesserRequestResultCache = lesserOrEqualElementsCounter;
-            return lesserOrEqualElementsCounter;
+            greaterRequestElementCache = element;
+            greaterRequestResultCache = greaterElementsCounter;
+            return greaterElementsCounter;
         }
 
         private int size = 0;
