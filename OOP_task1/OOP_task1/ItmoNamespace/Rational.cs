@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ItmoNamespace
 {
-    public class Rational : ItmoNamespace.ICloneable<Rational>, INumber, IEquatable<Rational>
+    public class Rational : ICloneable<Rational>, INumber, IEquatable<Rational>
     {
         public Rational(int numerator, int denominator) 
         {
@@ -88,6 +88,26 @@ namespace ItmoNamespace
                 return Equals((Rational)obj);
             }
             return base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            var hashCode = -671859081;
+            hashCode = hashCode * -1521134295 + numerator.GetHashCode();
+            hashCode = hashCode * -1521134295 + denominator.GetHashCode();
+            return hashCode;
+        }
+
+        public static Rational operator + (Rational left, Rational right)
+        {
+            if (left.denominator == right.denominator)
+            {
+                return new Rational(left.numerator + right.numerator, left.denominator);
+            }
+
+            int newNumerator = left.numerator * right.denominator + right.numerator * left.denominator;
+            int newDenominator = left.denominator * right.denominator;
+            return new Rational(newNumerator, newDenominator);
         }
 
         private int numerator;
