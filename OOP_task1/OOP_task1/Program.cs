@@ -12,30 +12,45 @@ namespace OOP_task1
     {
         static void Main(string[] args)
         {
-            NumericSet<Rational> numericSet = new NumericSet<Rational>();
-            numericSet.Add(new Rational(1, 8));
-            numericSet.Add(new Rational(1, 4));
-            numericSet.Add(new Rational(1, 2));
+            NumericArray<Rational> numericArray = new NumericArray<Rational>();
+            numericArray.Add(new Rational(1, 8));
+            numericArray.Add(new Rational(1, 4));
+            numericArray.Add(new Rational(1, 2));
             // place for 3/5
-            numericSet.Add(new Rational(3, 4));
-            numericSet.Add(new Rational(1, 4));     // won't be added, size == 4
+            numericArray.Add(new Rational(3, 4));
+            numericArray.Add(new Rational(1, 4));    
 
-            foreach (Rational rat in numericSet)
+            foreach (Rational rat in numericArray)
             {
                 Console.Write(rat + " ");
             }
             Console.WriteLine("\n");
 
-            Console.WriteLine("Size: " + numericSet.Size());
-            Console.WriteLine("Max: " + numericSet.GetMax());
-            Console.WriteLine("Min: " + numericSet.GetMin());
+            Console.WriteLine("Size: " + numericArray.Size());
+            Console.WriteLine("Max: " + numericArray.GetMax());
+            Console.WriteLine("Min: " + numericArray.GetMin());
 
-            Console.WriteLine("Greater than 3/5: " + numericSet.HowManyIsGreaterThan(new Rational(3, 5)));
-            Console.WriteLine("Lesser than 3/5: " + numericSet.HowManyIsLesserThan(new Rational(3, 5)));
+            Console.WriteLine("Greater than 3/5: " + numericArray.HowManyIsGreaterThan(new Rational(3, 5)));
+            Console.WriteLine("Lesser than 3/5: " + numericArray.HowManyIsLesserThan(new Rational(3, 5)));
 
-            Console.WriteLine("Greater than 1/2: " + numericSet.HowManyIsGreaterThan(new Rational(1, 2)));
-            Console.WriteLine("Lesser than 1/2: " + numericSet.HowManyIsLesserThan(new Rational(1, 2)));
+            Console.WriteLine("Greater than 1/2: " + numericArray.HowManyIsGreaterThan(new Rational(1, 2)));
+            Console.WriteLine("Lesser than 1/2: " + numericArray.HowManyIsLesserThan(new Rational(1, 2)));
+
+            NumericArray<Rational> numericArray2 = new NumericArray<Rational>();
+            numericArray2.Add(new Rational(1, 4));
+            numericArray2.Add(new Rational(1, 8));
+            numericArray2.Add(new Rational(1, 2));
+            numericArray2.Add(new Rational(1, 4));
+            numericArray2.Add(new Rational(3, 4));
+
+            Console.WriteLine(new Polynom<Rational>(numericArray));
+            Console.WriteLine(new Polynom<Rational>(numericArray2));
+            Console.WriteLine(new Polynom<Rational>(numericArray2) + new Polynom<Rational>(numericArray));
+
+
             Console.Read();
+
+           
         }
     }
 }

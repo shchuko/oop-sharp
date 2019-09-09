@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ItmoNamespace
 {
-    public class Rational : ICloneable<Rational>, INumber, IEquatable<Rational>
+    public class Rational : ICloneable<Rational>, INumber, IEquatable<Rational>, ISummable<Rational>
     {
         public Rational(int numerator, int denominator) 
         {
@@ -55,7 +55,6 @@ namespace ItmoNamespace
                 throw new System.DivideByZeroException();
             }
         }
-
         public void Set(int numerator, int denominator)
         {
             if (denominator == 0)
@@ -75,7 +74,6 @@ namespace ItmoNamespace
         {
             return new Rational(numerator, denominator);
         }
-
         public bool Equals(Rational other)
         {
             return other.denominator == this.denominator && other.numerator == this.numerator;
@@ -108,6 +106,11 @@ namespace ItmoNamespace
             int newNumerator = left.numerator * right.denominator + right.numerator * left.denominator;
             int newDenominator = left.denominator * right.denominator;
             return new Rational(newNumerator, newDenominator);
+        }
+
+        public Rational Sum(Rational rational)
+        {
+            return this + rational;
         }
 
         private int numerator;

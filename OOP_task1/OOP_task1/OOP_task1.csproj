@@ -43,9 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ItmoNamespace\ISummable.cs" />
+    <Compile Include="ItmoNamespace\NumericArray.cs" />
     <Compile Include="ItmoNamespace\ICloneable.cs" />
     <Compile Include="ItmoNamespace\INumber.cs" />
-    <Compile Include="ItmoNamespace\NumericSet.cs" />
+    <Compile Include="ItmoNamespace\Polynom.cs" />
     <Compile Include="ItmoNamespace\Rational.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
