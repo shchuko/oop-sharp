@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace ItmoNamespace
 {
-    public interface INumber
+    public interface IFactory<T>
     {
-        double GetDouble();
-        int GetInt();
-        bool IsGreaterThan(INumber objToCompare);
-
+        T createFromString(String s);
     }
 }

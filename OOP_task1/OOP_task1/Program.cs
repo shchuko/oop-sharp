@@ -18,13 +18,9 @@ namespace OOP_task1
             numericArray.Add(new Rational(1, 2));
             // place for 3/5
             numericArray.Add(new Rational(3, 4));
-            numericArray.Add(new Rational(1, 4));    
-
-            foreach (Rational rat in numericArray)
-            {
-                Console.Write(rat + " ");
-            }
-            Console.WriteLine("\n");
+            numericArray.Add(new Rational(1, 4));
+            Console.WriteLine("Numetic Array of Rational: ");
+            Console.WriteLine(numericArray);
 
             Console.WriteLine("Size: " + numericArray.Size());
             Console.WriteLine("Max: " + numericArray.GetMax());
@@ -36,21 +32,27 @@ namespace OOP_task1
             Console.WriteLine("Greater than 1/2: " + numericArray.HowManyIsGreaterThan(new Rational(1, 2)));
             Console.WriteLine("Lesser than 1/2: " + numericArray.HowManyIsLesserThan(new Rational(1, 2)));
 
-            NumericArray<Rational> numericArray2 = new NumericArray<Rational>();
-            numericArray2.Add(new Rational(1, 4));
-            numericArray2.Add(new Rational(1, 8));
-            numericArray2.Add(new Rational(1, 2));
-            numericArray2.Add(new Rational(1, 4));
-            numericArray2.Add(new Rational(3, 4));
+            String filepath = "data.txt";
+            String pattern = "[0-9]+/[0-9]+";
+            RationalFactory rationalFactory = new RationalFactory();
+            NumericArray<Rational> numericArray2 = new NumericArray<Rational>(filepath, pattern, rationalFactory);
 
-            Console.WriteLine(new Polynom<Rational>(numericArray));
-            Console.WriteLine(new Polynom<Rational>(numericArray2));
-            Console.WriteLine(new Polynom<Rational>(numericArray2) + new Polynom<Rational>(numericArray));
+            Console.WriteLine();
+            Console.WriteLine("NumericArray2, created from file: ");
+            Console.WriteLine(numericArray2);
 
+            Polynom<Rational> polynom1 = new Polynom<Rational>(numericArray);
+            Polynom<Rational> polynom2 = new Polynom<Rational>(numericArray2);
+
+            Console.WriteLine();
+            Console.WriteLine("Polynom1:");
+            Console.WriteLine(polynom1);
+            Console.WriteLine("Polynom2:");
+            Console.WriteLine(polynom2);
+            Console.WriteLine("Sum:");
+            Console.WriteLine(polynom1 + polynom2);
 
             Console.Read();
-
-           
         }
     }
 }

@@ -13,6 +13,15 @@ namespace ItmoNamespace
             this.Set(numerator, denominator);
         }
 
+        public Rational(String str)
+        {
+            String[] temp = str.Split('/');
+            numerator = Int32.Parse(temp[0]);
+            denominator = Int32.Parse(temp[1]);
+        }
+
+        
+
         public int GetNumerator()
         {
             return numerator;

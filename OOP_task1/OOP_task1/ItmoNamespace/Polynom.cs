@@ -57,7 +57,6 @@ namespace ItmoNamespace
                 left = right;
                 right = temp;
             }
-
             int leftSize = left.list.Count;
             int rightSize = right.list.Count;
 

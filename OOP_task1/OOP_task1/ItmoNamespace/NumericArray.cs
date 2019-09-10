@@ -2,14 +2,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using ItmoNamespace;
 
 namespace ItmoNamespace
 {
     public class NumericArray<T> : IEnumerable<T> where T : class, INumber, ICloneable<T>
     {
+
+        public NumericArray()
+        { }
+
+        public NumericArray(String filepath, String pattern, IFactory<T> factory)
+        {
+            StreamReader sr = new StreamReader(filepath);
+            String data = sr.ReadToEnd();
+            foreach (Match match in Regex.Matches(data, pattern, RegexOptions.IgnoreCase))
+            {
+                this.Add(factory.createFromString(match.Value));
+            }
+        }
+
         public bool IsEmpty()
         {
             return list.Count() == 0;
@@ -123,6 +139,19 @@ namespace ItmoNamespace
                 yield return e.GetClone();
             }
         }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (T item in list)
+            {
+                sb.Append(item.ToString());
+                sb.Append(' ');
+            }
+            sb.Remove(sb.Length - 1, 1);
+            return sb.ToString();
+        }
+
         IEnumerator IEnumerable.GetEnumerator()
         {
             foreach (T e in list)
