@@ -20,8 +20,6 @@ namespace ItmoNamespace
             denominator = Int32.Parse(temp[1]);
         }
 
-        
-
         public int GetNumerator()
         {
             return numerator;
@@ -34,21 +32,37 @@ namespace ItmoNamespace
 
         public double GetDouble()
         {
+            if (denominator == 0)
+            {
+                throw new DivideByZeroException();
+            }
             return (double)numerator / denominator;
         }
         
         public int GetInt()
         {
+            if (denominator == 0)
+            {
+                throw new System.DivideByZeroException();
+            }
             return (int)Math.Round(GetDouble(), MidpointRounding.AwayFromZero);
         }
 
         public bool IsGreaterThan(Rational rational)
         {
+            if (denominator == 0)
+            {
+                throw new System.DivideByZeroException();
+            }
             return this.GetDouble() > rational.GetDouble();
         }
 
         public bool IsGreaterThan(INumber objToCompare)
         {
+            if (denominator == 0)
+            {
+                throw new System.DivideByZeroException();
+            }
             return this.GetDouble() > objToCompare.GetDouble();
         }
 
@@ -59,17 +73,10 @@ namespace ItmoNamespace
 
         public void SetDenominator(int denominator)
         {
-            if (denominator == 0)
-            {
-                throw new System.DivideByZeroException();
-            }
+            this.denominator = denominator;
         }
         public void Set(int numerator, int denominator)
         {
-            if (denominator == 0)
-            {
-                throw new System.DivideByZeroException();
-            }
             this.numerator = numerator;
             this.denominator = denominator;
         }
@@ -105,13 +112,17 @@ namespace ItmoNamespace
             return hashCode;
         }
 
-        public static Rational operator + (Rational left, Rational right)
+        public static Rational operator +(Rational left, Rational right)
         {
+            if (left.denominator == 0 || right.denominator == 0)
+            {
+                throw new DivideByZeroException();
+            }
+
             if (left.denominator == right.denominator)
             {
                 return new Rational(left.numerator + right.numerator, left.denominator);
             }
-
             int newNumerator = left.numerator * right.denominator + right.numerator * left.denominator;
             int newDenominator = left.denominator * right.denominator;
             return new Rational(newNumerator, newDenominator);

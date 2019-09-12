@@ -26,11 +26,11 @@ namespace OOP_task1
             Console.WriteLine("Max: " + numericArray.GetMax());
             Console.WriteLine("Min: " + numericArray.GetMin());
 
-            Console.WriteLine("Greater than 3/5: " + numericArray.HowManyIsGreaterThan(new Rational(3, 5)));
-            Console.WriteLine("Lesser than 3/5: " + numericArray.HowManyIsLesserThan(new Rational(3, 5)));
+            Console.WriteLine("Greater than 3/5 (count): " + numericArray.HowManyIsGreaterThan(new Rational(3, 5)));
+            Console.WriteLine("Lesser than 3/5 (count): " + numericArray.HowManyIsLesserThan(new Rational(3, 5)));
 
-            Console.WriteLine("Greater than 1/2: " + numericArray.HowManyIsGreaterThan(new Rational(1, 2)));
-            Console.WriteLine("Lesser than 1/2: " + numericArray.HowManyIsLesserThan(new Rational(1, 2)));
+            Console.WriteLine("Greater than 1/2 (count): " + numericArray.HowManyIsGreaterThan(new Rational(1, 2)));
+            Console.WriteLine("Lesser than 1/2 (count): " + numericArray.HowManyIsLesserThan(new Rational(1, 2)));
 
             String filepath = "data.txt";
             String pattern = "[0-9]+/[0-9]+";
@@ -52,6 +52,17 @@ namespace OOP_task1
             Console.WriteLine("Sum:");
             Console.WriteLine(polynom1 + polynom2);
 
+            Console.WriteLine();
+            Console.WriteLine("Trying to operate with rational with zero denominator:");
+            try
+            {
+                Rational r = new Rational("3/0");
+                Console.WriteLine(r);
+                Console.WriteLine(r.GetDouble());
+            } catch (Exception ex)
+            {
+                Console.WriteLine("Exception catched: " + ex.ToString());
+            }
             Console.Read();
         }
     }
