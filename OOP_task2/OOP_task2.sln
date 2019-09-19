@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOP_task2", "OOP_task2\OOP_task2.csproj", "{9F7F2A2B-551D-4F82-8DF0-A15F7B03D923}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicCatalogLib", "MusicCatalogLib\MusicCatalogLib.csproj", "{F53C3BC5-A678-4589-845B-702BAEBB1764}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9F7F2A2B-551D-4F82-8DF0-A15F7B03D923}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F7F2A2B-551D-4F82-8DF0-A15F7B03D923}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F7F2A2B-551D-4F82-8DF0-A15F7B03D923}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F7F2A2B-551D-4F82-8DF0-A15F7B03D923}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F53C3BC5-A678-4589-845B-702BAEBB1764}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F53C3BC5-A678-4589-845B-702BAEBB1764}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F53C3BC5-A678-4589-845B-702BAEBB1764}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F53C3BC5-A678-4589-845B-702BAEBB1764}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
