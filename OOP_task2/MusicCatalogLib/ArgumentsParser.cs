@@ -29,7 +29,7 @@ namespace MusicCatalogLib
             {
                 if (HelpRegex.IsMatch(arg))
                 {
-                    return new String[] {_musicCatalogReader.GetHelp()};
+                    return new String[] { GetHelp() };
                 }
 
                 if (filepath == null && FilepathRegex.IsMatch(arg))
@@ -102,5 +102,18 @@ namespace MusicCatalogLib
         private static readonly Regex GenreRegex = new Regex(@"--genre=(.+)");
         private static readonly Regex SubGenreRegex = new Regex(@"--subgenre=(.+)");
         private static readonly Regex CompilationRegex = new Regex(@"--compilation=(.+)");
+        
+        private string GetHelp()
+        {
+            return "Supported MusicCatalogReader flags:\n" +
+                   "\t-h, --help\t\t\tprint help\n" +
+                   "\t--filepath=FILEPATH\t\tload data from xml file on FILEPATH\n" +
+                   "\t--artist=ARTIST\t\t\tget music of ARTIST\n" +
+                   "\t--album=ALBUM\t\t\tget music of ALBUM\n" +
+                   "\t--song=SONG\t\t\tget music with song name equals SONG\n" +
+                   "\t--genre=GENRE\t\t\tget music with genre of GENRE (will be ignored if --subgenre=\"\" used)\n" +
+                   "\t--subgenre=SUBGENRE\t\tget music with subgenre of SUBGENRE\n" +
+                   "\t--compilation=COMPILATION\tget music of COMPILATION";
+        }
     }
 }
