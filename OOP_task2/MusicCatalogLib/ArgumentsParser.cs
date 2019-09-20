@@ -6,12 +6,6 @@ namespace MusicCatalogLib
 {
     public class ArgumentsParser
     {
-        public ArgumentsParser(MusicCatalogReader mc) 
-        {
-            _musicCatalogReader = mc;
-        }
-        
-
         public string[] ParseAndExec(string[] args)
         {
             string filepath = null;
@@ -19,7 +13,7 @@ namespace MusicCatalogLib
             string albumName = null;
             string songName = null;
             string compilationName = null;
-            string genreName = null;
+            string genreTitle = null;
             string subGenreName = null;
             
             foreach (string arg in args)
@@ -32,7 +26,8 @@ namespace MusicCatalogLib
                 if (filepath == null && FilepathRegex.IsMatch(arg))
                 {
                     filepath = FilepathRegex.Match(arg).Groups[1].Value;
-                    if (!_musicCatalogReader.ReadFile(filepath))
+                    _musicCatalogReader = MusicCatalogReader.CreateFromXml(filepath);
+                    if (_musicCatalogReader == null)
                     {
                         return new string[] {"Couldn't open file: \"" + filepath + "\"", "Exiting..."};
                     }
@@ -58,9 +53,9 @@ namespace MusicCatalogLib
                     compilationName = CompilationRegex.Match(arg).Groups[1].Value;
                 }
 
-                if (genreName == null && GenreRegex.IsMatch(arg))
+                if (genreTitle == null && GenreRegex.IsMatch(arg))
                 {
-                    genreName = GenreRegex.Match(arg).Groups[1].Value;
+                    genreTitle = GenreRegex.Match(arg).Groups[1].Value;
                 }
 
                 if (subGenreName == null && SubGenreRegex.IsMatch(arg))
@@ -73,12 +68,12 @@ namespace MusicCatalogLib
             {
                 return new string[] {"--filepath= parameter required", "Exiting..."};
             }
-            
+
             string[] result = _musicCatalogReader.GetData(
                 artistName, 
                 albumName, 
                 songName, 
-                genreName, 
+                genreTitle, 
                 subGenreName, 
                 compilationName);
             if (result.Length == 0)
@@ -89,7 +84,7 @@ namespace MusicCatalogLib
             return result;
         }
 
-        private readonly MusicCatalogReader _musicCatalogReader;
+        private MusicCatalogReader _musicCatalogReader;
         
         private static readonly Regex HelpRegex = new Regex(@"(--help)|(-h)");
         private static readonly Regex FilepathRegex = new Regex(@"--filepath=(.+)");
