@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05bbd5bb-894a-4dca-abd3-79ab21116d33" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/MusicCatalogLib/Album.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MusicCatalogLib/Artist.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MusicCatalogLib/Compilation.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MusicCatalogLib/Genre.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MusicCatalogLib/MusicCatalogXmlParser.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MusicCatalogLib/Song.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MusicCatalogLib/SubGenre.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.OOP_task2/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OOP_task2/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.OOP_task2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OOP_task2/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MusicCatalogLib/ArgumentsParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MusicCatalogLib/ArgumentsParser.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MusicCatalogLib/MusicCatalogReader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MusicCatalogLib/MusicCatalogReader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP_task2/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OOP_task2/Program.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,8 +41,8 @@
         <option value="$PROJECT_DIR$/MusicCatalogLib/Artist.cs" />
         <option value="$PROJECT_DIR$/MusicCatalogLib/DataStructures.cs" />
         <option value="$PROJECT_DIR$/MusicCatalogLib/Compilation.cs" />
-        <option value="$PROJECT_DIR$/MusicCatalogLib/ArgumentsParser.cs" />
         <option value="$PROJECT_DIR$/OOP_task2/Program.cs" />
+        <option value="$PROJECT_DIR$/MusicCatalogLib/ArgumentsParser.cs" />
         <option value="$PROJECT_DIR$/MusicCatalogLib/MusicCatalogReader.cs" />
       </list>
     </option>
@@ -252,7 +242,7 @@
       <updated>1568932596689</updated>
       <workItem from="1568932598014" duration="1213000" />
       <workItem from="1568957667587" duration="9115000" />
-      <workItem from="1568982977015" duration="21097000" />
+      <workItem from="1568982977015" duration="21554000" />
     </task>
     <task id="LOCAL-00001" summary="Full task2 update">
       <created>1568933658879</created>
@@ -282,7 +272,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568968001091</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="MusicCatalogReader implemented. Not tested, XML parser not implemented">
+      <created>1569005605574</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1569005605574</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -309,7 +306,8 @@
     <MESSAGE value="Arguments parser implemented. MusicCatalogReader interface created" />
     <MESSAGE value="Changing interfaces of ArgumentsParser, MusicCatalogReader" />
     <MESSAGE value="Remove unused dependencies in ArgumentsParser.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove unused dependencies in ArgumentsParser.cs" />
+    <MESSAGE value="MusicCatalogReader implemented. Not tested, XML parser not implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="MusicCatalogReader implemented. Not tested, XML parser not implemented" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

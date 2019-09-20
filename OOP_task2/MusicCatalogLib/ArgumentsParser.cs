@@ -20,7 +20,7 @@ namespace MusicCatalogLib
             {
                 if (HelpRegex.IsMatch(arg))
                 {
-                    return new String[] { GetHelp() };
+                    return new[] { GetHelp() };
                 }
 
                 if (filepath == null && FilepathRegex.IsMatch(arg))
@@ -29,7 +29,7 @@ namespace MusicCatalogLib
                     _musicCatalogReader = MusicCatalogReader.CreateFromXml(filepath);
                     if (_musicCatalogReader == null)
                     {
-                        return new string[] {"Couldn't open file: \"" + filepath + "\"", "Exiting..."};
+                        return new[] {"Couldn't open file: \"" + filepath + "\"", "Exiting..."};
                     }
                 }
 
@@ -66,7 +66,7 @@ namespace MusicCatalogLib
 
             if (filepath == null)
             {
-                return new string[] {"--filepath= parameter required", "Exiting..."};
+                return new[] {"--filepath= parameter required", "Exiting..."};
             }
 
             string[] result = _musicCatalogReader.GetData(
@@ -78,7 +78,7 @@ namespace MusicCatalogLib
                 compilationName);
             if (result.Length == 0)
             {
-                return new string[] {"No data found"};
+                return new[] {"No data found"};
             }
 
             return result;
