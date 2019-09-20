@@ -7,7 +7,7 @@ namespace OOP_task2
     {
         static void Main(string[] args)
         {
-            ArgumentsParser argumentsParser = new ArgumentsParser(new MusicCatalog());
+            ArgumentsParser argumentsParser = new ArgumentsParser(new MusicCatalogReader());
             string[] output = argumentsParser.ParseAndExec(args);
             foreach (string s in output)
             {
