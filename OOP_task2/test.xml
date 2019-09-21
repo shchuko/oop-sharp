@@ -1,0 +1,138 @@
+<?xml version="1.0"?> 
+<library>
+	<basegenres>
+		<title>Rock</title>
+		<title>Pop</title>
+		<title>Indie</title>
+		<title>Hip-Hop</title>
+		<title>Jazz</title>
+		<title>Funk</title>
+		<title>Blues</title>
+		<title>Techno</title>
+		<title>Alternative</title>
+	</basegenres>		
+	<subgenres>
+		<subgenre>
+			<title>Hard Rock</title>
+			<base>Rock</base>
+		</subgenre>
+		<subgenre>
+			<title>Blues Rock</title>
+			<base>Rock</base>
+			<base>Blues</base>
+		</subgenre>
+		<subgenre>
+			<title>Indie-Pop</title>
+			<base>Indie</base>
+			<base>Pop</base>
+		</subgenre>
+	</subgenres>
+	<artist>
+		<title>Parks, Squares and Alleys</title>
+		<album>
+			<title>Against Illusions and Reality</title>
+			<subgenre>Indie-Pop</subgenre>
+			<year>2015</year>
+			<song>
+				<title>Against Illusions and Reality</title>
+			</song>
+			<song>
+				<title>Soft Clouds</title>
+			</song>
+			<song>
+				<title>Youth</title>
+			</song>
+		</album>
+		<album>
+			<title>Cold Blood Magic</title>
+			<genre>Indie</genre>
+			<year>2018</year>
+			<song>
+				<title>Cold Blood Magic</title>
+			</song>
+			<song>
+				<title>Crayons</title>
+			</song>
+			<song>
+				<title>Man in the Sky</title>
+			</song>
+			<song>
+				<title>Parasites</title>
+			</song>
+		</album>
+	</artist>
+	<artist>
+		<title>Red Hot Chili Peppers</title>
+		<album>
+			<title>Californication</title>
+			<genre>Funk</genre>
+			<year>1999</year>
+			<song>
+				<title>Around the World</title>
+			</song>
+			<song>
+				<title>Scar Tissue</title>
+			</song>
+			<song>
+				<title>Californication</title>
+			</song>
+		</album>
+		<album>
+			<title>The Getaway</title>
+			<genre>Rock</genre>
+			<year>2016</year>
+			<song>
+				<title>The Getaway</title>
+			</song>
+			<song>
+				<title>Dark Necessities</title>
+			</song>
+			<song>
+				<title>Sick Love</title>
+			</song>
+		</album>
+	</artist>
+	<artist>
+		<title>Guns N' Roses</title>
+		<album>
+			<title>Guns N' Roses</title>
+			<subgenre>Hard Rock</subgenre>
+			<year>1988</year>
+			<song>
+				<title>I't So Easy</title>
+			</song>
+			<song>
+				<title>Shadow of Your Love</title>
+			</song>
+			<song>
+				<title>Move to the City</title>
+			</song>
+			<song>
+				<title>Knockin' on Heaven's Door</title>
+			</song>
+		</album>
+	</artist>
+	<compilation>
+		<title>Playlist 1</title>
+		<song>
+			<title>The Getaway</title>
+			<album>The Getaway</album>
+			<artist>Red Hot Chili Peppers</artist>
+		</song>
+		<song>
+			<title>Parasites</title>
+			<album>Cold Blood Magic</album>
+			<artist>Parks, Squares and Alleys</artist>
+		</song>
+		<song>
+			<title>Youth</title>
+			<album>Against Illusions and Reality</album>
+			<artist>Parks, Squares and Alleys</artist>
+		</song>
+		<song>
+			<title>Knockin' on Heaven's Door</title>
+			<album>Guns N' Roses</album>
+			<artist>Guns N' Roses</artist>
+		</song>
+	</compilation>
+</library>

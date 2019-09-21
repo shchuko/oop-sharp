@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="05bbd5bb-894a-4dca-abd3-79ab21116d33" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.OOP_task2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OOP_task2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MusicCatalogLib/ArgumentsParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MusicCatalogLib/ArgumentsParser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MusicCatalogLib/Artist.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MusicCatalogLib/Artist.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MusicCatalogLib/MusicCatalogReader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MusicCatalogLib/MusicCatalogReader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MusicCatalogLib/MusicCatalogXmlParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MusicCatalogLib/MusicCatalogXmlParser.cs" afterDir="false" />
-    </list>
+    <list default="true" id="05bbd5bb-894a-4dca-abd3-79ab21116d33" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -341,7 +335,7 @@
       <updated>1568932596689</updated>
       <workItem from="1568932598014" duration="1213000" />
       <workItem from="1568957667587" duration="9115000" />
-      <workItem from="1568982977015" duration="34487000" />
+      <workItem from="1568982977015" duration="34573000" />
     </task>
     <task id="LOCAL-00001" summary="Full task2 update">
       <created>1568933658879</created>
@@ -385,7 +379,14 @@
       <option name="project" value="LOCAL" />
       <updated>1569005979198</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="OOP_task2 finished, tested">
+      <created>1569027634838</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1569027634838</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -414,7 +415,8 @@
     <MESSAGE value="Remove unused dependencies in ArgumentsParser.cs" />
     <MESSAGE value="MusicCatalogReader implemented. Not tested, XML parser not implemented" />
     <MESSAGE value="Syntax bug fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Syntax bug fixes" />
+    <MESSAGE value="OOP_task2 finished, tested" />
+    <option name="LAST_COMMIT_MESSAGE" value="OOP_task2 finished, tested" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
