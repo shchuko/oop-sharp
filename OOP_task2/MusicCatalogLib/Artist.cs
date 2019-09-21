@@ -18,7 +18,7 @@ namespace MusicCatalogLib
         {
             get => _albums;
         }
-        
+
         internal Album GetAlbum(string albumTitle)
         {
             return _albums[albumTitle];

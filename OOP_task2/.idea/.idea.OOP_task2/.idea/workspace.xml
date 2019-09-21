@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05bbd5bb-894a-4dca-abd3-79ab21116d33" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.OOP_task2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OOP_task2/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MusicCatalogLib/ArgumentsParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MusicCatalogLib/ArgumentsParser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicCatalogLib/Artist.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MusicCatalogLib/Artist.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MusicCatalogLib/MusicCatalogReader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MusicCatalogLib/MusicCatalogReader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicCatalogLib/MusicCatalogXmlParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MusicCatalogLib/MusicCatalogXmlParser.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,6 +20,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F9983402-2CF8-45EF-8679-CD8D8CA3CF26/f7/385f060c/String.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MusicCatalogLib/MusicCatalogReader.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F9983402-2CF8-45EF-8679-CD8D8CA3CF26/19/928ece07/KeyValuePair`2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MusicCatalogLib/Compilation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MusicCatalogLib/ArgumentsParser.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MusicCatalogLib/SubGenre.cs" root0="FORCE_HIGHLIGHTING" />
@@ -33,17 +37,17 @@
       <list>
         <option value="$PROJECT_DIR$/MusicCatalogLib/Class1.cs" />
         <option value="$PROJECT_DIR$/MusicCatalogLib/MusicCatalog.cs" />
-        <option value="$PROJECT_DIR$/MusicCatalogLib/MusicCatalogXmlParser.cs" />
         <option value="$PROJECT_DIR$/MusicCatalogLib/Genre.cs" />
         <option value="$PROJECT_DIR$/MusicCatalogLib/SubGenre.cs" />
         <option value="$PROJECT_DIR$/MusicCatalogLib/Song.cs" />
-        <option value="$PROJECT_DIR$/MusicCatalogLib/Album.cs" />
-        <option value="$PROJECT_DIR$/MusicCatalogLib/Artist.cs" />
         <option value="$PROJECT_DIR$/MusicCatalogLib/DataStructures.cs" />
         <option value="$PROJECT_DIR$/MusicCatalogLib/Compilation.cs" />
         <option value="$PROJECT_DIR$/OOP_task2/Program.cs" />
+        <option value="$PROJECT_DIR$/MusicCatalogLib/Album.cs" />
+        <option value="$PROJECT_DIR$/MusicCatalogLib/Artist.cs" />
         <option value="$PROJECT_DIR$/MusicCatalogLib/ArgumentsParser.cs" />
         <option value="$PROJECT_DIR$/MusicCatalogLib/MusicCatalogReader.cs" />
+        <option value="$PROJECT_DIR$/MusicCatalogLib/MusicCatalogXmlParser.cs" />
       </list>
     </option>
   </component>
@@ -74,10 +78,10 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected=".NET Project.Help">
+  <component name="RunManager" selected=".NET Project.View all">
     <configuration name="Artist PS&amp;A, Album Cold Blood Magic" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="$PROJECT_DIR$/OOP_task2/bin/Debug/netcoreapp2.2/OOP_task2.dll" />
-      <option name="PROGRAM_PARAMETERS" value="--filepath=&quot;$USER_HOME$/test.xml&quot; --artist=&quot;Parks, Squares and Alleys&quot; --album=&quot;Cold Blood Magic&quot;" />
+      <option name="PROGRAM_PARAMETERS" value="--filepath=&quot;test.xml&quot; --artist=&quot;Parks, Squares and Alleys&quot; --album=&quot;Cold Blood Magic&quot;" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/OOP_task2/bin/Debug/netcoreapp2.2" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
@@ -95,43 +99,7 @@
     </configuration>
     <configuration name="Californication Album" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="$PROJECT_DIR$/OOP_task2/bin/Debug/netcoreapp2.2/OOP_task2.dll" />
-      <option name="PROGRAM_PARAMETERS" value="--filepath=&quot;$USER_HOME$/test.xml&quot; --album=Californication" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/OOP_task2/bin/Debug/netcoreapp2.2" />
-      <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="PROJECT_PATH" value="$PROJECT_DIR$/OOP_task2/OOP_task2.csproj" />
-      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
-      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
-      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="DotNetCore" />
-      <option name="PROJECT_TFM" value=".NETCoreApp,Version=v2.2" />
-      <method v="2">
-        <option name="Build" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Compilation1, Hard Rock subgenre" type="DotNetProject" factoryName=".NET Project">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/OOP_task2/bin/Debug/netcoreapp2.2/OOP_task2.dll" />
-      <option name="PROGRAM_PARAMETERS" value="--filepath=&quot;$USER_HOME$/test.xml&quot; --compilation=&quot;Compilation1&quot; --subgenre=&quot;Hard Rock&quot;" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/OOP_task2/bin/Debug/netcoreapp2.2" />
-      <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="PROJECT_PATH" value="$PROJECT_DIR$/OOP_task2/OOP_task2.csproj" />
-      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
-      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
-      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="DotNetCore" />
-      <option name="PROJECT_TFM" value=".NETCoreApp,Version=v2.2" />
-      <method v="2">
-        <option name="Build" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Compilation1, Rock genre" type="DotNetProject" factoryName=".NET Project">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/OOP_task2/bin/Debug/netcoreapp2.2/OOP_task2.dll" />
-      <option name="PROGRAM_PARAMETERS" value="--filepath=&quot;$USER_HOME$/test.xml&quot; --compilation=&quot;Compilation1&quot; --genre=Rock" />
+      <option name="PROGRAM_PARAMETERS" value="--filepath=&quot;test.xml&quot; --album=&quot;Californication&quot;" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/OOP_task2/bin/Debug/netcoreapp2.2" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
@@ -149,7 +117,7 @@
     </configuration>
     <configuration name="Help" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="$PROJECT_DIR$/OOP_task2/bin/Debug/netcoreapp2.2/OOP_task2.dll" />
-      <option name="PROGRAM_PARAMETERS" value="-h" />
+      <option name="PROGRAM_PARAMETERS" value="--help" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/OOP_task2/bin/Debug/netcoreapp2.2" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
@@ -165,9 +133,135 @@
         <option name="Build" enabled="true" />
       </method>
     </configuration>
-    <configuration name="View Compilation1" type="DotNetProject" factoryName=".NET Project">
+    <configuration name="Indie-Pop" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="$PROJECT_DIR$/OOP_task2/bin/Debug/netcoreapp2.2/OOP_task2.dll" />
-      <option name="PROGRAM_PARAMETERS" value="--filepath=&quot;$USER_HOME$/test.xml&quot; --compilation=&quot;Compilation1&quot;" />
+      <option name="PROGRAM_PARAMETERS" value="--filepath=&quot;test.xml&quot; --subgenre=&quot;Indie-Pop&quot;" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/OOP_task2/bin/Debug/netcoreapp2.2" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/OOP_task2/OOP_task2.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value=".NETCoreApp,Version=v2.2" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Indie" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/OOP_task2/bin/Debug/netcoreapp2.2/OOP_task2.dll" />
+      <option name="PROGRAM_PARAMETERS" value="--filepath=&quot;test.xml&quot; --genre=&quot;Indie&quot;" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/OOP_task2/bin/Debug/netcoreapp2.2" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/OOP_task2/OOP_task2.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value=".NETCoreApp,Version=v2.2" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="No Parameters" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/OOP_task2/bin/Debug/netcoreapp2.2/OOP_task2.dll" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/OOP_task2/bin/Debug/netcoreapp2.2" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/OOP_task2/OOP_task2.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value=".NETCoreApp,Version=v2.2" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Parasites song" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/OOP_task2/bin/Debug/netcoreapp2.2/OOP_task2.dll" />
+      <option name="PROGRAM_PARAMETERS" value="--filepath=&quot;test.xml&quot; --song=Parasites" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/OOP_task2/bin/Debug/netcoreapp2.2" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/OOP_task2/OOP_task2.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value=".NETCoreApp,Version=v2.2" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Playlist 1, Hard Rock subgenre" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/OOP_task2/bin/Debug/netcoreapp2.2/OOP_task2.dll" />
+      <option name="PROGRAM_PARAMETERS" value="--filepath=&quot;test.xml&quot; --compilation=&quot;Playlist 1&quot; --subgenre=&quot;Hard Rock&quot;" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/OOP_task2/bin/Debug/netcoreapp2.2" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/OOP_task2/OOP_task2.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value=".NETCoreApp,Version=v2.2" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Playlist 1, Rock genre" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/OOP_task2/bin/Debug/netcoreapp2.2/OOP_task2.dll" />
+      <option name="PROGRAM_PARAMETERS" value="--filepath=&quot;test.xml&quot; --compilation=&quot;Playlist 1&quot; --genre=Rock" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/OOP_task2/bin/Debug/netcoreapp2.2" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/OOP_task2/OOP_task2.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value=".NETCoreApp,Version=v2.2" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Pop" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/OOP_task2/bin/Debug/netcoreapp2.2/OOP_task2.dll" />
+      <option name="PROGRAM_PARAMETERS" value="--filepath=&quot;test.xml&quot; --genre=&quot;Pop&quot;" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/OOP_task2/bin/Debug/netcoreapp2.2" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/OOP_task2/OOP_task2.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value=".NETCoreApp,Version=v2.2" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="View Playlist 1" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/OOP_task2/bin/Debug/netcoreapp2.2/OOP_task2.dll" />
+      <option name="PROGRAM_PARAMETERS" value="--filepath=&quot;test.xml&quot; --compilation=&quot;Playlist 1&quot;" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/OOP_task2/bin/Debug/netcoreapp2.2" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
@@ -185,7 +279,7 @@
     </configuration>
     <configuration name="View all" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="$PROJECT_DIR$/OOP_task2/bin/Debug/netcoreapp2.2/OOP_task2.dll" />
-      <option name="PROGRAM_PARAMETERS" value="--filepath=&quot;$USER_HOME$/test.xml&quot;" />
+      <option name="PROGRAM_PARAMETERS" value="--filepath=&quot;test.xml&quot;" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/OOP_task2/bin/Debug/netcoreapp2.2" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
@@ -220,14 +314,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue=".NET Project.Californication Album" />
-      <item itemvalue=".NET Project.Artist PS&amp;A, Album Cold Blood Magic" />
       <item itemvalue=".NET Project.Help" />
       <item itemvalue=".NET Project.View all" />
       <item itemvalue=".NET Project.Wrong Filepath" />
-      <item itemvalue=".NET Project.View Compilation1" />
-      <item itemvalue=".NET Project.Compilation1, Rock genre" />
-      <item itemvalue=".NET Project.Compilation1, Hard Rock subgenre" />
+      <item itemvalue=".NET Project.No Parameters" />
+      <item itemvalue=".NET Project.View Playlist 1" />
+      <item itemvalue=".NET Project.Playlist 1, Hard Rock subgenre" />
+      <item itemvalue=".NET Project.Playlist 1, Rock genre" />
+      <item itemvalue=".NET Project.Indie" />
+      <item itemvalue=".NET Project.Indie-Pop" />
+      <item itemvalue=".NET Project.Pop" />
+      <item itemvalue=".NET Project.Californication Album" />
+      <item itemvalue=".NET Project.Artist PS&amp;A, Album Cold Blood Magic" />
+      <item itemvalue=".NET Project.Parasites song" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -242,7 +341,7 @@
       <updated>1568932596689</updated>
       <workItem from="1568932598014" duration="1213000" />
       <workItem from="1568957667587" duration="9115000" />
-      <workItem from="1568982977015" duration="21554000" />
+      <workItem from="1568982977015" duration="34487000" />
     </task>
     <task id="LOCAL-00001" summary="Full task2 update">
       <created>1568933658879</created>
@@ -279,7 +378,14 @@
       <option name="project" value="LOCAL" />
       <updated>1569005605574</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Syntax bug fixes">
+      <created>1569005979198</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1569005979198</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -307,7 +413,8 @@
     <MESSAGE value="Changing interfaces of ArgumentsParser, MusicCatalogReader" />
     <MESSAGE value="Remove unused dependencies in ArgumentsParser.cs" />
     <MESSAGE value="MusicCatalogReader implemented. Not tested, XML parser not implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="MusicCatalogReader implemented. Not tested, XML parser not implemented" />
+    <MESSAGE value="Syntax bug fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Syntax bug fixes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

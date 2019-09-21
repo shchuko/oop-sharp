@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
-using System.Xml;
+using System.Xml.Linq;
 
 namespace MusicCatalogLib
 {
@@ -23,10 +24,10 @@ namespace MusicCatalogLib
         
         public static MusicCatalogReader CreateFromXml(string filepath)
         {
-            XmlDocument doc = new XmlDocument();
+            XDocument doc;
             try
             {
-                doc.Load(filepath);
+                doc = XDocument.Load(filepath);
             }
             catch (Exception)
             {
@@ -47,12 +48,11 @@ namespace MusicCatalogLib
             List<string> result = new List<string>();
             try
             {
-
                 var list = GetPartData(artistTitle, albumTitle, songTitle, genreTitle, subGenreTitle,
                     compilationTitle);
                 if (list.Count == 0)
                 {
-                    result.Add("Empty...");
+                    result.Add("No data");
                 }
                 else
                 {
@@ -61,7 +61,7 @@ namespace MusicCatalogLib
             }
             catch (KeyNotFoundException)
             {
-                result.Add("Empty...");
+                result.Add("No data");
             }
 
             return result.ToArray();
@@ -71,7 +71,7 @@ namespace MusicCatalogLib
         {
             foreach (string title in genresTitles)
             {
-                _genres.Add(title.ToString(), new Genre(title));
+                _genres.Add(title, new Genre(title));
             }
         }
 
@@ -175,7 +175,7 @@ namespace MusicCatalogLib
                 return GetPartData(artistTitle, albumTitle, artistToLook.Albums, songTitle, genreTitle, subGenreTitle,
                     compilationTitle);
             }
-
+            
             List<string> result = new List<string>();
             foreach (KeyValuePair<string,Artist> keyValuePair in _artists)
             {
@@ -194,18 +194,24 @@ namespace MusicCatalogLib
             string subGenreTitle,
             string compilationTitle)
         {
+            List<string> result = new List<string>();
+
             if (albumTitle != null && !albumTitle.Equals(""))
             {
+                if (!albums.ContainsKey(albumTitle))
+                {
+                    return result;
+                }
+                
                 Album albumToLook = albums[albumTitle];
                 if (CheckAlbumGenres(albumToLook, genreTitle, subGenreTitle))
                 {
                     return GetPartData(artistTitle, albumTitle, albumToLook.GetGenreTitle(), albumToLook.Songs, songTitle,
                         compilationTitle);
                 }
-                return new List<string>();
+                return result;
             }
             
-            List<string> result = new List<string>();
             foreach (var album in albums)
             {
                 if (CheckAlbumGenres(album.Value, genreTitle, subGenreTitle))
@@ -227,18 +233,26 @@ namespace MusicCatalogLib
             string compilationTitle)
         {
             List<string> result = new List<string>();
-            if (songTitle != null && !songTitle.Equals("") && 
-                (compilationTitle.Equals("") || _compilations[compilationTitle].ContainsSong(songs[songTitle])))
+            if (songTitle != null && !songTitle.Equals(""))
             {
-                result.Add(CreateString(artistTitle, albumTitle, genre, songTitle, compilationTitle));
+                if (!songs.ContainsKey(songTitle))
+                {
+                    return result;
+                }
+
+                if (compilationTitle == null || compilationTitle.Equals("") ||
+                    _compilations[compilationTitle].ContainsSong(songs[songTitle]))
+                {
+                    result.Add(CreateString(artistTitle, albumTitle, genre, songTitle));
+                }
                 return result;
-            }
-            
+
+            } 
             foreach (KeyValuePair<string, Song> songPair in songs)
             {
-                if (compilationTitle.Equals("") || _compilations[compilationTitle].ContainsSong(songPair.Value))
+                if (compilationTitle == null || compilationTitle.Equals("") || _compilations[compilationTitle].ContainsSong(songPair.Value))
                 {
-                    result.Add(CreateString(artistTitle, albumTitle, genre, songPair.Key, compilationTitle));
+                    result.Add(CreateString(artistTitle, albumTitle, genre, songPair.Key));
                 }
             }
             
@@ -254,7 +268,7 @@ namespace MusicCatalogLib
                     return album.SubGenre.Title.Equals(subGenreTitle);
                 }
 
-                return album.Genre.HasSubGenre(GetSubGenre(subGenreTitle));
+                return false;
             }
             if (baseGenreTitle != null && !baseGenreTitle.Equals(""))
             {
@@ -271,8 +285,9 @@ namespace MusicCatalogLib
         private static string CreateString(params object[] args)
         {
             StringBuilder sb = new StringBuilder();
-            foreach (var item in args)
+            for (var i = 0; i < args.Length; i++)
             {
+                var item = args[i];
                 if (item != null && !item.ToString().Equals(""))
                 {
                     sb.Append(item);
@@ -282,7 +297,8 @@ namespace MusicCatalogLib
                     sb.Append("-----");
                 }
 
-                sb.Append("  --  ");
+                if (i != args.Length - 1)
+                    sb.Append("  --  ");
             }
 
             return sb.ToString();

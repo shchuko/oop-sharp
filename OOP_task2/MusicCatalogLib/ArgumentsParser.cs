@@ -9,12 +9,12 @@ namespace MusicCatalogLib
         public string[] ParseAndExec(string[] args)
         {
             string filepath = null;
-            string artistName = null;
-            string albumName = null;
-            string songName = null;
-            string compilationName = null;
+            string artistTitle = null;
+            string albumTitle = null;
+            string songTitle = null;
+            string compilationTitle = null;
             string genreTitle = null;
-            string subGenreName = null;
+            string subGenreTitle = null;
             
             foreach (string arg in args)
             {
@@ -29,28 +29,28 @@ namespace MusicCatalogLib
                     _musicCatalogReader = MusicCatalogReader.CreateFromXml(filepath);
                     if (_musicCatalogReader == null)
                     {
-                        return new[] {"Couldn't open file: \"" + filepath + "\"", "Exiting..."};
+                        return new[] {"File reading error: \"" + filepath + "\""};
                     }
                 }
 
-                if (artistName == null && ArtistRegex.IsMatch(arg))
+                if (artistTitle == null && ArtistRegex.IsMatch(arg))
                 {
-                    artistName = ArtistRegex.Match(arg).Groups[1].Value;
+                    artistTitle = ArtistRegex.Match(arg).Groups[1].Value;
                 }
                 
-                if (albumName == null && AlbumRegex.IsMatch(arg))
+                if (albumTitle == null && AlbumRegex.IsMatch(arg))
                 {
-                    albumName = AlbumRegex.Match(arg).Groups[1].Value;
+                    albumTitle = AlbumRegex.Match(arg).Groups[1].Value;
                 }
 
-                if (songName == null && SongRegex.IsMatch(arg))
+                if (songTitle == null && SongRegex.IsMatch(arg))
                 {
-                    songName = SongRegex.Match(arg).Groups[1].Value;
+                    songTitle = SongRegex.Match(arg).Groups[1].Value;
                 }
 
-                if (compilationName == null && CompilationRegex.IsMatch(arg))
+                if (compilationTitle == null && CompilationRegex.IsMatch(arg))
                 {
-                    compilationName = CompilationRegex.Match(arg).Groups[1].Value;
+                    compilationTitle = CompilationRegex.Match(arg).Groups[1].Value;
                 }
 
                 if (genreTitle == null && GenreRegex.IsMatch(arg))
@@ -58,24 +58,24 @@ namespace MusicCatalogLib
                     genreTitle = GenreRegex.Match(arg).Groups[1].Value;
                 }
 
-                if (subGenreName == null && SubGenreRegex.IsMatch(arg))
+                if (subGenreTitle == null && SubGenreRegex.IsMatch(arg))
                 {
-                    subGenreName = SubGenreRegex.Match(arg).Groups[1].Value;
+                    subGenreTitle = SubGenreRegex.Match(arg).Groups[1].Value;
                 }
             }
 
             if (filepath == null)
             {
-                return new[] {"--filepath= parameter required", "Exiting..."};
+                return new[] {"--filepath= parameter required"};
             }
 
             string[] result = _musicCatalogReader.GetData(
-                artistName, 
-                albumName, 
-                songName, 
+                artistTitle, 
+                albumTitle, 
+                songTitle, 
                 genreTitle, 
-                subGenreName, 
-                compilationName);
+                subGenreTitle, 
+                compilationTitle);
             if (result.Length == 0)
             {
                 return new[] {"No data found"};
