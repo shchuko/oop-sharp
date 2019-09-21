@@ -48,7 +48,7 @@ namespace MusicCatalogLib
             List<string> result = new List<string>();
             try
             {
-                var list = GetPartData(artistTitle, albumTitle, songTitle, genreTitle, subGenreTitle,
+                var list = GetArtistPartData(artistTitle, albumTitle, songTitle, genreTitle, subGenreTitle,
                     compilationTitle);
                 if (list.Count == 0)
                 {
@@ -161,7 +161,7 @@ namespace MusicCatalogLib
         private Dictionary<string, Artist> _artists = new Dictionary<string, Artist>();
         private Dictionary<string, Compilation> _compilations = new Dictionary<string, Compilation>();
         
-        private List<string> GetPartData(
+        private List<string> GetArtistPartData(
             string artistTitle,
             string albumTitle,
             string songTitle,
@@ -172,20 +172,20 @@ namespace MusicCatalogLib
             if (artistTitle != null && !artistTitle.Equals(""))
             {
                 Artist artistToLook = _artists[artistTitle];
-                return GetPartData(artistTitle, albumTitle, artistToLook.Albums, songTitle, genreTitle, subGenreTitle,
+                return GetAlbumPartData(artistTitle, albumTitle, artistToLook.Albums, songTitle, genreTitle, subGenreTitle,
                     compilationTitle);
             }
             
             List<string> result = new List<string>();
             foreach (KeyValuePair<string,Artist> keyValuePair in _artists)
             {
-                result.AddRange(GetPartData(keyValuePair.Key, albumTitle, keyValuePair.Value.Albums, songTitle,
+                result.AddRange(GetAlbumPartData(keyValuePair.Key, albumTitle, keyValuePair.Value.Albums, songTitle,
                     genreTitle, subGenreTitle, compilationTitle));
             }
 
             return result;
         }
-        private List<string> GetPartData(
+        private List<string> GetAlbumPartData(
             string artistTitle, 
             string albumTitle, 
             Dictionary<string, Album> albums, 
@@ -206,7 +206,7 @@ namespace MusicCatalogLib
                 Album albumToLook = albums[albumTitle];
                 if (CheckAlbumGenres(albumToLook, genreTitle, subGenreTitle))
                 {
-                    return GetPartData(artistTitle, albumTitle, albumToLook.GetGenreTitle(), albumToLook.Songs, songTitle,
+                    return GetSongPartData(artistTitle, albumTitle, albumToLook.GetGenreTitle(), albumToLook.Songs, songTitle,
                         compilationTitle);
                 }
                 return result;
@@ -216,7 +216,7 @@ namespace MusicCatalogLib
             {
                 if (CheckAlbumGenres(album.Value, genreTitle, subGenreTitle))
                 {
-                    result.AddRange(GetPartData(artistTitle, album.Key, album.Value.GetGenreTitle(), 
+                    result.AddRange(GetSongPartData(artistTitle, album.Key, album.Value.GetGenreTitle(), 
                         album.Value.Songs, songTitle, compilationTitle));
                 }
             }
@@ -224,7 +224,7 @@ namespace MusicCatalogLib
             return result;
         }
 
-        private List<string> GetPartData(
+        private List<string> GetSongPartData(
             string artistTitle, 
             string albumTitle, 
             string genre,
