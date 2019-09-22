@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$APPLICATION_CONFIG_DIR$/scratches" t="IncludeRecursive" />
+    <e p="$USER_HOME$/.Rider2019.2/system/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/.Rider2019.2/system/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_OOP_task3.-1242161001.00" t="ExcludeRecursive" />
+    <e p="$PROJECT_DIR$" t="IncludeFlat">
+      <e p="OOP_task3" t="IncludeRecursive">
+        <e p="OOP_task3.csproj" t="IncludeRecursive" />
+        <e p="ParserTester.cs" t="Include" />
+        <e p="Program.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.2" t="Include">
+              <e p="OOP_task3.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="OOP_task3.sln" t="IncludeFlat" />
+      <e p="ParserINI" t="IncludeRecursive">
+        <e p="Exceptions" t="Include">
+          <e p="FileReadingException.cs" t="Include" />
+          <e p="KeyNotFoundException.cs" t="Include" />
+          <e p="ParseException.cs" t="Include" />
+          <e p="SectionNotFoundException.cs" t="Include" />
+          <e p="ValueCastException.cs" t="Include" />
+          <e p="WrongFileFormatException.cs" t="Include" />
+        </e>
+        <e p="IniFileParser.cs" t="Include" />
+        <e p="ParserINI.csproj" t="IncludeRecursive" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.2" t="Include">
+              <e p="ParserINI.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
