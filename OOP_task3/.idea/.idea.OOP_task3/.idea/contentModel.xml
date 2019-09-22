@@ -3,7 +3,7 @@
   <component name="ContentModelStore">
     <e p="$APPLICATION_CONFIG_DIR$/scratches" t="IncludeRecursive" />
     <e p="$USER_HOME$/.Rider2019.2/system/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/.Rider2019.2/system/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_OOP_task3.-1242161001.00" t="ExcludeRecursive" />
+    <e p="$USER_HOME$/.Rider2019.2/system/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_OOP_task3.-839752596.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="OOP_task3" t="IncludeRecursive">
         <e p="OOP_task3.csproj" t="IncludeRecursive" />
