@@ -116,23 +116,23 @@
 		<title>Playlist 1</title>
 		<song>
 			<title>The Getaway</title>
-			<album>The Getaway</album>
-			<artist>Red Hot Chili Peppers</artist>
+			<albumTitle>The Getaway</albumTitle>
+			<artistTitle>Red Hot Chili Peppers</artistTitle>
 		</song>
 		<song>
 			<title>Parasites</title>
-			<album>Cold Blood Magic</album>
-			<artist>Parks, Squares and Alleys</artist>
+			<albumTitle>Cold Blood Magic</albumTitle>
+			<artistTitle>Parks, Squares and Alleys</artistTitle>
 		</song>
 		<song>
 			<title>Youth</title>
-			<album>Against Illusions and Reality</album>
-			<artist>Parks, Squares and Alleys</artist>
+			<albumTitle>Against Illusions and Reality</albumTitle>
+			<artistTitle>Parks, Squares and Alleys</artistTitle>
 		</song>
 		<song>
 			<title>Knockin' on Heaven's Door</title>
-			<album>Guns N' Roses</album>
-			<artist>Guns N' Roses</artist>
+			<albumTitle>Guns N' Roses</albumTitle>
+			<artistTitle>Guns N' Roses</artistTitle>
 		</song>
 	</compilation>
 </library>

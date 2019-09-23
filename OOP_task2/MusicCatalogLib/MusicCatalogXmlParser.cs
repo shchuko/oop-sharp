@@ -123,8 +123,8 @@ namespace MusicCatalogLib
                 {
                     songs.Add(new MusicCatalogReader.SongProps(
                         songNode.Element("title").Value,
-                        songNode.Element("album").Value,
-                        songNode.Element("artist").Value));
+                        songNode.Element("albumTitle").Value,
+                        songNode.Element("artistTitle").Value));
                 }
                 
                 _musicCatalogReader.AddCompilation(compilationTitle, songs.ToArray());
