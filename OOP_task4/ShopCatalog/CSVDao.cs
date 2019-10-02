@@ -4,7 +4,7 @@ namespace ShopCatalog
 {
     class CSVDao : IDao
     {
-        CSVDao(string shopFilePath, string productFilePath, string shopProductFilepath)
+        CSVDao(string shopFilePath, string productFilePath)
         {
             
         }
