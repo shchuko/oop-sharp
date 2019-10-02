@@ -4,12 +4,12 @@ namespace ShopCatalog
 {
     public class CSVFileConnectException : Exception
     {
-        CSVFileConnectException()
+        internal CSVFileConnectException()
         {
             
         }
 
-        CSVFileConnectException(string what) : base(what)
+        internal CSVFileConnectException(string what) : base(what)
         {
             
         }

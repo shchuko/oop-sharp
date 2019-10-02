@@ -4,12 +4,12 @@ namespace ShopCatalog
 {
     public class ShopNotExistsException : Exception
     {
-        ShopNotExistsException()
+        internal ShopNotExistsException()
         {
             
         }
         
-        ShopNotExistsException(string what) : base(what)
+        internal ShopNotExistsException(string what) : base(what)
         {
             
         }

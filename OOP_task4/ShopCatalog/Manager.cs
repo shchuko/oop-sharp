@@ -6,7 +6,9 @@ namespace ShopCatalog
     {
         public static Service CreateService(string daoData)
         {
-            throw new NotImplementedException();
+//            throw new NotImplementedException();
+            return new Service(new DBDao("localhost", "3306", "shopAdmin", "password",
+                "ShopDB"));
         }
 
         public static void ReconnectServiceDao(Service service, string daoData)

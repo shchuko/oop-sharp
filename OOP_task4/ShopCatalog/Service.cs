@@ -6,7 +6,9 @@ namespace ShopCatalog
     {
         public string[] ExecuteCommand(string command)
         {
-            throw new NotImplementedException();
+            // TODO
+            string[] result  = _dao.GetProducts();
+            return result;
         }
         
         internal Service(IDao dao)

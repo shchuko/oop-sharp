@@ -24,6 +24,7 @@
         <e p="CSVFileConnectException.cs" t="Include" />
         <e p="DBDao.cs" t="Include" />
         <e p="DatabaseConnectErrorException.cs" t="Include" />
+        <e p="DatabaseDataReadingException.cs" t="Include" />
         <e p="IDao.cs" t="Include" />
         <e p="Manager.cs" t="Include" />
         <e p="ProductNotExistsException.cs" t="Include" />

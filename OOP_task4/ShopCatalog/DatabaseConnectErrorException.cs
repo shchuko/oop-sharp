@@ -4,12 +4,12 @@ namespace ShopCatalog
 {
     public class DatabaseConnectErrorException : Exception
     {
-        DatabaseConnectErrorException()
+        internal DatabaseConnectErrorException()
         {
             
         }
 
-        DatabaseConnectErrorException(string what) : base(what)
+        internal DatabaseConnectErrorException(string what) : base(what)
         {
             
         }

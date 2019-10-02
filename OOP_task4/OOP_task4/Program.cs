@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using ShopCatalog;
 
 namespace OOP_task4
 {
@@ -6,7 +8,12 @@ namespace OOP_task4
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            ShopCatalog.Service shopService = ShopCatalog.Manager.CreateService("");
+            string[] result = shopService.ExecuteCommand("");
+            foreach (string s in result)
+            {
+                Console.WriteLine(s);
+            }
         }
     }
 }
