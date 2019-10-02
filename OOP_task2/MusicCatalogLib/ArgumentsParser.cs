@@ -26,8 +26,8 @@ namespace MusicCatalogLib
                 if (filepath == null && FilepathRegex.IsMatch(arg))
                 {
                     filepath = FilepathRegex.Match(arg).Groups[1].Value;
-                    _musicCatalogReader = MusicCatalogReader.CreateFromXml(filepath);
-                    if (_musicCatalogReader == null)
+                    _musicCatalog = MusicCatalog.CreateFromXml(filepath);
+                    if (_musicCatalog == null)
                     {
                         return new[] {"File reading error: \"" + filepath + "\""};
                     }
@@ -69,7 +69,7 @@ namespace MusicCatalogLib
                 return new[] {"--filepath= parameter required"};
             }
 
-            string[] result = _musicCatalogReader.GetData(
+            string[] result = _musicCatalog.GetData(
                 artistTitle, 
                 albumTitle, 
                 songTitle, 
@@ -84,7 +84,7 @@ namespace MusicCatalogLib
             return result;
         }
 
-        private MusicCatalogReader _musicCatalogReader;
+        private MusicCatalog _musicCatalog;
         
         private static readonly Regex HelpRegex = new Regex(@"(--help)|(-h)");
         private static readonly Regex FilepathRegex = new Regex(@"--filepath=(.+)");

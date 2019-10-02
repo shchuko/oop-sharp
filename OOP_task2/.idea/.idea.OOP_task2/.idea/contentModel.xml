@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
+    <e p="$APPLICATION_CONFIG_DIR$/consoles/db" t="IncludeRecursive" />
     <e p="$APPLICATION_CONFIG_DIR$/scratches" t="IncludeRecursive" />
     <e p="$USER_HOME$/.Rider2019.2/system/extResources" t="IncludeRecursive" />
     <e p="$USER_HOME$/.Rider2019.2/system/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_OOP_task2.1946739370.00" t="ExcludeRecursive" />
@@ -11,8 +12,8 @@
         <e p="Artist.cs" t="Include" />
         <e p="Compilation.cs" t="Include" />
         <e p="Genre.cs" t="Include" />
+        <e p="MusicCatalog.cs" t="Include" />
         <e p="MusicCatalogLib.csproj" t="IncludeRecursive" />
-        <e p="MusicCatalogReader.cs" t="Include" />
         <e p="MusicCatalogXmlParser.cs" t="Include" />
         <e p="Song.cs" t="Include" />
         <e p="SubGenre.cs" t="Include" />

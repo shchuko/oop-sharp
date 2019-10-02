@@ -1,12 +1,11 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Text;
 using System.Xml.Linq;
 
 namespace MusicCatalogLib
 {
-    public class MusicCatalogReader
+    public class MusicCatalog
     {
         public struct SongProps
         {
@@ -22,7 +21,7 @@ namespace MusicCatalogLib
             public string ArtistTitle;
         }
         
-        public static MusicCatalogReader CreateFromXml(string filepath)
+        public static MusicCatalog CreateFromXml(string filepath)
         {
             XDocument doc;
             try

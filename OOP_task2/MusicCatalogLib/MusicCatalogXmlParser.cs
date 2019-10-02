@@ -11,20 +11,20 @@ namespace MusicCatalogLib
 {
     public class MusicCatalogXmlParser
     {
-        internal static MusicCatalogReader CreateFromXml(XDocument dataDoc)
+        internal static MusicCatalog CreateFromXml(XDocument dataDoc)
         {
             if (dataDoc == null)
             {
                 return null;
             }
             MusicCatalogXmlParser parser = new MusicCatalogXmlParser(dataDoc);
-            return parser._musicCatalogReader;
+            return parser._musicCatalog;
         }
         
         private MusicCatalogXmlParser(XDocument dataDoc)
         {
             _dataDoc = dataDoc;
-            _musicCatalogReader = new MusicCatalogReader();
+            _musicCatalog = new MusicCatalog();
             ParseStart();
         }
 
@@ -39,7 +39,7 @@ namespace MusicCatalogLib
             }
             catch (NullReferenceException)
             {
-                _musicCatalogReader = null;
+                _musicCatalog = null;
             }
         }
 
@@ -48,7 +48,7 @@ namespace MusicCatalogLib
             IEnumerable<string> genres =
                 from element in _dataDoc.Root.Element("basegenres").Elements("title")
                 select element.Value;
-            _musicCatalogReader.AddGenres(genres.ToArray());
+            _musicCatalog.AddGenres(genres.ToArray());
         }
         
         private void ParseSubgenres()
@@ -63,7 +63,7 @@ namespace MusicCatalogLib
                 IEnumerable<string> baseGenres =
                     from element in subgenre.Elements("base")
                     select element.Value;
-                _musicCatalogReader.AddSubGenre(title, baseGenres.ToArray());
+                _musicCatalog.AddSubGenre(title, baseGenres.ToArray());
             }
         }
 
@@ -75,7 +75,7 @@ namespace MusicCatalogLib
             foreach (XElement artist in artists)
             {
                 string artistTitle = artist.Element("title").Value;
-                _musicCatalogReader.AddArtist(artistTitle);
+                _musicCatalog.AddArtist(artistTitle);
                 
                 IEnumerable<XElement> albums = artist.Elements("album");
                 foreach (XElement album in albums)
@@ -86,12 +86,12 @@ namespace MusicCatalogLib
                     if (subGenreFlag)
                     {
                         string subGenre = album.Element("subgenre").Value;
-                        _musicCatalogReader.AddAlbum(artistTitle, albumTitle, albumYear, subGenre, true);
+                        _musicCatalog.AddAlbum(artistTitle, albumTitle, albumYear, subGenre, true);
                     }
                     else
                     {
                         string baseGenre = album.Element("genre").Value;
-                        _musicCatalogReader.AddAlbum(artistTitle, albumTitle, albumYear, baseGenre, false);
+                        _musicCatalog.AddAlbum(artistTitle, albumTitle, albumYear, baseGenre, false);
                     }
 
                     IEnumerable<string> songs =
@@ -100,7 +100,7 @@ namespace MusicCatalogLib
                     
                     foreach (var songTitle in songs)
                     {
-                        _musicCatalogReader.AddSong(artistTitle, albumTitle, songTitle);
+                        _musicCatalog.AddSong(artistTitle, albumTitle, songTitle);
                     }
                 }
             }
@@ -118,20 +118,20 @@ namespace MusicCatalogLib
                     from element in compilations.Elements("song")
                     select element;
                 
-                List<MusicCatalogReader.SongProps> songs = new List<MusicCatalogReader.SongProps>();
+                List<MusicCatalog.SongProps> songs = new List<MusicCatalog.SongProps>();
                 foreach (XElement songNode in songsNodes)
                 {
-                    songs.Add(new MusicCatalogReader.SongProps(
+                    songs.Add(new MusicCatalog.SongProps(
                         songNode.Element("title").Value,
                         songNode.Element("albumTitle").Value,
                         songNode.Element("artistTitle").Value));
                 }
                 
-                _musicCatalogReader.AddCompilation(compilationTitle, songs.ToArray());
+                _musicCatalog.AddCompilation(compilationTitle, songs.ToArray());
             }
         }
         
-        private MusicCatalogReader _musicCatalogReader;
+        private MusicCatalog _musicCatalog;
         private XDocument _dataDoc;
     }
 }
