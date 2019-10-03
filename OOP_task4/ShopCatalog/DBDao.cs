@@ -44,47 +44,38 @@ namespace ShopCatalog
 
         public string[] GetProducts()
         {
-            _connection.Open();
-            MySqlCommand cmd = new MySqlCommand();
-            cmd.CommandText = @"SELECT COUNT(ProductID) FROM Product";
-            cmd.Connection = _connection;
-            MySqlDataReader reader = cmd.ExecuteReader();
-            reader.Read();
-            int shopCount;
+            string[] shopList = null;
+
             try
             {
-                shopCount = int.Parse(reader[0].ToString());
-            }
-            catch (Exception e)
-            {
-                throw new DatabaseDataReadingException(e.Message);
-            }
-            finally
-            {
-                reader.Close();
-                _connection.Close();
-            }
-            
-            _connection.Open();
-            cmd.CommandText = @"SELECT ProductName FROM Product";
-            reader = cmd.ExecuteReader();
-            string[] shopList = new string[shopCount];
-            try
-            {
-                for (int i = 0; i < shopList.Length; ++i)
+                _connection.Open();
+                using (MySqlCommand command = _connection.CreateCommand())
                 {
-                    reader.Read();
-                    shopList[i] = reader[0].ToString();
+                    command.CommandText = @"SELECT COUNT(ProductID) FROM Product";
+                    int shopCount;
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        reader.Read();
+                        shopCount = int.Parse(reader[0].ToString());
+                    }
+
+                    command.CommandText = @"SELECT ProductName FROM Product";
+                    shopList = new string[shopCount];
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        for (int i = 0; i < shopList.Length; ++i)
+                        {
+                            reader.Read();
+                            shopList[i] = reader[0].ToString();
+                        }
+                    }
                 }
             }
             catch (Exception e)
             {
-                throw new DatabaseDataReadingException(e.Message);
-            }
-            finally
-            {
-                reader.Close();
                 _connection.Close();
+                throw new DatabaseDataReadingException(e.ToString());
             }
             
             return shopList;
