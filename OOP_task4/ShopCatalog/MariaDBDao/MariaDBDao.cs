@@ -31,7 +31,7 @@ namespace ShopCatalog.MariaDBDao
         }
 
         /** Get list of shops with full info
-         * @returns tuple(int, string, string) ShopID, ShopName, ShopAddress
+         * @return tuple(int, string, string) ShopID, ShopName, ShopAddress
          */
         public (int, string, string)[] GetShops()
         {
@@ -82,7 +82,7 @@ namespace ShopCatalog.MariaDBDao
         }
 
         /** Get list of products
-         * @returns array of products' names
+         * @return array of products' names
          */
         public string[] GetProducts()
         {
@@ -128,7 +128,7 @@ namespace ShopCatalog.MariaDBDao
         }
         
         /** Get shop ID with minimal price for product, if count of product in the shop > 0
-         * @returns ShopId if product found, -1 if product not found or count == 0
+         * @return ShopId if product found, -1 if product not found or count == 0
          */
         public int GetMinPriceShopId(string productName)
         {
@@ -172,7 +172,7 @@ namespace ShopCatalog.MariaDBDao
         /**
          * Get shop name related to shop id
          * @param shopId Id of the shop
-         * @returns Shop name or empty string if shop does not exists
+         * @return Shop name or empty string if shop does not exists
          */
         public string GetShopName(int shopId)
         {
@@ -212,7 +212,7 @@ namespace ShopCatalog.MariaDBDao
         /**
          * Get shop address related to shop id
          * @param shopId Id of the shop
-         * @returns Shop address or empty string if shop does not exists
+         * @return Shop address or empty string if shop does not exists
          */
         public string GetShopAddress(int shopId)
         {
@@ -249,9 +249,51 @@ namespace ShopCatalog.MariaDBDao
             return shopAddress;
         }
 
+        /** Get product count in the shop[shopId] by productName
+         * @param shopId shop to search in
+         * @param productName name of product to search
+         * @return count of products or -1 if product or shop not exists
+         */
         public int GetProductsCount(int shopId, string productName)
         {
-            throw new System.NotImplementedException();
+            int productId = GetProductId(productName);
+            if (productId == -1)
+                return -1;
+
+            int count = -1;
+            try
+            {
+                if (_connection.State != ConnectionState.Open)
+                    _connection.Open();
+                using (MySqlCommand command = _connection.CreateCommand())
+                {
+                    command.CommandText =
+                        @"SELECT Count FROM ShopProduct WHERE ShopID = @shopID AND ProductID = @productID";
+                    command.Parameters.Add("@shopID", MySqlDbType.Int32);
+                    command.Parameters["@shopID"].Value = shopId;
+                    command.Parameters.Add("@productID", MySqlDbType.Int32);
+                    command.Parameters["@productID"].Value = productId;
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            reader.Read();
+                            count = int.Parse(reader[0].ToString());
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw new DatabaseDataReadingException(e.ToString());
+            }
+            finally
+            {
+                _connection.Close();
+            }
+            
+            return count;
         }
 
         public string[] GetProductsForPrice(int shopId, double totalMaxPrice)
