@@ -132,7 +132,6 @@ namespace ShopCatalog.MariaDBDao
          */
         public int GetMinPriceShopId(string productName)
         {
-
             int shopId = -1;
             try
             {
@@ -170,14 +169,84 @@ namespace ShopCatalog.MariaDBDao
             return shopId;
         }
 
+        /**
+         * Get shop name related to shop id
+         * @param shopId Id of the shop
+         * @returns Shop name or empty string if shop does not exists
+         */
         public string GetShopName(int shopId)
         {
-            throw new System.NotImplementedException();
+            string shopName = "";
+            try
+            {
+                if (_connection.State != ConnectionState.Open)
+                    _connection.Open();
+                using (MySqlCommand command = _connection.CreateCommand())
+                {
+                    command.CommandText = @"SELECT ShopName FROM Shop WHERE ShopID = @shopID";
+                    command.Parameters.Add("@shopID", MySqlDbType.Int32);
+                    command.Parameters["@shopID"].Value = shopId;
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            reader.Read();
+                            shopName = reader[0].ToString();
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw new DatabaseDataReadingException(e.ToString());
+            }
+            finally
+            {
+                _connection.Close();
+            }
+            
+            return shopName;
         }
 
+        /**
+         * Get shop address related to shop id
+         * @param shopId Id of the shop
+         * @returns Shop address or empty string if shop does not exists
+         */
         public string GetShopAddress(int shopId)
         {
-            throw new System.NotImplementedException();
+            string shopAddress = "";
+            try
+            {
+                if (_connection.State != ConnectionState.Open)
+                    _connection.Open();
+                using (MySqlCommand command = _connection.CreateCommand())
+                {
+                    command.CommandText = @"SELECT ShopAddress FROM Shop WHERE ShopID = @shopID";
+                    command.Parameters.Add("@shopID", MySqlDbType.Int32);
+                    command.Parameters["@shopID"].Value = shopId;
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            reader.Read();
+                            shopAddress = reader[0].ToString();
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw new DatabaseDataReadingException(e.ToString());
+            }
+            finally
+            {
+                _connection.Close();
+            }
+            
+            return shopAddress;
         }
 
         public int GetProductsCount(int shopId, string productName)

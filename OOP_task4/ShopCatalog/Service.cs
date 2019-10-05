@@ -13,7 +13,7 @@ namespace ShopCatalog
 //            {
 //                strData[i] = result[i].Item1 + "\t" + result[i].Item2 +  "\t" +result[i].Item3;
 //            }
-            string[] strData = {_dao.GetMinPriceShopId("Product1").ToString()};
+            string[] strData = {_dao.GetShopName(0), _dao.GetShopName(1), _dao.GetShopAddress(1)  };
             return strData;
         }
         
