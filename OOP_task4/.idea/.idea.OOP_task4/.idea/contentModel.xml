@@ -38,11 +38,11 @@
         <e p="IDaoWriter.cs" t="Include" />
         <e p="Manager.cs" t="Include" />
         <e p="MariaDBDao" t="Include">
-          <e p="DBDao.cs" t="Include" />
           <e p="Exceptions" t="Include">
             <e p="DatabaseConnectErrorException.cs" t="Include" />
             <e p="DatabaseDataReadingException.cs" t="Include" />
           </e>
+          <e p="MariaDBDao.cs" t="Include" />
         </e>
         <e p="Service.cs" t="Include" />
         <e p="ServiceEngineTypes.cs" t="Include" />

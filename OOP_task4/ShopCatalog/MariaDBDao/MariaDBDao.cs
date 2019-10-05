@@ -5,9 +5,9 @@ using ShopCatalog.MariaDBDao.Exceptions;
 
 namespace ShopCatalog.MariaDBDao
 {
-    class DBDao : IDao
+    class MariaDBDao : IDao
     {
-        internal DBDao(string connectionString)
+        internal MariaDBDao(string connectionString)
         {
             _connection = new MySqlConnection(connectionString);
 
@@ -24,25 +24,55 @@ namespace ShopCatalog.MariaDBDao
                 _connection.Close();
             }
         }
-        
-        public void CreateShop(int shopId, string shopName, string shopAddress)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void CreateProduct(string productName)
-        {
-            throw new System.NotImplementedException();
-        }
 
         public (int, string, string)[] GetShops()
         {
-            throw new System.NotImplementedException();
+
+            (int, string, string)[] shopsData;
+            
+            try
+            {
+                _connection.Open();
+                using (MySqlCommand command = _connection.CreateCommand())
+                {
+                    command.CommandText = @"SELECT COUNT(ShopId) FROM Shop";
+                    int shopCount;
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        reader.Read();
+                        shopCount = int.Parse(reader[0].ToString());
+                    }
+
+                    command.CommandText = @"SELECT ShopID, ShopName, ShopAddress FROM Shop";
+                    shopsData = new (int, string, string)[shopCount];
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        for (int i = 0; i < shopsData.Length; ++i)
+                        {
+                            reader.Read();
+                            int shopId = int.Parse(reader[0].ToString());
+                            string shopName = reader[1].ToString();
+                            string shopAddress = reader[2].ToString();
+                            shopsData[i].Item1 = shopId;
+                            shopsData[i].Item2 = shopName;
+                            shopsData[i].Item3 = shopAddress;
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                _connection.Close();
+                throw new DatabaseDataReadingException(e.ToString());
+            }
+            
+            return shopsData; 
         }
 
         public string[] GetProducts()
         {
-            string[] shopList = null;
+            string[] shopList;
 
             try
             {
@@ -78,12 +108,7 @@ namespace ShopCatalog.MariaDBDao
             
             return shopList;
         }
-
-        public void AddProductToShop(int shopId, string productName, int count)
-        {
-            throw new System.NotImplementedException();
-        }
-
+        
         public int GetMinPriceShopId(string productName)
         {
             throw new System.NotImplementedException();
@@ -100,11 +125,6 @@ namespace ShopCatalog.MariaDBDao
         }
 
         public int GetProductsCount(int shopId, string productName)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void BuyProducts(int shopId, List<string> productsNames, List<int> productsCounts)
         {
             throw new System.NotImplementedException();
         }
@@ -133,7 +153,25 @@ namespace ShopCatalog.MariaDBDao
         {
             throw new NotImplementedException();
         }
+        
+        public void CreateShop(int shopId, string shopName, string shopAddress)
+        {
+            throw new System.NotImplementedException();
+        }
 
+        public void CreateProduct(string productName)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void AddProductToShop(int shopId, string productName, int count)
+        {
+            throw new System.NotImplementedException();
+        }
+        public void BuyProducts(int shopId, List<string> productsNames, List<int> productsCounts)
+        {
+            throw new System.NotImplementedException();
+        }
         internal void Dispose()
         {
             throw new System.NotImplementedException();

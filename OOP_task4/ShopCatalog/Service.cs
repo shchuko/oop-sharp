@@ -7,8 +7,13 @@ namespace ShopCatalog
         public string[] ExecuteCommand(string command)
         {
             // TODO
-            string[] result  = _dao.GetProducts();
-            return result;
+            var result  = _dao.GetShops();
+            string[] strData = new string[result.Length];
+            for (int i = 0; i < result.Length; ++i)
+            {
+                strData[i] = result[i].Item1 + "\t" + result[i].Item2 +  "\t" +result[i].Item3;
+            }
+            return strData;
         }
         
         internal Service(IDao dao)

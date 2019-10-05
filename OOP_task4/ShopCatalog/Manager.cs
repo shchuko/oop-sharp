@@ -14,7 +14,7 @@ namespace ShopCatalog
             try
             {
                 var constructors = serviceEngineType.GetConstructors(BindingFlags.Instance | BindingFlags.NonPublic);
-                dao = (IDao) constructors[0].Invoke( new object[] {arguments} );
+                dao = (IDao) constructors[0].Invoke(new object[] { arguments });
             }
             catch (Exception e)
             {
