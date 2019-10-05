@@ -7,12 +7,13 @@ namespace ShopCatalog
         public string[] ExecuteCommand(string command)
         {
             // TODO
-            var result  = _dao.GetShops();
-            string[] strData = new string[result.Length];
-            for (int i = 0; i < result.Length; ++i)
-            {
-                strData[i] = result[i].Item1 + "\t" + result[i].Item2 +  "\t" +result[i].Item3;
-            }
+//            var result  = _dao.GetShops();
+//            string[] strData = new string[result.Length];
+//            for (int i = 0; i < result.Length; ++i)
+//            {
+//                strData[i] = result[i].Item1 + "\t" + result[i].Item2 +  "\t" +result[i].Item3;
+//            }
+            string[] strData = {_dao.GetMinPriceShopId("Product1").ToString()};
             return strData;
         }
         
