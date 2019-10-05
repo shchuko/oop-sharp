@@ -1,4 +1,4 @@
-namespace ShopCatalog
+namespace ShopCatalog.MariaDBDao.Exceptions
 {
     public class DatabaseDataReadingException : System.Exception
     {

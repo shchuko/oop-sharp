@@ -1,15 +1,15 @@
 using System;
 
-namespace ShopCatalog
+namespace ShopCatalog.Exceptions
 {
     public class ProductNotExistsException : Exception
     {
-        ProductNotExistsException()
+        internal ProductNotExistsException()
         {
             
         }
 
-        ProductNotExistsException(string what) : base(what)
+        internal ProductNotExistsException(string what) : base(what)
         {
             
         }

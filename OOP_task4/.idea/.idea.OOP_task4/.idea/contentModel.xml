@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="$APPLICATION_CONFIG_DIR$/consoles/db" t="IncludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/extensions" t="IncludeRecursive" />
     <e p="$APPLICATION_CONFIG_DIR$/scratches" t="IncludeRecursive" />
     <e p="$USER_HOME$/.Rider2019.2/system/extResources" t="IncludeRecursive" />
     <e p="$USER_HOME$/.Rider2019.2/system/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_OOP_task4.668722734.00" t="ExcludeRecursive" />
@@ -20,17 +21,31 @@
       </e>
       <e p="OOP_task4.sln" t="IncludeFlat" />
       <e p="ShopCatalog" t="IncludeRecursive">
-        <e p="CSVDao.cs" t="Include" />
-        <e p="CSVFileConnectException.cs" t="Include" />
-        <e p="DBDao.cs" t="Include" />
-        <e p="DatabaseConnectErrorException.cs" t="Include" />
-        <e p="DatabaseDataReadingException.cs" t="Include" />
+        <e p="CsvDao" t="Include">
+          <e p="CsvDao.cs" t="Include" />
+          <e p="Exceptions" t="Include">
+            <e p="CsvFileConnectException.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Exceptions" t="Include">
+          <e p="DaoConnectException.cs" t="Include" />
+          <e p="MissingDataConsistencyException.cs" t="Include" />
+          <e p="ProductNotExistsException.cs" t="Include" />
+          <e p="ShopNotExistsException.cs" t="Include" />
+        </e>
         <e p="IDao.cs" t="Include" />
+        <e p="IDaoReader.cs" t="Include" />
+        <e p="IDaoWriter.cs" t="Include" />
         <e p="Manager.cs" t="Include" />
-        <e p="ProductNotExistsException.cs" t="Include" />
+        <e p="MariaDBDao" t="Include">
+          <e p="DBDao.cs" t="Include" />
+          <e p="Exceptions" t="Include">
+            <e p="DatabaseConnectErrorException.cs" t="Include" />
+            <e p="DatabaseDataReadingException.cs" t="Include" />
+          </e>
+        </e>
         <e p="Service.cs" t="Include" />
         <e p="ShopCatalog.csproj" t="IncludeRecursive" />
-        <e p="ShopNotExistsException.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">

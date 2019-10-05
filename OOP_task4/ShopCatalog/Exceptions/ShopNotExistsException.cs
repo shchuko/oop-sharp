@@ -1,6 +1,6 @@
 using System;
 
-namespace ShopCatalog
+namespace ShopCatalog.Exceptions
 {
     public class ShopNotExistsException : Exception
     {

@@ -1,8 +1,8 @@
-using System;
+using ShopCatalog.Exceptions;
 
-namespace ShopCatalog
+namespace ShopCatalog.MariaDBDao.Exceptions
 {
-    public class DatabaseConnectErrorException : Exception
+    public class DatabaseConnectErrorException : DaoConnectException
     {
         internal DatabaseConnectErrorException()
         {

@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
+using ShopCatalog.MariaDBDao.Exceptions;
 
-namespace ShopCatalog
+namespace ShopCatalog.MariaDBDao
 {
     class DBDao : IDao
     {
@@ -60,7 +61,7 @@ namespace ShopCatalog
                         shopCount = int.Parse(reader[0].ToString());
                     }
 
-                    command.CommandText = @"SELECT ProductName FROM Product";
+                    command.CommandText = @"SELECT DISTINCT ProductName FROM Product";
                     shopList = new string[shopCount];
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
@@ -81,7 +82,7 @@ namespace ShopCatalog
             return shopList;
         }
 
-        public void PurchaseProduct(int shopId, string productName, int count)
+        public void AddProductToShop(int shopId, string productName, int count)
         {
             throw new System.NotImplementedException();
         }
@@ -119,6 +120,21 @@ namespace ShopCatalog
         public int GetMinTotalShopId(List<string> productsNames, List<int> productsCounts)
         {
             throw new System.NotImplementedException();
+        }
+
+        public bool IsShopExists(int shopId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsShopExists(string shopName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsProductExists(string productName)
+        {
+            throw new NotImplementedException();
         }
 
         internal void Dispose()

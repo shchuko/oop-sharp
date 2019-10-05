@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 
-namespace ShopCatalog
+namespace ShopCatalog.CsvDao
 {
-    class CSVDao : IDao
+    class CsvDao : IDao
     {
-        internal CSVDao(string shopFilePath, string productFilePath)
+        internal CsvDao(string shopFilePath, string productFilePath)
         {
-            
+
         }
         
         public void CreateShop(int shopId, string shopName, string shopAddress)
@@ -29,7 +29,7 @@ namespace ShopCatalog
             throw new System.NotImplementedException();
         }
 
-        public void PurchaseProduct(int shopId, string productName, int count)
+        public void AddProductToShop(int shopId, string productName, int count)
         {
             throw new System.NotImplementedException();
         }
@@ -65,6 +65,21 @@ namespace ShopCatalog
         }
 
         public int GetMinTotalShopId(List<string> productsNames, List<int> productsCounts)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool IsShopExists(int shopId)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool IsShopExists(string shopName)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool IsProductExists(string productName)
         {
             throw new System.NotImplementedException();
         }
