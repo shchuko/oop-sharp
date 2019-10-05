@@ -28,9 +28,9 @@
           </e>
         </e>
         <e p="Exceptions" t="Include">
-          <e p="DaoConnectException.cs" t="Include" />
           <e p="MissingDataConsistencyException.cs" t="Include" />
           <e p="ProductNotExistsException.cs" t="Include" />
+          <e p="ServiceCreationException.cs" t="Include" />
           <e p="ShopNotExistsException.cs" t="Include" />
         </e>
         <e p="IDao.cs" t="Include" />
@@ -45,6 +45,7 @@
           </e>
         </e>
         <e p="Service.cs" t="Include" />
+        <e p="ServiceEngineTypes.cs" t="Include" />
         <e p="ShopCatalog.csproj" t="IncludeRecursive" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive">

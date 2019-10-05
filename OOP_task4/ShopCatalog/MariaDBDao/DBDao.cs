@@ -7,11 +7,8 @@ namespace ShopCatalog.MariaDBDao
 {
     class DBDao : IDao
     {
-        internal DBDao(string hostname, string port, string user, string password, string databaseName, 
-            string sslMode = "none")
-        {    
-            string connectionString = $"server={hostname};port={port};user id={user}; password={password}; " +
-                                      $"database={databaseName}; SslMode={sslMode}"; 
+        internal DBDao(string connectionString)
+        {
             _connection = new MySqlConnection(connectionString);
 
             try
@@ -20,7 +17,7 @@ namespace ShopCatalog.MariaDBDao
             }
             catch (MySqlException e)
             {
-                throw new DatabaseConnectErrorException();
+                throw new DatabaseConnectErrorException(e.ToString());
             }
             finally
             {

@@ -1,8 +1,7 @@
-using ShopCatalog.Exceptions;
 
 namespace ShopCatalog.CsvDao.Exceptions
 {
-    public class CsvFileConnectException : DaoConnectException
+    public class CsvFileConnectException : System.Exception
     {
         internal CsvFileConnectException()
         {

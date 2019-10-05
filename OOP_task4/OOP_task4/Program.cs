@@ -8,8 +8,12 @@ namespace OOP_task4
     {
         static void Main(string[] args)
         {
-            ShopCatalog.Service shopService = ShopCatalog.Manager.CreateService("");
-            string[] result = shopService.ExecuteCommand("");
+            string mariaDbServiceArgs = "server=localhost;port=3306;user id=shopAdmin; password=password; " +
+                                      "database=ShopDB; SslMode=none";
+            
+            Service service = Manager.CreateService(ServiceEngineTypes.MariaDBEngineType, mariaDbServiceArgs);
+            
+            string[] result = service.ExecuteCommand("");
             foreach (string s in result)
             {
                 Console.WriteLine(s);
