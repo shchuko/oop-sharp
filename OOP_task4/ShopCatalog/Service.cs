@@ -35,6 +35,7 @@ namespace ShopCatalog
             List<string> list = new List<string>();
             var x = _dao.GetProductsForPrice(2, 10);
 
+//            _dao.CreateShop(10, "Shop10", "Kiev");
             foreach (var valueTuple in x)
             {
                 list.Add($"{valueTuple.Item1} - {valueTuple.Item2.ToString()}");

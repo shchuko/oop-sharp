@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Security;
 using MySql.Data.MySqlClient;
+using ShopCatalog.Exceptions;
 using ShopCatalog.MariaDBDao.Exceptions;
 
 namespace ShopCatalog.MariaDBDao
@@ -523,9 +524,39 @@ namespace ShopCatalog.MariaDBDao
             return GetProductId(productName) != -1;
         }
 
+        /** Create and add shop into Shop table
+         * @param shopId Unique id of the shop
+         * @param shopName Name of the shop
+         * @param shopAddress Address of the shop
+         */
         public void CreateShop(int shopId, string shopName, string shopAddress)
         {
-            throw new System.NotImplementedException();
+            if (IsShopExists(shopId))
+                throw new MissingDataConsistencyException($"ShopID '{shopId}' already exists");
+            
+            try
+            {
+                if (_connection.State != ConnectionState.Open)
+                    _connection.Open();
+                using (MySqlCommand command = _connection.CreateCommand())
+                {
+                    command.CommandText = @"INSERT INTO Shop VALUE (@shopID, @shopName, @shopAddress)";
+                    command.Parameters.Add("@shopID", MySqlDbType.Int32).Value = shopId;
+                    command.Parameters.Add("@shopName", MySqlDbType.VarChar).Value = shopName;
+                    command.Parameters.Add("@shopAddress", MySqlDbType.VarChar).Value = shopAddress;
+                    using (command.ExecuteReader())
+                    {
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw new MissingDataConsistencyException(e.ToString());
+            }
+            finally
+            {
+                _connection.Close();
+            }
         }
 
         public void CreateProduct(string productName)
