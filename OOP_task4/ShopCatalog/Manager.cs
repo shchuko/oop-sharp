@@ -1,13 +1,16 @@
 using System;
-using System.Dynamic;
 using System.Reflection;
 using ShopCatalog.Exceptions;
-using ShopCatalog.MariaDBDao;
 
 namespace ShopCatalog
 {
     public static class Manager
     {
+        /** Create service to operate with ShopCatalog
+         * @param serviceEngineType Type of Service engine located in ShopCatalog.ServiceEngineTypes static class
+         * @param arguments Arguments for service
+         * @return new Service 
+         */
         public static Service CreateService(Type serviceEngineType, string arguments)
         {
             IDao dao;
