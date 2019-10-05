@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Reflection.Metadata.Ecma335;
 using MySql.Data.MySqlClient;
 using ShopCatalog.MariaDBDao.Exceptions;
 
@@ -77,8 +78,8 @@ namespace ShopCatalog.MariaDBDao
             {
                 _connection.Close();
             }
-            
-            return shopsData; 
+
+            return shopsData;
         }
 
         /** Get list of products
@@ -123,50 +124,8 @@ namespace ShopCatalog.MariaDBDao
             {
                 _connection.Close();
             }
-            
-            return shopList;
-        }
-        
-        /** Get shop ID with minimal price for product, if count of product in the shop > 0
-         * @return ShopId if product found, -1 if product not found or count == 0
-         */
-        public int GetMinPriceShopId(string productName)
-        {
-            int shopId = -1;
-            try
-            {
-                using (MySqlCommand command = _connection.CreateCommand())
-                {
-                    int productId = GetProductId(productName);
-                    if (productId != -1)
-                    {
-                        command.CommandText =
-                            @"SELECT ShopID FROM ShopProduct WHERE ProductID = @productID AND Count > 0 ORDER BY Price LIMIT 1";
-                        command.Parameters.Add("@productId", MySqlDbType.VarChar).Value = productId;
 
-                        if (_connection.State != ConnectionState.Open)
-                            _connection.Open();
-                        using (MySqlDataReader reader = command.ExecuteReader())
-                        {
-                            if (reader.HasRows)
-                            {
-                                reader.Read();
-                                shopId = int.Parse(reader[0].ToString());
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                throw new DatabaseDataReadingException(e.ToString());
-            }
-            finally
-            {
-                _connection.Close();
-            }
-            
-            return shopId;
+            return shopList;
         }
 
         /**
@@ -205,7 +164,7 @@ namespace ShopCatalog.MariaDBDao
             {
                 _connection.Close();
             }
-            
+
             return shopName;
         }
 
@@ -245,22 +204,22 @@ namespace ShopCatalog.MariaDBDao
             {
                 _connection.Close();
             }
-            
+
             return shopAddress;
         }
 
-        /** Get product count in the shop[shopId] by productName
+        /** Get product quantity in the shop[shopId] by productName
          * @param shopId shop to search in
          * @param productName name of product to search
-         * @return count of products or -1 if product or shop not exists
+         * @return quantity of products or -1 if product or shop not exists
          */
-        public int GetProductsCount(int shopId, string productName)
+        public int GetProductQuantity(int shopId, string productName)
         {
             int productId = GetProductId(productName);
             if (productId == -1)
                 return -1;
 
-            int count = -1;
+            int quantity = -1;
             try
             {
                 if (_connection.State != ConnectionState.Open)
@@ -268,7 +227,7 @@ namespace ShopCatalog.MariaDBDao
                 using (MySqlCommand command = _connection.CreateCommand())
                 {
                     command.CommandText =
-                        @"SELECT Count FROM ShopProduct WHERE ShopID = @shopID AND ProductID = @productID";
+                        @"SELECT Quantity FROM ShopProduct WHERE ShopID = @shopID AND ProductID = @productID";
                     command.Parameters.Add("@shopID", MySqlDbType.Int32);
                     command.Parameters["@shopID"].Value = shopId;
                     command.Parameters.Add("@productID", MySqlDbType.Int32);
@@ -279,7 +238,7 @@ namespace ShopCatalog.MariaDBDao
                         if (reader.HasRows)
                         {
                             reader.Read();
-                            count = int.Parse(reader[0].ToString());
+                            quantity = int.Parse(reader[0].ToString());
                         }
                     }
                 }
@@ -292,8 +251,50 @@ namespace ShopCatalog.MariaDBDao
             {
                 _connection.Close();
             }
-            
-            return count;
+
+            return quantity;
+        }
+
+        /** Get shop ID with minimal price for product, if quantity of product in the shop > 0
+         * @return ShopId if product found, -1 if product not found or quantity == 0
+         */
+        public int GetMinPriceShopId(string productName)
+        {
+            int shopId = -1;
+            try
+            {
+                using (MySqlCommand command = _connection.CreateCommand())
+                {
+                    int productId = GetProductId(productName);
+                    if (productId != -1)
+                    {
+                        command.CommandText =
+                            @"SELECT ShopID FROM ShopProduct WHERE ProductID = @productID AND Quantity > 0 ORDER BY Price LIMIT 1";
+                        command.Parameters.Add("@productId", MySqlDbType.VarChar).Value = productId;
+
+                        if (_connection.State != ConnectionState.Open)
+                            _connection.Open();
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                reader.Read();
+                                shopId = int.Parse(reader[0].ToString());
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw new DatabaseDataReadingException(e.ToString());
+            }
+            finally
+            {
+                _connection.Close();
+            }
+
+            return shopId;
         }
 
         public string[] GetProductsForPrice(int shopId, double totalMaxPrice)
@@ -301,26 +302,179 @@ namespace ShopCatalog.MariaDBDao
             throw new System.NotImplementedException();
         }
 
-        public int GetMinTotalShopId(List<string> productsNames, List<int> productsCounts)
+        /** Calculate total sum of purchase
+         * @param shopId Shop where purchase will be made
+         * @param productNames List of products' names needed to buy
+         * @param productsQuantities List of products' quantities related to productsNames
+         * @return Total sum of purchase or -1 if some product not exists/quantity is not enough
+         */
+        public double GetPurchaseTotal(int shopId, List<string> productsNames, List<int> productsQuantities)
         {
-            throw new System.NotImplementedException();
+            double sum = 0;
+
+            try
+            {
+                using (MySqlCommand command = _connection.CreateCommand())
+                {
+                    command.Parameters.Add("@shopID", DbType.Int32);
+                    command.Parameters.Add("@productID", DbType.Int32);
+                    command.Parameters.Add("@productQuantity", DbType.Int32);
+                    for (int i = 0; i < productsNames.Count; ++i)
+                    {
+                        int productId = GetProductId(productsNames[i]);
+                        int productQuantity = productsQuantities[i];
+
+                        if (productId == -1)
+                        {
+                            sum = -1;
+                            break;
+                        }
+                        
+                        command.CommandText =
+                            @"SELECT Price FROM ShopProduct 
+                                    WHERE ProductID = @productID 
+                                        AND ShopID = @shopID
+                                        AND Quantity >= @productQuantity";
+                        command.Parameters["@shopID"].Value = shopId;
+                        command.Parameters["@productID"].Value = productId;
+                        command.Parameters["@productQuantity"].Value = productQuantity;
+                        
+                        if (_connection.State != ConnectionState.Open)
+                            _connection.Open();
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (!reader.HasRows)
+                            {
+                                sum = -1;
+                                break;
+                            }
+
+                            reader.Read();
+                            sum += double.Parse(reader[0].ToString()) * productQuantity;
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw new DatabaseDataReadingException(e.ToString());
+            }
+            finally
+            {
+                _connection.Close();
+            }
+
+            return sum;
+        }
+        
+        /** Get shop id with minimum total price for purchase
+         * @param productsNames names of products
+         * @param productsQuantities quantity of each product to purchase
+         * @return shopId or -1 if there is no shop to buy all products of list
+         */
+        public int GetMinPurchaseTotalShopId(List<string> productsNames, List<int> productsQuantities)
+        {
+            int resultShopId = -1;
+            double minSum = double.MaxValue;
+
+            try
+            {
+                var shopsData = GetShops();
+                foreach (var tuple in shopsData)
+                {
+                    int shopId = tuple.Item1;
+                    double sum = GetPurchaseTotal(shopId, productsNames, productsQuantities);
+                    if (sum >= 0 && sum < minSum)
+                    {
+                        minSum = sum;
+                        resultShopId = shopId;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw new DatabaseDataReadingException(e.ToString());
+            }
+
+            return resultShopId;
         }
 
+
+        /** Checks if shop exists by shop id
+         * @param shopId Id of the shop
+         * @return true if exists, false if not
+         */
         public bool IsShopExists(int shopId)
         {
-            throw new NotImplementedException();
+            bool result;
+            try
+            {
+                if (_connection.State != ConnectionState.Open)
+                    _connection.Open();
+                using (MySqlCommand command = _connection.CreateCommand())
+                {
+                    command.CommandText = @"SELECT ShopID FROM Shop WHERE ShopID = @shopID";
+                    command.Parameters.Add("@shopID", MySqlDbType.Int32);
+                    command.Parameters["@shopID"].Value = shopId;
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        result = reader.HasRows;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw new DatabaseDataReadingException(e.ToString());
+            }
+            finally
+            {
+                _connection.Close();
+            }
+
+            return result;
         }
 
+        /** Checks if shop exists by shop name
+          * @param shopName Name of the shop
+          * @return true if exists, false if not
+          */
         public bool IsShopExists(string shopName)
         {
-            throw new NotImplementedException();
+            bool result;
+            try
+            {
+                if (_connection.State != ConnectionState.Open)
+                    _connection.Open();
+                using (MySqlCommand command = _connection.CreateCommand())
+                {
+                    command.CommandText = @"SELECT ShopID FROM Shop WHERE ShopName = @shopName";
+                    command.Parameters.Add("@shopName", MySqlDbType.VarChar);
+                    command.Parameters["@shopName"].Value = shopName;
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        result = reader.HasRows;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw new DatabaseDataReadingException(e.ToString());
+            }
+            finally
+            {
+                _connection.Close();
+            }
+
+            return result;
         }
 
         public bool IsProductExists(string productName)
         {
-            throw new NotImplementedException();
+            return GetProductId(productName) != -1;
         }
-        
+
         public void CreateShop(int shopId, string shopName, string shopAddress)
         {
             throw new System.NotImplementedException();
@@ -331,14 +485,16 @@ namespace ShopCatalog.MariaDBDao
             throw new System.NotImplementedException();
         }
 
-        public void AddProductToShop(int shopId, string productName, int count)
+        public void AddProductToShop(int shopId, string productName, int quantity)
         {
             throw new System.NotImplementedException();
         }
-        public void BuyProducts(int shopId, List<string> productsNames, List<int> productsCounts)
+
+        public void BuyProducts(int shopId, List<string> productsNames, List<int> productsQuantities)
         {
             throw new System.NotImplementedException();
         }
+
         internal void Dispose()
         {
             throw new System.NotImplementedException();
@@ -381,8 +537,11 @@ namespace ShopCatalog.MariaDBDao
             {
                 _connection.Close();
             }
-            
+
             return productId;
         }
+
+        
+        
     }
 }

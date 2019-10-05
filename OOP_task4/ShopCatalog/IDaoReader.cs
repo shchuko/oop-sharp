@@ -14,11 +14,13 @@ namespace ShopCatalog
 
         string GetShopAddress(int shopId);
 
-        int GetProductsCount(int shopId, string productName);
+        int GetProductQuantity(int shopId, string productName);
 
         string[] GetProductsForPrice(int shopId, double totalMaxPrice);
 
-        int GetMinTotalShopId(List<string> productsNames, List<int> productsCounts);
+        double GetPurchaseTotal(int shopId, List<string> productsNames, List<int> productsQuantities);
+
+        int GetMinPurchaseTotalShopId(List<string> productsNames, List<int> productsQuantities);
 
         bool IsShopExists(int shopId);
 

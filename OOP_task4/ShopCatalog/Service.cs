@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace ShopCatalog
 {
@@ -13,15 +14,22 @@ namespace ShopCatalog
 //            {
 //                strData[i] = result[i].Item1 + "\t" + result[i].Item2 +  "\t" +result[i].Item3;
 //            }
-            string[] strData =
+
+            List<string> productsNames = new List<string>();
+            List<int> productsQuantities = new List<int>();
+            productsNames.Add("Product1");
+            productsQuantities.Add(1);
+            productsNames.Add("Product9");
+            productsQuantities.Add(2);
+            productsNames.Add("Product3");
+            productsQuantities.Add(3);
+
+            int shopId = _dao.GetMinPurchaseTotalShopId(productsNames, productsQuantities);
+            string[] strData = 
             {
-                _dao.GetProductsCount(1,"Product2").ToString(),
-                _dao.GetProductsCount(2,"Product1").ToString(),
-
-                _dao.GetProductsCount(5,"Product1").ToString(),
-                _dao.GetProductsCount(1,"Product4").ToString(),
-                _dao.GetProductsCount(5,"Product4").ToString()
-
+//               _dao.GetMinTotalShopId(null, null).ToString()
+                shopId.ToString(),
+                (shopId != -1 ? _dao.GetPurchaseTotal(shopId, productsNames, productsQuantities) : shopId).ToString()
             };
             return strData;
         }
