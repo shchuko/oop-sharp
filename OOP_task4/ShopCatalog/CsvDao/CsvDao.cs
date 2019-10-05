@@ -54,12 +54,12 @@ namespace ShopCatalog.CsvDao
             throw new System.NotImplementedException();
         }
 
-        public void BuyProducts(int shopId, List<string> productsNames, List<int> productsCounts)
+        public bool BuyProducts(int shopId, List<string> productsNames, List<int> productsCounts)
         {
             throw new System.NotImplementedException();
         }
 
-        public string[] GetProductsForPrice(int shopId, double totalMaxPrice)
+        public (string, int)[] GetProductsForPrice(int shopId, double totalMaxPrice)
         {
             throw new System.NotImplementedException();
         }

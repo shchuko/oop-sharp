@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Security;
 using MySql.Data.MySqlClient;
 using ShopCatalog.MariaDBDao.Exceptions;
 
@@ -296,9 +297,53 @@ namespace ShopCatalog.MariaDBDao
             return shopId;
         }
 
-        public string[] GetProductsForPrice(int shopId, double totalMaxPrice)
+        /** Get info how many products you can buy for fixed price in the shop
+         * @param shopId Shop ID to search products
+         * @totalMaxPrice Maximum price that can be
+         * @return Tuple (product name, quantity)
+         */
+        public (string, int)[] GetProductsForPrice(int shopId, double totalMaxPrice)
         {
-            throw new System.NotImplementedException();
+            (string, int)[] resultTuples;
+            try
+            {
+                using (MySqlCommand command = _connection.CreateCommand())
+                {
+                    command.CommandText =
+                        @"SELECT ProductName, LEAST(Quantity, FLOOR(@maxPrice/Price))
+                            FROM ShopProduct 
+                                INNER JOIN Product ON ShopProduct.ProductID = Product.ProductID 
+                            WHERE ShopID = @shopID
+                                AND Price <= @maxPrice
+                                AND Quantity > 0";
+                    command.Parameters.Add("@shopID", MySqlDbType.Int32).Value = shopId;
+                    command.Parameters.Add("@maxPrice", MySqlDbType.Double).Value = totalMaxPrice;
+                    if (_connection.State != ConnectionState.Open)
+                        _connection.Open();
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        List<(string, int)> tempData = new List<(string, int)>();
+                        while (reader.Read())
+                        {
+                            string productName = reader[0].ToString();
+                            int productQuantity = int.Parse(reader[1].ToString());
+                            tempData.Add((productName, productQuantity));
+                        }
+
+                        resultTuples = tempData.ToArray();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw new DatabaseDataReadingException(e.ToString());
+            }
+            finally
+            {
+                _connection.Close();
+            }
+
+            return resultTuples;
         }
 
         /** Calculate total sum of purchase
@@ -493,12 +538,7 @@ namespace ShopCatalog.MariaDBDao
             throw new System.NotImplementedException();
         }
 
-        public void BuyProducts(int shopId, List<string> productsNames, List<int> productsQuantities)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        internal void Dispose()
+        public bool BuyProducts(int shopId, List<string> productsNames, List<int> productsQuantities)
         {
             throw new System.NotImplementedException();
         }

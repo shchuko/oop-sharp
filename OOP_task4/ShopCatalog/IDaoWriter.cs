@@ -10,7 +10,7 @@ namespace ShopCatalog
 
         void AddProductToShop(int shopId, string productName, int count);
         
-        void BuyProducts(int shopId, List<string> productsNames, List<int> productsCounts);
+        bool BuyProducts(int shopId, List<string> productsNames, List<int> productsCounts);
         
     }
 }
