@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Reflection.Metadata.Ecma335;
 using MySql.Data.MySqlClient;
 using ShopCatalog.MariaDBDao.Exceptions;
 
@@ -470,6 +469,10 @@ namespace ShopCatalog.MariaDBDao
             return result;
         }
 
+        /** Checks if product exists 
+          * @param productName Name of the product
+          * @return true if exists, false if not
+          */
         public bool IsProductExists(string productName)
         {
             return GetProductId(productName) != -1;
