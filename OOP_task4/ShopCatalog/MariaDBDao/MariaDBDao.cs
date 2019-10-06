@@ -559,15 +559,84 @@ namespace ShopCatalog.MariaDBDao
             }
         }
 
+        /** Create and add product into Product table
+         * @param productName Unique name of product
+         */
         public void CreateProduct(string productName)
         {
-            throw new System.NotImplementedException();
+            if (IsProductExists(productName))
+                throw new MissingDataConsistencyException($"ProductName '{productName}' already exists");
+            
+            try
+            {
+                if (_connection.State != ConnectionState.Open)
+                    _connection.Open();
+                using (MySqlCommand command = _connection.CreateCommand())
+                {
+                    command.CommandText = @"INSERT INTO Product (ProductName) VALUE (@productName)";
+                    command.Parameters.Add("@productName", MySqlDbType.VarChar).Value = productName;
+                    using (command.ExecuteReader())
+                    {
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw new MissingDataConsistencyException(e.ToString());
+            }
+            finally
+            {
+                _connection.Close();
+            }
         }
 
-        public void AddProductToShop(int shopId, string productName, int quantity)
+        /** Add the product to the shop with fixed price and quantity
+         * @param shopID Shop id
+         * @param productName Product name
+         * @param price Product price
+         * @param quantity Product quantity
+         */
+        public void AddProductToShop(int shopId, string productName, double price, int quantity)
         {
-            throw new System.NotImplementedException();
+            int productId = GetProductId(productName);
+            try
+            {
+                if (_connection.State != ConnectionState.Open)
+                    _connection.Open();
+                using (MySqlCommand command = _connection.CreateCommand())
+                {
+                    command.CommandText =
+                        @"INSERT INTO ShopProduct (ShopID, ProductID, Price, Quantity) VALUE (@shopID, @productID, @price, @quantity)";
+                    command.Parameters.Add("@shopID", MySqlDbType.Int32).Value = shopId;
+                    command.Parameters.Add("@productID", MySqlDbType.Int32).Value = productId;
+                    command.Parameters.Add("@price", MySqlDbType.Double).Value = price;
+                    command.Parameters.Add("@quantity", MySqlDbType.Int32).Value = quantity;
+
+                    using (command.ExecuteReader())
+                    {
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw new MissingDataConsistencyException(e.ToString());
+            }
+            finally
+            {
+                _connection.Close();
+            }
         }
+
+        public void UpdatePrice(int shopId, string productName, double price)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateQuantity(int shopId, string productName, int quantity)
+        {
+            throw new NotImplementedException();
+        }
+
 
         public bool BuyProducts(int shopId, List<string> productsNames, List<int> productsQuantities)
         {

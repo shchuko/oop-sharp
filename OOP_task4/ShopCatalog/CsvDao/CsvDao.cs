@@ -29,7 +29,17 @@ namespace ShopCatalog.CsvDao
             throw new System.NotImplementedException();
         }
 
-        public void AddProductToShop(int shopId, string productName, int count)
+        public void AddProductToShop(int shopId, string productName, double price, int quantity)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void UpdatePrice(int shopId, string productName, double price)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void UpdateQuantity(int shopId, string productName, int quantity)
         {
             throw new System.NotImplementedException();
         }

@@ -8,7 +8,11 @@ namespace ShopCatalog
 
         void CreateProduct(string productName);
 
-        void AddProductToShop(int shopId, string productName, int count);
+        void AddProductToShop(int shopId, string productName, double price, int quantity);
+
+        void UpdatePrice(int shopId, string productName, double price);
+
+        void UpdateQuantity(int shopId, string productName, int quantity);
         
         bool BuyProducts(int shopId, List<string> productsNames, List<int> productsCounts);
         
