@@ -38,7 +38,7 @@ namespace ShopCatalog
 //            _dao.CreateShop(10, "Shop10", "Kiev");
 //            _dao.CreateProduct("Product5");
 //            _dao.AddProductToShop(1, "Product5", 10.5, 3);
-            _dao.UpdatePrice(1, "Product5", 5.4);
+            _dao.UpdateQuantity(1, "Product5", 1);
             foreach (var valueTuple in x)
             {
                 list.Add($"{valueTuple.Item1} - {valueTuple.Item2.ToString()}");
