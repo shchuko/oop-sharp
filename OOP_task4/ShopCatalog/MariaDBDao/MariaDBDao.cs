@@ -627,9 +627,39 @@ namespace ShopCatalog.MariaDBDao
             }
         }
 
+        /** Update price for the product in the shop
+         * @param shopID Shop id
+         * @param productName Product name
+         * @param price New price
+         */
         public void UpdatePrice(int shopId, string productName, double price)
         {
-            throw new NotImplementedException();
+            int productId = GetProductId(productName);
+            try
+            {
+                if (_connection.State != ConnectionState.Open)
+                    _connection.Open();
+                using (MySqlCommand command = _connection.CreateCommand())
+                {
+                    command.CommandText =
+                        @"UPDATE ShopProduct SET Price = @price WHERE ShopID = @shopID AND ProductID = @productId";
+                    command.Parameters.Add("@shopID", MySqlDbType.Int32).Value = shopId;
+                    command.Parameters.Add("@productID", MySqlDbType.Int32).Value = productId;
+                    command.Parameters.Add("@price", MySqlDbType.Double).Value = price;
+
+                    using (command.ExecuteReader())
+                    {
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw new MissingDataConsistencyException(e.ToString());
+            }
+            finally
+            {
+                _connection.Close();
+            }
         }
 
         public void UpdateQuantity(int shopId, string productName, int quantity)
