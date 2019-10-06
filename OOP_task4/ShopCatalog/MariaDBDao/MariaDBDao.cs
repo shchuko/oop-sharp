@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Security;
 using MySql.Data.MySqlClient;
 using ShopCatalog.Exceptions;
 using ShopCatalog.MariaDBDao.Exceptions;
@@ -349,11 +348,10 @@ namespace ShopCatalog.MariaDBDao
 
         /** Calculate total sum of purchase
          * @param shopId Shop where purchase will be made
-         * @param productNames List of products' names needed to buy
-         * @param productsQuantities List of products' quantities related to productsNames
+         * @param @param productsData array of (productName, quantity) tuples
          * @return Total sum of purchase or -1 if some product not exists/quantity is not enough
          */
-        public double GetPurchaseTotal(int shopId, List<string> productsNames, List<int> productsQuantities)
+        public double GetPurchaseTotal(int shopId, (string, int)[] productsData)
         {
             double sum = 0;
 
@@ -364,10 +362,10 @@ namespace ShopCatalog.MariaDBDao
                     command.Parameters.Add("@shopID", DbType.Int32);
                     command.Parameters.Add("@productID", DbType.Int32);
                     command.Parameters.Add("@productQuantity", DbType.Int32);
-                    for (int i = 0; i < productsNames.Count; ++i)
+                    for (int i = 0; i < productsData.Length; ++i)
                     {
-                        int productId = GetProductId(productsNames[i]);
-                        int productQuantity = productsQuantities[i];
+                        int productId = GetProductId(productsData[i].Item1);
+                        int productQuantity = productsData[i].Item2;
 
                         if (productId == -1)
                         {
@@ -413,11 +411,10 @@ namespace ShopCatalog.MariaDBDao
         }
         
         /** Get shop id with minimum total price for purchase
-         * @param productsNames names of products
-         * @param productsQuantities quantity of each product to purchase
+         * @param productsData array of (productName, quantity) tuples
          * @return shopId or -1 if there is no shop to buy all products of list
          */
-        public int GetMinPurchaseTotalShopId(List<string> productsNames, List<int> productsQuantities)
+        public int GetMinPurchaseTotalShopId((string, int)[] productsData)
         {
             int resultShopId = -1;
             double minSum = double.MaxValue;
@@ -428,7 +425,7 @@ namespace ShopCatalog.MariaDBDao
                 foreach (var tuple in shopsData)
                 {
                     int shopId = tuple.Item1;
-                    double sum = GetPurchaseTotal(shopId, productsNames, productsQuantities);
+                    double sum = GetPurchaseTotal(shopId, productsData);
                     if (sum >= 0 && sum < minSum)
                     {
                         minSum = sum;
@@ -698,12 +695,60 @@ namespace ShopCatalog.MariaDBDao
         }
 
 
-        public bool BuyProducts(int shopId, List<string> productsNames, List<int> productsQuantities)
+        /** Buy products in the shop, decreases quantities
+         * @param shopId Shop where products needed to buy
+         * @param @param productsData array of (productName, quantity) tuples
+         * @return true if operation successful, else false
+         */
+        public bool BuyProducts(int shopId, (string, int)[] productsData)
         {
-            throw new System.NotImplementedException();
+            if (GetPurchaseTotal(shopId, productsData) < 0)
+                return false;
+            
+            (int, int)[] productIdQuantity = new (int, int)[productsData.Length];
+            for (int i = 0; i < productIdQuantity.Length; ++i)
+            {
+                productIdQuantity[i].Item1 = GetProductId(productsData[i].Item1);
+                productIdQuantity[i].Item2 = productsData[i].Item2;
+            }
+            
+            try
+            {
+                if (_connection.State != ConnectionState.Open)
+                    _connection.Open();
+                using (MySqlCommand command = _connection.CreateCommand())
+                {
+                    foreach (var tuple in productIdQuantity)
+                    {
+                        int productId = tuple.Item1;
+                        int quantityToBuy = tuple.Item2;
+                        
+                        command.CommandText =
+                            @"UPDATE ShopProduct SET Quantity =  Quantity - @quantity WHERE ShopID = @shopID AND ProductID = @productId";
+                        command.Parameters.Add("@shopID", MySqlDbType.Int32).Value = shopId;
+                        command.Parameters.Add("@productID", MySqlDbType.Int32).Value = productId;
+                        command.Parameters.Add("@quantity", MySqlDbType.Int32).Value = quantityToBuy;
+
+                        using (command.ExecuteReader())
+                        {
+                        }
+                    }
+                    
+                }
+            }
+            catch (Exception e)
+            {
+                throw new MissingDataConsistencyException(e.ToString());
+            }
+            finally
+            {
+                _connection.Close();
+            }
+
+            return true;
         }
 
-        private MySqlConnection _connection;
+        private readonly MySqlConnection _connection;
 
         /** Get product id related to product name
          * @param productName name of product

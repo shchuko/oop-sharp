@@ -14,7 +14,7 @@ namespace ShopCatalog
 
         void UpdateQuantity(int shopId, string productName, int quantity);
         
-        bool BuyProducts(int shopId, List<string> productsNames, List<int> productsCounts);
+        bool BuyProducts(int shopId, (string, int)[] productsData);
         
     }
 }

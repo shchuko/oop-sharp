@@ -64,7 +64,7 @@ namespace ShopCatalog.CsvDao
             throw new System.NotImplementedException();
         }
 
-        public bool BuyProducts(int shopId, List<string> productsNames, List<int> productsCounts)
+        public bool BuyProducts(int shopId, (string, int)[] productsData)
         {
             throw new System.NotImplementedException();
         }
@@ -74,12 +74,12 @@ namespace ShopCatalog.CsvDao
             throw new System.NotImplementedException();
         }
 
-        public double GetPurchaseTotal(int shopId, List<string> productsNames, List<int> productsQuantities)
+        public double GetPurchaseTotal(int shopId, (string, int)[] productsData)
         {
             throw new System.NotImplementedException();
         }
 
-        public int GetMinPurchaseTotalShopId(List<string> productsNames, List<int> productsQuantities)
+        public int GetMinPurchaseTotalShopId((string, int)[] productsData)
         {
             throw new System.NotImplementedException();
         }

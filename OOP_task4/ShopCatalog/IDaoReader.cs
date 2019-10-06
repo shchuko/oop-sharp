@@ -18,9 +18,9 @@ namespace ShopCatalog
 
         (string, int)[] GetProductsForPrice(int shopId, double totalMaxPrice);
 
-        double GetPurchaseTotal(int shopId, List<string> productsNames, List<int> productsQuantities);
+        double GetPurchaseTotal(int shopId, (string, int)[] productsData);
 
-        int GetMinPurchaseTotalShopId(List<string> productsNames, List<int> productsQuantities);
+        int GetMinPurchaseTotalShopId((string, int)[] productsData);
 
         bool IsShopExists(int shopId);
 
