@@ -135,7 +135,12 @@ namespace ShopCatalog.CsvDao.CsvTempCatalog
          */
         internal (string, int)[] GetProductsForPrice(int shopId, double totalMaxPrice)
         {
-            throw new NotImplementedException();
+            if (!IsShopExists(shopId))
+            {
+                throw new ShopNotExistsException();
+            }
+
+            return _shopProducts[shopId].GetProductsForPrice(totalMaxPrice);
 
         }
 

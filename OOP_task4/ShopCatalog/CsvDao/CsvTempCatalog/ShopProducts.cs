@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using ShopCatalog.Exceptions;
 
@@ -62,6 +63,23 @@ namespace ShopCatalog.CsvDao.CsvTempCatalog
             }
 
             return data;
+        }
+
+        internal (string, int)[] GetProductsForPrice(double totalMaxPrice)
+        {
+            List<(string, int)> tempData = new List<(string, int)>();
+            
+            foreach (var productInfo in _productsInShop)
+            {
+                if (productInfo.Value.Price < totalMaxPrice && productInfo.Value.Quantity > 0)
+                {
+                    string productName = productInfo.Key;
+                    int quantity = (int) (totalMaxPrice / productInfo.Value.Price);
+                    tempData.Add((productName, Math.Min(quantity, productInfo.Value.Quantity)));
+                }
+            }
+
+            return tempData.ToArray();
         }
         
         private Dictionary<string, ProductInfo> _productsInShop = new Dictionary<string, ProductInfo>();
