@@ -97,7 +97,12 @@ namespace ShopCatalog.CsvDao.CsvTempCatalog
          */
         internal int GetProductQuantity(int shopId, string productName)
         {
-            throw new NotImplementedException();
+            if (!IsShopExists(shopId))
+            {
+                throw new ShopNotExistsException();
+            }
+
+            return _shopProducts[shopId].GetQuantity(productName);
         }
 
         /** Get shop ID with minimal price for product, if quantity of product in the shop > 0
@@ -105,8 +110,22 @@ namespace ShopCatalog.CsvDao.CsvTempCatalog
          */
         internal int GetMinPriceShopId(string productName)
         {
-            throw new NotImplementedException();
+            double price = Double.MinValue;
+            int shopId = -1;
+            foreach (var shopProduct in _shopProducts)
+            {
+                if (!shopProduct.Value.HasProduct(productName)) 
+                    continue;
 
+                double tempPrice = shopProduct.Value.GetPrice(productName);
+                if (tempPrice < price || shopId == -1)
+                {
+                    price = tempPrice;
+                    shopId = shopProduct.Key;
+                }
+            }
+
+            return shopId;
         }
 
         /** Get info how many products you can buy for fixed price in the shop
