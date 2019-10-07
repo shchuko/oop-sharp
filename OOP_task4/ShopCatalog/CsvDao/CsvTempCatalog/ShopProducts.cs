@@ -81,6 +81,23 @@ namespace ShopCatalog.CsvDao.CsvTempCatalog
 
             return tempData.ToArray();
         }
+
+        internal double GetPurchaseTotal((string, int)[] productsData)
+        {
+            double sum = 0;
+            foreach (var tuple in productsData)
+            {
+                if (!HasProduct(tuple.Item1) || _productsInShop[tuple.Item1].Quantity < tuple.Item2)
+                {
+                    sum = -1;
+                    return sum;
+                }
+
+                sum += _productsInShop[tuple.Item1].Price * tuple.Item2;
+            }
+
+            return sum;
+        }
         
         private Dictionary<string, ProductInfo> _productsInShop = new Dictionary<string, ProductInfo>();
     }

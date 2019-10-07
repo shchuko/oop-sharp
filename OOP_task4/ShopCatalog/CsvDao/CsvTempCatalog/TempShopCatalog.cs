@@ -151,8 +151,12 @@ namespace ShopCatalog.CsvDao.CsvTempCatalog
          */
         internal double GetPurchaseTotal(int shopId, (string, int)[] productsData)
         {
-            throw new NotImplementedException();
+            if (!IsShopExists(shopId))
+            {
+                throw new ShopNotExistsException();
+            }
 
+            return _shopProducts[shopId].GetPurchaseTotal(productsData);
         }
         
         /** Get shop id with minimum total price for purchase
