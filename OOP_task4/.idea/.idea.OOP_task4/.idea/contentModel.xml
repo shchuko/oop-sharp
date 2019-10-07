@@ -23,6 +23,12 @@
       <e p="ShopCatalog" t="IncludeRecursive">
         <e p="CsvDao" t="Include">
           <e p="CsvDao.cs" t="Include" />
+          <e p="CsvTempCatalog" t="Include">
+            <e p="ProductInfo.cs" t="Include" />
+            <e p="Shop.cs" t="Include" />
+            <e p="ShopProducts.cs" t="Include" />
+            <e p="TempShopCatalog.cs" t="Include" />
+          </e>
           <e p="Exceptions" t="Include">
             <e p="CsvFileConnectException.cs" t="Include" />
           </e>

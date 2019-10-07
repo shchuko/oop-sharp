@@ -788,8 +788,5 @@ namespace ShopCatalog.MariaDBDao
 
             return productId;
         }
-
-        
-        
     }
 }
