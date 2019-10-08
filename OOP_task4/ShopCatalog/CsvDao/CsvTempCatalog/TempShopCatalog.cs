@@ -190,8 +190,7 @@ namespace ShopCatalog.CsvDao.CsvTempCatalog
          */
         internal bool IsShopExists(int shopId)
         {
-            throw new NotImplementedException();
-
+            return _shops.ContainsKey(shopId);
         }
 
         /** Checks if shop exists by shop name
