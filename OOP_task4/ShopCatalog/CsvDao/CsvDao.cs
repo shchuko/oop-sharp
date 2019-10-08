@@ -84,7 +84,8 @@ namespace ShopCatalog.CsvDao
 
         public string GetShopName(int shopId)
         {
-            throw new System.NotImplementedException();
+            TempShopCatalog catalog = ParseCsvFiles(_shopsDataFilepath, _productsDataFilepath);
+            return catalog.GetShopName(shopId);
         }
 
         public string GetShopAddress(int shopId)
