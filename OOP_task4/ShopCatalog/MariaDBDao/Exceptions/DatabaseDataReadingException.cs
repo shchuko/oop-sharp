@@ -1,6 +1,8 @@
+using ShopCatalog.Exceptions;
+
 namespace ShopCatalog.MariaDBDao.Exceptions
 {
-    public class DatabaseDataReadingException : System.Exception
+    public class DatabaseDataReadingException : DataReadingErrorException
     {
         internal DatabaseDataReadingException() {}
 
