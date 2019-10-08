@@ -1,5 +1,6 @@
 using System;
 using System.Dynamic;
+using System.IO;
 using System.Text.RegularExpressions;
 using ShopCatalog.CsvDao.CsvTempCatalog;
 using ShopCatalog.CsvDao.Exceptions;
@@ -18,8 +19,8 @@ namespace ShopCatalog.CsvDao
             {
                 _shopsDataFilepath = ShopsDataFilepathRegex.Match(connectionString).Groups[2].Value;
                 _productsDataFilepath = ProductsDataFilepathRegex.Match(connectionString).Groups[2].Value;
-                System.IO.File.OpenText(_shopsDataFilepath).Close();
-                System.IO.File.OpenText(_productsDataFilepath).Close();
+                File.OpenText(_shopsDataFilepath).Close();
+                File.OpenText(_productsDataFilepath).Close();
 
             }
             catch (Exception)
@@ -175,6 +176,26 @@ namespace ShopCatalog.CsvDao
                 catch (Exception e)
                 {
                     throw new DataReadingErrorException(e.ToString());
+                }
+            }
+        }
+
+        private static void WriteDataToFiles(TempShopCatalog catalog, string shopDataFilepath,
+            string productDataFilepath)
+        {
+            using (StreamWriter sw = new StreamWriter(shopDataFilepath, false))
+            {
+                foreach (string s in catalog.GetCsvShopsData())
+                {
+                    sw.WriteLine(s);
+                }
+            }
+            
+            using (StreamWriter sw = new StreamWriter(productDataFilepath, false))
+            {
+                foreach (string s in catalog.GetCsvShopProductsData())
+                {
+                    sw.WriteLine(s);
                 }
             }
         }
