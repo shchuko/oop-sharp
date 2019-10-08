@@ -64,7 +64,9 @@ namespace ShopCatalog.CsvDao
 
         public void UpdatePrice(int shopId, string productName, double price)
         {
-            throw new System.NotImplementedException();
+            TempShopCatalog catalog = ParseCsvFiles(_shopsDataFilepath, _productsDataFilepath);
+            catalog.UpdatePrice(shopId, productName, price);
+            WriteDataToCsvFiles(catalog, _shopsDataFilepath, _productsDataFilepath);
         }
 
         public void UpdateQuantity(int shopId, string productName, int quantity)
