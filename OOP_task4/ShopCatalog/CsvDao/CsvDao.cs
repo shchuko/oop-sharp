@@ -78,7 +78,8 @@ namespace ShopCatalog.CsvDao
 
         public int GetMinPriceShopId(string productName)
         {
-            throw new System.NotImplementedException();
+            TempShopCatalog catalog = ParseCsvFiles(_shopsDataFilepath, _productsDataFilepath);
+            return catalog.GetMinPriceShopId(productName);
         }
 
         public string GetShopName(int shopId)
