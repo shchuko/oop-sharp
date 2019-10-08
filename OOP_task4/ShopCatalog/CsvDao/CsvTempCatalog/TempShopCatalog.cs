@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using ShopCatalog.Exceptions;
 
 namespace ShopCatalog.CsvDao.CsvTempCatalog
@@ -23,20 +24,27 @@ namespace ShopCatalog.CsvDao.CsvTempCatalog
         
         internal string[] GetCsvShopProductsData()
         {
-            // TODO
-            List<string> data = new List<string>();
-            foreach (var shopProductData in _shopProducts)
+            string[] result = new string[_products.Count];
+            int counter = 0;
+            foreach (string product in _products)
             {
-                int shopId = shopProductData.Key;
-                (string, string)[] productsData = shopProductData.Value.GetCsvData();
-
-                foreach (var tuple in productsData)
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.Append(product + ',');
+                foreach (KeyValuePair<int,ShopProducts> keyValuePair in _shopProducts)
                 {
-                    data.Add($"{tuple.Item1},{shopId},{tuple.Item2}");
+                    if (keyValuePair.Value.HasProduct(product))
+                    {
+                        stringBuilder.Append(keyValuePair.Key + ",");
+                        stringBuilder.Append(keyValuePair.Value.GetQuantity(product) + ",");
+                        stringBuilder.Append(keyValuePair.Value.GetPrice(product) + ",");
+                    }
                 }
-            }
 
-            return data.ToArray();
+                stringBuilder.Remove(stringBuilder.Length - 1, 1);
+                result[counter] = stringBuilder.ToString();
+                ++counter;
+            }
+            return result;
         }
 
         /** Get list of shops with full info

@@ -9,12 +9,13 @@ namespace ShopCatalog
         {
             
 //            _dao.CreateShop(3, "Пятерка", "Мурманск");
+//            _dao.AddProductToShop(1, "Телевизор PHILIPS", 30002, 10);
             List<string> list = new List<string>();
             foreach (var shop in _dao.GetShops())
             {
                 list.Add(shop.ToString());
             }
-            return list.ToArray();
+            return _dao.GetProducts();
         }
         
         internal Service(IDao dao)
