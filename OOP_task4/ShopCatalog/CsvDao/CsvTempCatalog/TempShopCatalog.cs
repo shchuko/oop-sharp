@@ -199,8 +199,16 @@ namespace ShopCatalog.CsvDao.CsvTempCatalog
           */
         internal bool IsShopExists(string shopName)
         {
-            throw new NotImplementedException();
+            bool flag = false;
+            foreach (var shop in _shops)
+            {
+                if (shop.Value.Name.Equals(shopName))
+                {
+                    flag = true;
+                }
+            }
 
+            return flag;
         }
 
         /** Checks if product exists 
