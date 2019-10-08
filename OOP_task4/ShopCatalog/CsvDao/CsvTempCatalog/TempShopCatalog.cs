@@ -20,9 +20,10 @@ namespace ShopCatalog.CsvDao.CsvTempCatalog
 
             return data;
         }
-
+        
         internal string[] GetCsvShopProductsData()
         {
+            // TODO
             List<string> data = new List<string>();
             foreach (var shopProductData in _shopProducts)
             {

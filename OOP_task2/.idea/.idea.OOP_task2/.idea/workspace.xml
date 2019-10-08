@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05bbd5bb-894a-4dca-abd3-79ab21116d33" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.OOP_task2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OOP_task2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OOP_task4/OOP_task4/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../OOP_task4/OOP_task4/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../OOP_task4/ShopCatalog/CsvDao/CsvDao.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../OOP_task4/ShopCatalog/CsvDao/CsvDao.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OOP_task4/ShopCatalog/Service.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../OOP_task4/ShopCatalog/Service.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,7 +44,9 @@
     <setting file="file://$PROJECT_DIR$/MusicCatalogLib/Artist.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MusicCatalogLib/Genre.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../OOP_task4/ShopCatalog/CsvDao/CsvDao.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../OOP_task4/OOP_task4/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FD383AB8-0FF7-4EF7-AE3F-65E9C32F546D/30/4d986b68/Regex.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../OOP_task4/ShopCatalog/MariaDBDao/Exceptions/DatabaseDataReadingException.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">

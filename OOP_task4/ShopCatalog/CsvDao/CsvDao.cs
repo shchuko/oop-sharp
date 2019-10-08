@@ -160,7 +160,7 @@ namespace ShopCatalog.CsvDao
 
         private static void ParseShopData(ref TempShopCatalog catalog, string shopDataFilepath)
         {
-            using (var reader = System.IO.File.OpenText(shopDataFilepath))
+            using (var reader = File.OpenText(shopDataFilepath))
             {
                 try
                 {
@@ -179,7 +179,7 @@ namespace ShopCatalog.CsvDao
         
         private static void ParseProductData(ref TempShopCatalog catalog, string productDataFilepath)
         {
-            using (var reader = System.IO.File.OpenText(productDataFilepath))
+            using (var reader = File.OpenText(productDataFilepath))
             {
                 try
                 {
@@ -188,11 +188,11 @@ namespace ShopCatalog.CsvDao
                         string[] productsData = reader.ReadLine().Split(',');
                         string productName = productsData[0];
                         catalog.CreateProduct(productName);
-                        for (int i = 1; i < productsData.Length; i += 3)
+                        for (int i = 1; i < productsData.Length - 2; i += 3)
                         {
                             int shopId = int.Parse(productsData[i]);
-                            double price = double.Parse(productsData[i + 1]);
-                            int quantity = int.Parse(productsData[i + 2]);
+                            int quantity = int.Parse(productsData[i + 1]);
+                            double price = double.Parse(productsData[i + 2]);
                             catalog.AddProductToShop(shopId, productName, price, quantity);
                         }
                     }
