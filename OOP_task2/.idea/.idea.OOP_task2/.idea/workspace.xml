@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05bbd5bb-894a-4dca-abd3-79ab21116d33" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../OOP_task4/ShopCatalog/Exceptions/DataReadingErrorException.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.OOP_task2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OOP_task2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OOP_task4/.idea/.idea.OOP_task4/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../OOP_task4/.idea/.idea.OOP_task4/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../OOP_task4/ShopCatalog/CsvDao/CsvDao.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../OOP_task4/ShopCatalog/CsvDao/CsvDao.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />

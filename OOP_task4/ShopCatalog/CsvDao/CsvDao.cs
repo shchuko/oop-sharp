@@ -24,7 +24,7 @@ namespace ShopCatalog.CsvDao
             }
             catch (Exception)
             {
-                throw new CsvFileConnectException("Incorrect filepath");
+                throw new CsvFileConnectException("Incorrect filepath(s)");
             }
         }
         
@@ -141,8 +141,8 @@ namespace ShopCatalog.CsvDao
                 {
                     while (!reader.EndOfStream)
                     {
-                        string[] productsData = reader.ReadLine().Split(',');
-                        catalog.CreateShop(int.Parse(productsData[0]), productsData[1], productsData[2]);
+                        string[] shopsData = reader.ReadLine().Split(',');
+                        catalog.CreateShop(int.Parse(shopsData[0]), shopsData[1], shopsData[2]);
                     }
                 }
                 catch (Exception e)
@@ -154,7 +154,29 @@ namespace ShopCatalog.CsvDao
         
         private static void ParseProductData(ref TempShopCatalog catalog, string productDataFilepath)
         {
-            throw new NotImplementedException();
+            using (var reader = System.IO.File.OpenText(productDataFilepath))
+            {
+                try
+                {
+                    while (!reader.EndOfStream)
+                    {
+                        string[] productsData = reader.ReadLine().Split(',');
+                        string productName = productsData[0];
+                        catalog.CreateProduct(productName);
+                        for (int i = 1; i < productsData.Length; i += 3)
+                        {
+                            int shopId = int.Parse(productsData[i]);
+                            double price = double.Parse(productsData[i + 1]);
+                            int quantity = int.Parse(productsData[i + 2]);
+                            catalog.AddProductToShop(shopId, productName, price, quantity);
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    throw new DataReadingErrorException(e.ToString());
+                }
+            }
         }
     }
     
