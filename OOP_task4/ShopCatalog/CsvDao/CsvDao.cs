@@ -180,7 +180,7 @@ namespace ShopCatalog.CsvDao
             }
         }
 
-        private static void WriteDataToFiles(TempShopCatalog catalog, string shopDataFilepath,
+        private static void WriteDataToCsvFiles(TempShopCatalog catalog, string shopDataFilepath,
             string productDataFilepath)
         {
             using (StreamWriter sw = new StreamWriter(shopDataFilepath, false))
