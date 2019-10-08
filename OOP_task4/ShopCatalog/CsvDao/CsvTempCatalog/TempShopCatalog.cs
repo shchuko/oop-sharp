@@ -165,9 +165,23 @@ namespace ShopCatalog.CsvDao.CsvTempCatalog
          */
         internal int GetMinPurchaseTotalShopId((string, int)[] productsData)
         {
-            throw new NotImplementedException();
+            int shopId = -1;
+            double sum = Double.MaxValue;
+            
+            foreach (var shopProduct in _shopProducts)
+            {
+                double tempSum = shopProduct.Value.GetPurchaseTotal(productsData);
+                if (tempSum > 0 && tempSum < sum)
+                {
+                    sum = tempSum;
+                    shopId = shopProduct.Key;
+                }
+            }
 
+            return shopId;
         }
+        
+        
 
 
         /** Checks if shop exists by shop id
