@@ -247,8 +247,17 @@ namespace ShopCatalog.CsvDao.CsvTempCatalog
          */
         internal void AddProductToShop(int shopId, string productName, double price, int quantity)
         {
-            throw new NotImplementedException();
-
+            if (!IsShopExists(shopId))
+            {
+                throw new ShopNotExistsException();
+            }
+            
+            if (!IsProductExists(productName))
+            {
+                throw new ProductNotExistsException();
+            }
+            
+            _shopProducts[shopId].AddProduct(productName, quantity, price);
         }
 
         /** Update price for the product in the shop
