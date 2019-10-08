@@ -236,8 +236,7 @@ namespace ShopCatalog.CsvDao.CsvTempCatalog
          */
         internal void CreateProduct(string productName)
         {
-            throw new NotImplementedException();
-
+            _products.Add(productName);
         }
 
         /** Add the product to the shop with fixed price and quantity
