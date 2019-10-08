@@ -2,7 +2,7 @@ namespace ShopCatalog.CsvDao.CsvTempCatalog
 {
     internal struct Shop
     {
-        Shop(int id, string name, string address)
+        internal Shop(int id, string name, string address)
         {
             Id = id;
             Name = name;

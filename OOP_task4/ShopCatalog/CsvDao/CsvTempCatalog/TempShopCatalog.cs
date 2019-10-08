@@ -227,8 +227,8 @@ namespace ShopCatalog.CsvDao.CsvTempCatalog
          */
         internal void CreateShop(int shopId, string shopName, string shopAddress)
         {
-            throw new NotImplementedException();
-
+            _shops.Add(shopId, new Shop(shopId, shopName, shopAddress));
+            _shopProducts.Add(shopId, new ShopProducts());
         }
 
         /** Create and add product into Product table
