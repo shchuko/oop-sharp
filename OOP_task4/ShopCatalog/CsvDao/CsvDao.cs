@@ -1,5 +1,7 @@
 using System;
+using System.Dynamic;
 using System.Text.RegularExpressions;
+using ShopCatalog.CsvDao.CsvTempCatalog;
 using ShopCatalog.CsvDao.Exceptions;
 
 namespace ShopCatalog.CsvDao
@@ -115,12 +117,30 @@ namespace ShopCatalog.CsvDao
             throw new System.NotImplementedException();
         }
 
+        
         private string _shopsDataFilepath;
         private string _productsDataFilepath;
         
         private static readonly Regex ShopsDataFilepathRegex = new Regex(@"\s*(;|^)\s*shopData\s*=\s*(.*?)(;|$)");
         private static readonly Regex ProductsDataFilepathRegex = new Regex(@"\s*(;|^)\s*productData\s*=\s*(.*?)(;|$)");
 
+        private static TempShopCatalog ParseCsvFiles(string shopDataFilepath, string productsDataFilepath)
+        {
+            TempShopCatalog catalog = new TempShopCatalog();
+            ParseShopData(ref catalog, shopDataFilepath);
+            ParseProductData(ref catalog, productsDataFilepath);
+            return catalog;
+        }
+
+        private static void ParseShopData(ref TempShopCatalog catalog, string shopDataFilepath)
+        {
+            throw new NotImplementedException();
+        }
+        
+        private static void ParseProductData(ref TempShopCatalog catalog, string productDataFilepath)
+        {
+            throw new NotImplementedException();
+        }
     }
     
 }
