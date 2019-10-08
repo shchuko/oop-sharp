@@ -1,12 +1,28 @@
-using System.Collections.Generic;
+using System;
+using System.Text.RegularExpressions;
+using ShopCatalog.CsvDao.Exceptions;
 
 namespace ShopCatalog.CsvDao
 {
     class CsvDao : IDao
     {
-        internal CsvDao(string shopFilePath, string productFilePath)
+        /**Create CsvDao
+         * @param connectionString filepath in format "shopData=<filepath>;productData=<filepath>"
+         */
+        internal CsvDao(string connectionString)
         {
+            try
+            {
+                _shopsDataFilepath = ShopsDataFilepathRegex.Match(connectionString).Groups[2].Value;
+                _productsDataFilepath = ProductsDataFilepathRegex.Match(connectionString).Groups[2].Value;
+                System.IO.File.OpenText(_shopsDataFilepath).Close();
+                System.IO.File.OpenText(_productsDataFilepath).Close();
 
+            }
+            catch (Exception)
+            {
+                throw new CsvFileConnectException("Incorrect filepath");
+            }
         }
         
         public void CreateShop(int shopId, string shopName, string shopAddress)
@@ -98,5 +114,13 @@ namespace ShopCatalog.CsvDao
         {
             throw new System.NotImplementedException();
         }
+
+        private string _shopsDataFilepath;
+        private string _productsDataFilepath;
+        
+        private static readonly Regex ShopsDataFilepathRegex = new Regex(@"\s*(;|^)\s*shopData\s*=\s*(.*?)(;|$)");
+        private static readonly Regex ProductsDataFilepathRegex = new Regex(@"\s*(;|^)\s*productData\s*=\s*(.*?)(;|$)");
+
     }
+    
 }

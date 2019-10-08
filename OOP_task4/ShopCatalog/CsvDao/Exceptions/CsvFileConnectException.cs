@@ -1,7 +1,9 @@
 
+using ShopCatalog.Exceptions;
+
 namespace ShopCatalog.CsvDao.Exceptions
 {
-    public class CsvFileConnectException : System.Exception
+    public class CsvFileConnectException : ServiceCreationException
     {
         internal CsvFileConnectException()
         {

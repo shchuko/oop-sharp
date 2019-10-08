@@ -4,11 +4,12 @@
     <list default="true" id="05bbd5bb-894a-4dca-abd3-79ab21116d33" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OOP_task2/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OOP_task2/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OOP_task2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OOP_task2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MusicCatalogLib/ArgumentsParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MusicCatalogLib/ArgumentsParser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MusicCatalogLib/MusicCatalogReader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MusicCatalogLib/MusicCatalog.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MusicCatalogLib/MusicCatalogXmlParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MusicCatalogLib/MusicCatalogXmlParser.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../OOP_task3/.idea/.idea.OOP_task3/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../OOP_task3/.idea/.idea.OOP_task3/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OOP_task3/OOP_task3/ParserTester.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../OOP_task3/OOP_task3/ParserTester.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OOP_task4/OOP_task4/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../OOP_task4/OOP_task4/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OOP_task4/ShopCatalog/CsvDao/CsvDao.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../OOP_task4/ShopCatalog/CsvDao/CsvDao.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OOP_task4/ShopCatalog/CsvDao/Exceptions/CsvFileConnectException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../OOP_task4/ShopCatalog/CsvDao/Exceptions/CsvFileConnectException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OOP_task4/ShopCatalog/MariaDBDao/Exceptions/DatabaseConnectErrorException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../OOP_task4/ShopCatalog/MariaDBDao/Exceptions/DatabaseConnectErrorException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OOP_task4/ShopCatalog/ServiceEngineTypes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../OOP_task4/ShopCatalog/ServiceEngineTypes.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -363,6 +364,7 @@
       <workItem from="1569188243112" duration="11991000" />
       <workItem from="1569475706253" duration="386000" />
       <workItem from="1569476546997" duration="1794000" />
+      <workItem from="1570532144485" duration="805000" />
     </task>
     <task id="LOCAL-00001" summary="Full task2 update">
       <created>1568933658879</created>
