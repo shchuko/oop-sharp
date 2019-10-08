@@ -227,6 +227,10 @@ namespace ShopCatalog.CsvDao.CsvTempCatalog
          */
         internal void CreateShop(int shopId, string shopName, string shopAddress)
         {
+            if (IsShopExists(shopId))
+            {
+                throw new MissingDataConsistencyException();
+            }
             _shops.Add(shopId, new Shop(shopId, shopName, shopAddress));
             _shopProducts.Add(shopId, new ShopProducts());
         }
@@ -236,6 +240,10 @@ namespace ShopCatalog.CsvDao.CsvTempCatalog
          */
         internal void CreateProduct(string productName)
         {
+            if (IsProductExists(productName))
+            {
+                throw new MissingDataConsistencyException();
+            }
             _products.Add(productName);
         }
 
