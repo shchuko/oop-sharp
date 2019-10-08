@@ -34,6 +34,7 @@
           </e>
         </e>
         <e p="Exceptions" t="Include">
+          <e p="DataReadingErrorException.cs" t="Include" />
           <e p="MissingDataConsistencyException.cs" t="Include" />
           <e p="ProductNotExistsException.cs" t="Include" />
           <e p="ServiceCreationException.cs" t="Include" />

@@ -3,6 +3,7 @@ using System.Dynamic;
 using System.Text.RegularExpressions;
 using ShopCatalog.CsvDao.CsvTempCatalog;
 using ShopCatalog.CsvDao.Exceptions;
+using ShopCatalog.Exceptions;
 
 namespace ShopCatalog.CsvDao
 {
@@ -134,7 +135,21 @@ namespace ShopCatalog.CsvDao
 
         private static void ParseShopData(ref TempShopCatalog catalog, string shopDataFilepath)
         {
-            throw new NotImplementedException();
+            using (var reader = System.IO.File.OpenText(shopDataFilepath))
+            {
+                try
+                {
+                    while (!reader.EndOfStream)
+                    {
+                        string[] productsData = reader.ReadLine().Split(',');
+                        catalog.CreateShop(int.Parse(productsData[0]), productsData[1], productsData[2]);
+                    }
+                }
+                catch (Exception e)
+                {
+                    throw new DataReadingErrorException(e.ToString());
+                }
+            }
         }
         
         private static void ParseProductData(ref TempShopCatalog catalog, string productDataFilepath)
