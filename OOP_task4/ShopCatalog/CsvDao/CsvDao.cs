@@ -51,7 +51,8 @@ namespace ShopCatalog.CsvDao
 
         public string[] GetProducts()
         {
-            throw new System.NotImplementedException();
+            TempShopCatalog catalog = ParseCsvFiles(_shopsDataFilepath, _productsDataFilepath);
+            return catalog.GetProducts();
         }
 
         public void AddProductToShop(int shopId, string productName, double price, int quantity)
