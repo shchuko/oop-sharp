@@ -90,7 +90,8 @@ namespace ShopCatalog.CsvDao
 
         public string GetShopAddress(int shopId)
         {
-            throw new System.NotImplementedException();
+            TempShopCatalog catalog = ParseCsvFiles(_shopsDataFilepath, _productsDataFilepath);
+            return catalog.GetShopAddress(shopId);
         }
 
         public int GetProductQuantity(int shopId, string productName)
