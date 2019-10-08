@@ -98,6 +98,22 @@ namespace ShopCatalog.CsvDao.CsvTempCatalog
 
             return sum;
         }
+
+        internal bool BuyProducts((string, int)[] productsData)
+        {
+            if (GetPurchaseTotal(productsData) < 0)
+            {
+                return false;
+            }
+
+            foreach ((string, int) tuple in productsData)
+            {
+                _productsInShop[tuple.Item1].Quantity -= tuple.Item2;
+            }
+            
+            return true;
+        }
+        
         
         private Dictionary<string, ProductInfo> _productsInShop = new Dictionary<string, ProductInfo>();
     }

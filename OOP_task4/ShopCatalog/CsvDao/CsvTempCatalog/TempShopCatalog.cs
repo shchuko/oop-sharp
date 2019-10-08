@@ -298,8 +298,12 @@ namespace ShopCatalog.CsvDao.CsvTempCatalog
          */
         internal bool BuyProducts(int shopId, (string, int)[] productsData)
         {
-            throw new NotImplementedException();
+            if (!IsShopExists(shopId))
+            {
+                throw new ShopNotExistsException();
+            }
 
+            return _shopProducts[shopId].BuyProducts(productsData);
         }
 
         // Products' names
