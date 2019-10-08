@@ -38,7 +38,9 @@ namespace ShopCatalog.CsvDao
 
         public void CreateProduct(string productName)
         {
-            throw new System.NotImplementedException();
+            TempShopCatalog catalog = ParseCsvFiles(_shopsDataFilepath, _productsDataFilepath);
+            catalog.CreateProduct(productName);
+            WriteDataToCsvFiles(catalog, _shopsDataFilepath, _productsDataFilepath);
         }
 
         public (int, string, string)[] GetShops()
