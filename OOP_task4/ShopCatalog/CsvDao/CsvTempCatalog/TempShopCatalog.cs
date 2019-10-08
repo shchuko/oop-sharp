@@ -282,8 +282,12 @@ namespace ShopCatalog.CsvDao.CsvTempCatalog
          */
         internal void UpdateQuantity(int shopId, string productName, int quantity)
         {
-            throw new NotImplementedException();
+            if (!IsShopExists(shopId))
+            {
+                throw new ShopNotExistsException();
+            }
 
+            _shopProducts[shopId].UpdateProductQuantity(productName, quantity);
         }
 
 
