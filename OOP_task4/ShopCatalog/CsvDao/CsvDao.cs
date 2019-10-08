@@ -1,5 +1,4 @@
 using System;
-using System.Dynamic;
 using System.IO;
 using System.Text.RegularExpressions;
 using ShopCatalog.CsvDao.CsvTempCatalog;
@@ -102,42 +101,51 @@ namespace ShopCatalog.CsvDao
 
         public bool BuyProducts(int shopId, (string, int)[] productsData)
         {
-            throw new System.NotImplementedException();
+            TempShopCatalog catalog = ParseCsvFiles(_shopsDataFilepath, _productsDataFilepath);
+            bool result = catalog.BuyProducts(shopId, productsData);
+            WriteDataToCsvFiles(catalog, _shopsDataFilepath, _productsDataFilepath);
+            return result;
         }
 
         public (string, int)[] GetProductsForPrice(int shopId, double totalMaxPrice)
         {
-            throw new System.NotImplementedException();
+            TempShopCatalog catalog = ParseCsvFiles(_shopsDataFilepath, _productsDataFilepath);
+            return catalog.GetProductsForPrice(shopId, totalMaxPrice);
         }
 
         public double GetPurchaseTotal(int shopId, (string, int)[] productsData)
         {
-            throw new System.NotImplementedException();
+            TempShopCatalog catalog = ParseCsvFiles(_shopsDataFilepath, _productsDataFilepath);
+            return catalog.GetPurchaseTotal(shopId, productsData);
         }
 
         public int GetMinPurchaseTotalShopId((string, int)[] productsData)
         {
-            throw new System.NotImplementedException();
+            TempShopCatalog catalog = ParseCsvFiles(_shopsDataFilepath, _productsDataFilepath);
+            return catalog.GetMinPurchaseTotalShopId(productsData);
         }
 
         public bool IsShopExists(int shopId)
         {
-            throw new System.NotImplementedException();
+            TempShopCatalog catalog = ParseCsvFiles(_shopsDataFilepath, _productsDataFilepath);
+            return catalog.IsShopExists(shopId);
         }
 
         public bool IsShopExists(string shopName)
         {
-            throw new System.NotImplementedException();
+            TempShopCatalog catalog = ParseCsvFiles(_shopsDataFilepath, _productsDataFilepath);
+            return catalog.IsShopExists(shopName);
         }
 
         public bool IsProductExists(string productName)
         {
-            throw new System.NotImplementedException();
+            TempShopCatalog catalog = ParseCsvFiles(_shopsDataFilepath, _productsDataFilepath);
+            return catalog.IsProductExists(productName);
         }
 
         
-        private string _shopsDataFilepath;
-        private string _productsDataFilepath;
+        private readonly string _shopsDataFilepath;
+        private readonly string _productsDataFilepath;
         
         private static readonly Regex ShopsDataFilepathRegex = new Regex(@"\s*(;|^)\s*shopData\s*=\s*(.*?)(;|$)");
         private static readonly Regex ProductsDataFilepathRegex = new Regex(@"\s*(;|^)\s*productData\s*=\s*(.*?)(;|$)");
