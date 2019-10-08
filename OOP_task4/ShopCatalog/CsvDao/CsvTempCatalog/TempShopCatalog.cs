@@ -217,7 +217,7 @@ namespace ShopCatalog.CsvDao.CsvTempCatalog
           */
         internal bool IsProductExists(string productName)
         {
-            throw new NotImplementedException();
+            return _products.Contains(productName);
         }
 
         /** Create and add shop into Shop table
