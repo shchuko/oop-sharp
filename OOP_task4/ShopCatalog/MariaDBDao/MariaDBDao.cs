@@ -521,6 +521,53 @@ namespace ShopCatalog.MariaDBDao
             return GetProductId(productName) != -1;
         }
 
+        /** Checks if product exists in ths shop
+          * @param shopId Id of the shop to check in 
+          * @param productName Name of the product
+          * @return true if exists, false if not
+          */
+        public bool IsShopContainsProduct(int shopId, string productName)
+        {
+            if (!IsShopExists(shopId))
+            {
+                throw new ShopNotExistsException();
+            }
+
+            int productId = GetProductId(productName);
+            if (productId == -1)
+            {
+                throw new ProductNotExistsException();
+            }
+
+            bool result;
+            try
+            {
+                if (_connection.State != ConnectionState.Open)
+                    _connection.Open();
+                using (MySqlCommand command = _connection.CreateCommand())
+                {
+                    command.CommandText = @"SELECT COUNT(ShopId) FROM ShopProduct WHERE ShopID = @shopID AND ProductID = @productID";
+                    command.Parameters.Add("@shopID", MySqlDbType.Int32).Value = shopId;
+                    command.Parameters.Add("@productID", MySqlDbType.Int32).Value = productId;
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        result = reader.HasRows;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw new DatabaseDataReadingException(e.ToString());
+            }
+            finally
+            {
+                _connection.Close();
+            }
+
+            return result;
+        }
+
         /** Create and add shop into Shop table
          * @param shopId Unique id of the shop
          * @param shopName Name of the shop

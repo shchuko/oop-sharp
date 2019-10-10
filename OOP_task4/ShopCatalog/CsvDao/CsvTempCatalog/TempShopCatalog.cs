@@ -229,6 +229,27 @@ namespace ShopCatalog.CsvDao.CsvTempCatalog
             return _products.Contains(productName);
         }
 
+        /** Checks if product exists in ths shop
+          * @param shopId Id of the shop to check in 
+          * @param productName Name of the product
+          * @return true if exists, false if not
+          */
+        public bool IsShopContainsProduct(int shopId, string productName)
+        {
+            if (!IsShopExists(shopId))
+            {
+                throw new ShopNotExistsException();
+            }
+
+            if (!IsProductExists(productName))
+            {
+                throw new ProductNotExistsException();
+            }
+
+            return _shopProducts[shopId].HasProduct(productName);
+        }
+        
+        
         /** Create and add shop into Shop table
          * @param shopId Unique id of the shop
          * @param shopName Name of the shop

@@ -27,6 +27,8 @@ namespace ShopCatalog
         bool IsShopExists(string shopName);
 
         bool IsProductExists(string productName);
-        
+
+        bool IsShopContainsProduct(int shopId, string productName);
+
     }
 }

@@ -143,7 +143,13 @@ namespace ShopCatalog.CsvDao
             return catalog.IsProductExists(productName);
         }
 
-        
+        public bool IsShopContainsProduct(int shopId, string productName)
+        {
+            TempShopCatalog catalog = ParseCsvFiles(_shopsDataFilepath, _productsDataFilepath);
+            return catalog.IsShopContainsProduct(shopId, productName);
+        }
+
+
         private readonly string _shopsDataFilepath;
         private readonly string _productsDataFilepath;
         
