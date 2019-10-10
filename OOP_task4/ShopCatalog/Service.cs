@@ -12,8 +12,9 @@ namespace ShopCatalog
 //            return ExecCreateShop("create-shop shop-id='5';shop-name='ПУД';shop-address='Симферополь'");
 //            return ExecCreateProduct("create-product product-name='Сало украинское'");
 //            return PrintProducts();
-            return ExecAddProductToShop(
-                "add-to-shop shop-id='5';product-name='Сало украинское';price='13.6';quantity='100'");
+//            return ExecAddProductToShop(
+//                "add-to-shop shop-id='5';product-name='Сало украинское';price='13.6';quantity='100'");
+            return PrintShopWithMinPrice("where-is-min-price product-name='Сало украинское'");
         }
 
         internal Service(IDao dao)
@@ -156,6 +157,38 @@ namespace ShopCatalog
             {
                 $"Creation successful, product added to shop #{shopId} - {_dao.GetShopName(shopId)}",
                 $"({productName}, {productPrice}, {productQuantity})"
+            };
+        }
+
+        private string[] PrintShopWithMinPrice(string args)
+        {
+            Regex regex = new Regex(@".*where-is-min-price\s*product-name='(.+?)'\s*");
+            if (!regex.IsMatch(args))
+            {
+                return new []{"Err. Incorrect product data"};
+            }
+
+            var matcher = regex.Match(args);
+            string productName = matcher.Groups[1].Value;
+            
+            int shopId;
+            double price;
+            try
+            {
+                shopId = _dao.GetMinPriceShopId(productName);
+                price = _dao.GetProductPrice(shopId, productName);
+            }
+            catch (ProductNotExistsException)
+            {
+                return new[] {$"Err. Product with ProductName='{productName}' not exists"};
+            }
+            catch (ShopNotExistsException)
+            {
+                return new[] {$"Err. Product ProductName='{productName}' exists, but not found in any shop"};
+            }
+            return new[]
+            {
+                $"Minimum price for '{productName}' is in the shop #{shopId} {_dao.GetShopName(shopId)}. Price: {price}"
             };
         }
     }
