@@ -15,7 +15,8 @@ namespace ShopCatalog
 //            return ExecAddProductToShop(
 //                "add-to-shop shop-id='5';product-name='Сало украинское';price='13.6';quantity='100'");
 //            return PrintShopWithMinPrice("where-is-min-price product-name='Сало украинское'");
-            return GetProductsForTotal("get-products-for-total shop-id='5';total='100000.5'");
+//            return PrintProductsForTotal("get-products-for-total shop-id='5';total='100000.5'");
+            return PrintPurchaseTotal("get-total shop-id='2';products=[Шоколад ‘Аленка’,2|Телевизор PHILIPS,1]");
         }
 
         internal Service(IDao dao)
@@ -194,7 +195,7 @@ namespace ShopCatalog
             };
         }
 
-        private string[] GetProductsForTotal(string args)
+        private string[] PrintProductsForTotal(string args)
         {
             Regex regex = new Regex(@".*get-products-for-total\s+?shop-id='(\d+?)';\s*total='((\d+?)(\.(\d+?))?)'\s*");
 
@@ -227,6 +228,49 @@ namespace ShopCatalog
             }
 
             return result;
+        }
+
+        private string[] PrintPurchaseTotal(string args)
+        {
+            Regex regex = new Regex(
+                @".*get-total\s+?shop-id='(\d+?)'\s*;\s*products=\[(.+?)\]\s*");
+
+            if (!regex.IsMatch(args))
+            {
+                return new []{"Err. Incorrect data format"};
+            }
+
+            var matcher = regex.Match(args);
+            int shopId = int.Parse(matcher.Groups[1].Value);
+
+            string[] productsData = matcher.Groups[2].Value.Split('|');
+            (string, int)[] productsNamesQuantities = new (string, int)[productsData.Length];
+            for (var i = 0; i < productsData.Length; i++)
+            {
+                string[] pair = productsData[i].Split(',');
+                string productName = pair[0];
+                if (!int.TryParse(pair[1], out var quantity))
+                {
+                    return new[] {"Err. Incorrect data format"};
+                }
+                productsNamesQuantities[i] = (productName, quantity);
+            }
+
+            double total;
+            try
+            {
+                total = _dao.GetPurchaseTotal(shopId, productsNamesQuantities);
+            }
+            catch (ShopNotExistsException)
+            {
+                return new[] {$"Err. ShopId={shopId} not exists"};
+            }
+
+            if (total < 0)
+            {
+                return new[] {$"Not enough products in the shop"};
+            }
+            return new []{$"Total: {total}"};
         }
     }
 }
