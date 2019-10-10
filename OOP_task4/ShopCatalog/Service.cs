@@ -9,7 +9,9 @@ namespace ShopCatalog
     {
         public string[] ExecuteCommand(string command)
         {
-            return PrintShops();
+//            return ExecCreateShop("create-shop shop-id=5;shop-name='ПУД';shop-address='Симферополь'");
+            return ExecCreateProduct("create-product product-name='Сало украинское'");
+//            return PrintProducts();
         }
 
         internal Service(IDao dao)
@@ -44,7 +46,7 @@ namespace ShopCatalog
         
         private string[] PrintProductsInShop(string args)
         {
-            Regex regex = new Regex(@".*shop-id=(\d+?).*");
+            Regex regex = new Regex(@".*print-shop-products\s+?shop-id=(\d+?).*");
             if (!regex.IsMatch(args))
             {
                 return new []{ "Incorrect shopId" };
@@ -68,7 +70,7 @@ namespace ShopCatalog
         
         private string[] ExecCreateShop(string args)
         {
-            Regex regex = new Regex(@".*shop-id=(\d+?);\s*shop-name='(.+?)';\s*shop-address='(.+?)'\s*");
+            Regex regex = new Regex(@".*create-shop\s+?shop-id=(\d+?);\s*shop-name='(.+?)';\s*shop-address='(.+?)'\s*");
             if (!regex.IsMatch(args))
             {
                 return new []{"Incorrect shop data"};
@@ -89,6 +91,28 @@ namespace ShopCatalog
             }
 
             return new[] {"Creation successful, shop:", $"({shopId}, {shopName}, {shopAddress})"};
+        }
+
+        private string[] ExecCreateProduct(string args)
+        {
+            Regex regex = new Regex(@".*create-product\s*product-name='(.+?)'\s*");
+            if (!regex.IsMatch(args))
+            {
+                return new []{"Incorrect product data"};
+            }
+
+            var matcher = regex.Match(args);
+            string productName = matcher.Groups[1].Value;
+
+            try
+            {
+                _dao.CreateProduct(productName);
+            }
+            catch (MissingDataConsistencyException e)
+            {
+                return new[] {$"Creation error: ProductName='{productName}' already exists"};
+            }
+            return new[] {"Creation successful, product:", $"'{productName}'"};
         }
     }
 }
