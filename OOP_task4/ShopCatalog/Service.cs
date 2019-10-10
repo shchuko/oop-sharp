@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using ShopCatalog.Exceptions;
 
 namespace ShopCatalog
 {
@@ -7,17 +9,9 @@ namespace ShopCatalog
     {
         public string[] ExecuteCommand(string command)
         {
-            
-//            _dao.CreateShop(3, "Пятерка", "Мурманск");
-//            _dao.AddProductToShop(1, "Телевизор PHILIPS", 30002, 10);
-            List<string> list = new List<string>();
-            foreach (var shop in _dao.GetShops())
-            {
-                list.Add(shop.ToString());
-            }
-            return _dao.GetProducts();
+            return PrintShops();
         }
-        
+
         internal Service(IDao dao)
         {
             _dao = dao;
@@ -29,5 +23,24 @@ namespace ShopCatalog
         }
     
         private IDao _dao;
+
+        
+        private string[] PrintShops()
+        {
+            var shopsData = _dao.GetShops();
+            string[] result = new string[shopsData.Length];
+            for (var i = 0; i < shopsData.Length; i++)
+            {
+                result[i] = shopsData[i].ToString();
+            }
+
+            return result;
+        }
+
+        private string[] PrintProducts()
+        {
+            return _dao.GetProducts();
+        }
+        
     }
 }
