@@ -9,9 +9,11 @@ namespace ShopCatalog
     {
         public string[] ExecuteCommand(string command)
         {
-//            return ExecCreateShop("create-shop shop-id=5;shop-name='ПУД';shop-address='Симферополь'");
-            return ExecCreateProduct("create-product product-name='Сало украинское'");
+//            return ExecCreateShop("create-shop shop-id='5';shop-name='ПУД';shop-address='Симферополь'");
+//            return ExecCreateProduct("create-product product-name='Сало украинское'");
 //            return PrintProducts();
+            return ExecAddProductToShop(
+                "add-to-shop shop-id='5';product-name='Сало украинское';price='13.6';quantity='100'");
         }
 
         internal Service(IDao dao)
@@ -46,7 +48,7 @@ namespace ShopCatalog
         
         private string[] PrintProductsInShop(string args)
         {
-            Regex regex = new Regex(@".*print-shop-products\s+?shop-id=(\d+?).*");
+            Regex regex = new Regex(@".*print-shop-products\s+?shop-id='(\d+?)'.*");
             if (!regex.IsMatch(args))
             {
                 return new []{ "Incorrect shopId" };
@@ -70,10 +72,10 @@ namespace ShopCatalog
         
         private string[] ExecCreateShop(string args)
         {
-            Regex regex = new Regex(@".*create-shop\s+?shop-id=(\d+?);\s*shop-name='(.+?)';\s*shop-address='(.+?)'\s*");
+            Regex regex = new Regex(@".*create-shop\s+?shop-id='(\d+?)';\s*shop-name='(.+?)';\s*shop-address='(.+?)'\s*");
             if (!regex.IsMatch(args))
             {
-                return new []{"Incorrect shop data"};
+                return new []{"Err. Incorrect shop data"};
             }
 
             var matcher = regex.Match(args);
@@ -85,9 +87,9 @@ namespace ShopCatalog
             {
                 _dao.CreateShop(shopId, shopName, shopAddress);
             }
-            catch (MissingDataConsistencyException e)
+            catch (MissingDataConsistencyException)
             {
-                return new[] {$"Creation error: shop on ID={shopId} already exists"};
+                return new[] {$"Err. Creation error: shop on ID={shopId} already exists"};
             }
 
             return new[] {"Creation successful, shop:", $"({shopId}, {shopName}, {shopAddress})"};
@@ -98,7 +100,7 @@ namespace ShopCatalog
             Regex regex = new Regex(@".*create-product\s*product-name='(.+?)'\s*");
             if (!regex.IsMatch(args))
             {
-                return new []{"Incorrect product data"};
+                return new []{"Err. Incorrect product data"};
             }
 
             var matcher = regex.Match(args);
@@ -108,11 +110,53 @@ namespace ShopCatalog
             {
                 _dao.CreateProduct(productName);
             }
-            catch (MissingDataConsistencyException e)
+            catch (MissingDataConsistencyException)
             {
-                return new[] {$"Creation error: ProductName='{productName}' already exists"};
+                return new[] {$"Err. Creation error: ProductName='{productName}' already exists"};
             }
             return new[] {"Creation successful, product:", $"'{productName}'"};
+        }
+
+        private string[] ExecAddProductToShop(string args)
+        {
+            Regex regex = new Regex(
+                @".*add-to-shop\s+?shop-id='(\d+?)';\s*product-name='(.+?)'\s*;\s*price='((\d+?)(\.(\d+?))?)';\s*quantity='(\d+?)'\s*");
+            if (!regex.IsMatch(args))
+            {
+                return new []{"Err. Incorrect data format"};
+            }
+                
+            var matcher = regex.Match(args);
+            int shopId = int.Parse(matcher.Groups[1].Value);
+            string productName = matcher.Groups[2].Value;
+            if (!double.TryParse(matcher.Groups[3].Value, out var productPrice))
+            {
+                return new []{"Err. Incorrect data format"};
+            }
+            int productQuantity = int.Parse(matcher.Groups[7].Value);
+
+            try
+            {
+                _dao.AddProductToShop(shopId, productName, productPrice, productQuantity);
+            }
+            catch (ShopNotExistsException)
+            {
+                return new[] {$"Err. Product adding error: shop on ShopId={shopId} not exists"};
+            }
+            catch (ProductNotExistsException)
+            {
+                return new[] {$"Err. Product adding error: product with ProductName={productName} not exists"};
+            }
+            catch (MissingDataConsistencyException)
+            {
+                return new[] {$"Err. Product already exists in shop. To update data use upd-product-* commands"};
+            }
+
+            return new[] 
+            {
+                $"Creation successful, product added to shop #{shopId} - {_dao.GetShopName(shopId)}",
+                $"({productName}, {productPrice}, {productQuantity})"
+            };
         }
     }
 }
