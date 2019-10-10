@@ -85,10 +85,10 @@ namespace ShopCatalog
             }
             catch (MissingDataConsistencyException e)
             {
-                return new[] {"Creation error: shop already exists"};
+                return new[] {$"Creation error: shop on ID={shopId} already exists"};
             }
 
-            return new[] {"Creation successful"};
+            return new[] {"Creation successful, shop:", $"({shopId}, {shopName}, {shopAddress})"};
         }
     }
 }
