@@ -255,6 +255,53 @@ namespace ShopCatalog.MariaDBDao
             return quantity;
         }
 
+        /** Get product price in the shop[shopId] by productName
+         * @param shopId shop to search in
+         * @param productName name of product to search
+         * @return price of product or -1 if product or shop not exists
+         */
+        public double GetProductPrice(int shopId, string productName)
+        {
+            int productId = GetProductId(productName);
+            if (productId == -1)
+                return -1;
+
+            double price = -1;
+            try
+            {
+                if (_connection.State != ConnectionState.Open)
+                    _connection.Open();
+                using (MySqlCommand command = _connection.CreateCommand())
+                {
+                    command.CommandText =
+                        @"SELECT Price FROM ShopProduct WHERE ShopID = @shopID AND ProductID = @productID";
+                    command.Parameters.Add("@shopID", MySqlDbType.Int32);
+                    command.Parameters["@shopID"].Value = shopId;
+                    command.Parameters.Add("@productID", MySqlDbType.Int32);
+                    command.Parameters["@productID"].Value = productId;
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            reader.Read();
+                            price = double.Parse(reader[0].ToString());
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw new DatabaseDataReadingException(e.ToString());
+            }
+            finally
+            {
+                _connection.Close();
+            }
+
+            return price;
+        }
+
         /** Get shop ID with minimal price for product, if quantity of product in the shop > 0
          * @return ShopId if product found, -1 if product not found or quantity == 0
          */

@@ -114,6 +114,21 @@ namespace ShopCatalog.CsvDao.CsvTempCatalog
             return _shopProducts[shopId].GetQuantity(productName);
         }
 
+        /** Get product price in the shop[shopId] by productName
+         * @param shopId shop to search in
+         * @param productName name of product to search
+         * @return price of product or -1 if product or shop not exists
+         */
+        public double GetProductPrice(int shopId, string productName)
+        {
+            if (!IsShopExists(shopId))
+            {
+                throw new ShopNotExistsException();
+            }
+
+            return _shopProducts[shopId].GetPrice(productName);
+        }
+
         /** Get shop ID with minimal price for product, if quantity of product in the shop > 0
          * @return ShopId if product found, -1 if product not found or quantity == 0
          */
@@ -234,7 +249,7 @@ namespace ShopCatalog.CsvDao.CsvTempCatalog
           * @param productName Name of the product
           * @return true if exists, false if not
           */
-        public bool IsShopContainsProduct(int shopId, string productName)
+        internal bool IsShopContainsProduct(int shopId, string productName)
         {
             if (!IsShopExists(shopId))
             {

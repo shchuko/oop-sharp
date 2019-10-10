@@ -43,11 +43,19 @@ namespace ShopCatalog.CsvDao.CsvTempCatalog
 
         internal int GetQuantity(string productName)
         {
+            if (!HasProduct(productName))
+            {
+                return -1;
+            }
             return _productsInShop[productName].Quantity;
         }
 
         internal double GetPrice(string productName)
         {
+            if (!HasProduct(productName))
+            {
+                return -1;
+            }
             return _productsInShop[productName].Price;
         }
 

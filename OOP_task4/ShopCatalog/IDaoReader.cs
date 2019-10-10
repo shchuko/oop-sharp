@@ -16,6 +16,8 @@ namespace ShopCatalog
 
         int GetProductQuantity(int shopId, string productName);
 
+        double GetProductPrice(int shopId, string productName);
+
         (string, int)[] GetProductsForPrice(int shopId, double totalMaxPrice);
 
         double GetPurchaseTotal(int shopId, (string, int)[] productsData);

@@ -99,6 +99,12 @@ namespace ShopCatalog.CsvDao
             return catalog.GetProductQuantity(shopId, productName);
         }
 
+        public double GetProductPrice(int shopId, string productName)
+        {
+            TempShopCatalog catalog = ParseCsvFiles(_shopsDataFilepath, _productsDataFilepath);
+            return catalog.GetProductPrice(shopId, productName);
+        }
+
         public bool BuyProducts(int shopId, (string, int)[] productsData)
         {
             TempShopCatalog catalog = ParseCsvFiles(_shopsDataFilepath, _productsDataFilepath);
