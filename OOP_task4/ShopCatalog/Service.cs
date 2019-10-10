@@ -42,5 +42,29 @@ namespace ShopCatalog
             return _dao.GetProducts();
         }
         
+        private string[] PrintProductsInShop(string args)
+        {
+            Regex regex = new Regex(@".*shop-id=(\d+?).*");
+            if (!regex.IsMatch(args))
+            {
+                return new []{ "Incorrect shopId" };
+            }
+            int shopId = int.Parse(regex.Match(args).Groups[1].Value);
+
+            string[] products = _dao.GetProducts();
+            List<string> result = new List<string>();
+            result.Add($"Products in the shop #{shopId} - {_dao.GetShopName(shopId)}:");
+            foreach (string productName in products)
+            {
+                if (_dao.IsShopContainsProduct(shopId, productName))
+                {
+                    result.Add($"({productName}, {_dao.GetProductQuantity(shopId, productName)}," +
+                               $" {_dao.GetProductPrice(shopId, productName)})");
+                }
+            }
+
+            return result.ToArray();
+        }
+        
     }
 }
