@@ -16,7 +16,7 @@ namespace ShopCatalog
 //                "add-to-shop shop-id='5';product-name='Сало украинское';price='13.6';quantity='100'");
 //            return PrintShopWithMinPrice("where-is-min-price product-name='Сало украинское'");
 //            return PrintProductsForTotal("get-products-for-total shop-id='5';total='100000.5'");
-            return PrintMinPriceShopId("where-is-cheeper products=[Шоколад ‘Аленка’,2|Телевизор PHILIPS,1]");
+            return PrintMinPriceShopId("where-is-cheaper products=[Шоколад ‘Аленка’,2|Телевизор PHILIPS,1]");
         }
 
         internal Service(IDao dao)
@@ -329,7 +329,7 @@ namespace ShopCatalog
         private string[] PrintMinPriceShopId(string args)
         {
             Regex regex = new Regex(
-                @".*where-is-cheeper\s+?products=\[(.+?)\]\s*");
+                @".*where-is-cheaper\s+?products=\[(.+?)\]\s*");
 
             if (!regex.IsMatch(args))
             {
