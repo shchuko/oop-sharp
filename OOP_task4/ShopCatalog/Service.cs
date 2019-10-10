@@ -14,7 +14,8 @@ namespace ShopCatalog
 //            return PrintProducts();
 //            return ExecAddProductToShop(
 //                "add-to-shop shop-id='5';product-name='Сало украинское';price='13.6';quantity='100'");
-            return PrintShopWithMinPrice("where-is-min-price product-name='Сало украинское'");
+//            return PrintShopWithMinPrice("where-is-min-price product-name='Сало украинское'");
+            return GetProductsForTotal("get-products-for-total shop-id='5';total='100000.5'");
         }
 
         internal Service(IDao dao)
@@ -165,7 +166,7 @@ namespace ShopCatalog
             Regex regex = new Regex(@".*where-is-min-price\s*product-name='(.+?)'\s*");
             if (!regex.IsMatch(args))
             {
-                return new []{"Err. Incorrect product data"};
+                return new []{"Err. Incorrect data"};
             }
 
             var matcher = regex.Match(args);
@@ -186,10 +187,46 @@ namespace ShopCatalog
             {
                 return new[] {$"Err. Product ProductName='{productName}' exists, but not found in any shop"};
             }
+            
             return new[]
             {
                 $"Minimum price for '{productName}' is in the shop #{shopId} {_dao.GetShopName(shopId)}. Price: {price}"
             };
+        }
+
+        private string[] GetProductsForTotal(string args)
+        {
+            Regex regex = new Regex(@".*get-products-for-total\s+?shop-id='(\d+?)';\s*total='((\d+?)(\.(\d+?))?)'\s*");
+
+            if (!regex.IsMatch(args))
+            {
+                return new []{"Err. Incorrect data"};
+            }
+
+            var matcher = regex.Match(args);
+            int shopId = int.Parse(matcher.Groups[1].Value);
+            if (!double.TryParse(matcher.Groups[2].Value, out var maxTotal))
+            {
+                return new []{"Err. Incorrect data format"};
+            }
+
+            (string, int)[] productsData;
+            try
+            {
+                productsData = _dao.GetProductsForPrice(shopId, maxTotal);
+            }
+            catch (ShopNotExistsException)
+            {
+                return new[] {$"Err. ShopId={shopId} not exists"};
+            }
+            
+            string[] result = new string[productsData.Length];
+            for (var index = 0; index < productsData.Length; index++)
+            {
+                result[index] = $"Product: {productsData[index].Item1}, Max quantity: {productsData[index].Item2}";
+            }
+
+            return result;
         }
     }
 }
