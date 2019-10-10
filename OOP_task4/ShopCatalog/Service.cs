@@ -16,7 +16,10 @@ namespace ShopCatalog
 //                "add-to-shop shop-id='5';product-name='Сало украинское';price='13.6';quantity='100'");
 //            return PrintShopWithMinPrice("where-is-min-price product-name='Сало украинское'");
 //            return PrintProductsForTotal("get-products-for-total shop-id='5';total='100000.5'");
-            return PrintMinPriceShopId("where-is-cheaper products=[Шоколад ‘Аленка’,2|Телевизор PHILIPS,1]");
+//            return PrintMinPriceShopId("where-is-cheaper products=[Шоколад ‘Аленка’,2|Телевизор PHILIPS,1]");
+//            return ExecUpdatePrice("upd-price shop-id='5';product-name='Сало украинское';price='15.5'");
+            return ExecUpdateQuantity("upd-quantity shop-id='5';product-name='Сало украинское';quantity='67'");
+
         }
 
         internal Service(IDao dao)
@@ -30,7 +33,7 @@ namespace ShopCatalog
         }
     
         private IDao _dao;
-
+        
         
         private string[] PrintShops()
         {
@@ -366,6 +369,77 @@ namespace ShopCatalog
                 return new[] {$"No data found for your request"};
             }
             return new []{$"Minimum price of purchase can be in the shop #{shopId} {_dao.GetShopName(shopId)}"};
+        }
+
+        private string[] ExecUpdatePrice(string args)
+        {
+            Regex regex = new Regex(
+                @".*upd-price\s+?shop-id='(\d+?)';\s*product-name='(.+?)'\s*;\s*price='((\d+?)(\.(\d+?))?)'\s*");
+            if (!regex.IsMatch(args))
+            {
+                return new []{"Err. Incorrect data format"};
+            }
+                
+            var matcher = regex.Match(args);
+            int shopId = int.Parse(matcher.Groups[1].Value);
+            string productName = matcher.Groups[2].Value;
+            if (!double.TryParse(matcher.Groups[3].Value, out var productPrice))
+            {
+                return new []{"Err. Incorrect data format"};
+            }
+
+            try
+            {
+                _dao.UpdatePrice(shopId, productName, productPrice);
+            }
+            catch (ShopNotExistsException)
+            {
+                return new[] {$"Err. Shop on ShopId={shopId} not exists"};
+            }
+            catch (ProductNotExistsException)
+            {
+                return new[] {$"Err. Product with ProductName={productName} not exists"};
+            }
+
+            return new[] 
+            {
+                $"Updating price successful, in the shop #{shopId} - {_dao.GetShopName(shopId)}",
+                $"'{productName}' costs {productPrice}"
+            };
+        }
+        
+        private string[] ExecUpdateQuantity(string args)
+        {
+            Regex regex = new Regex(
+                @".*upd-quantity\s+?shop-id='(\d+?)';\s*product-name='(.+?)'\s*;\s*quantity='(\d+?)'\s*");
+            if (!regex.IsMatch(args))
+            {
+                return new []{"Err. Incorrect data format"};
+            }
+                
+            var matcher = regex.Match(args);
+            int shopId = int.Parse(matcher.Groups[1].Value);
+            string productName = matcher.Groups[2].Value;
+            int quantity = int.Parse(matcher.Groups[3].Value);
+
+            try
+            {
+                _dao.UpdateQuantity(shopId, productName, quantity);
+            }
+            catch (ShopNotExistsException)
+            {
+                return new[] {$"Err. Shop on ShopId={shopId} not exists"};
+            }
+            catch (ProductNotExistsException)
+            {
+                return new[] {$"Err. Product with ProductName={productName} not exists"};
+            }
+
+            return new[] 
+            {
+                $"Updating quantity successful, in the shop #{shopId} - {_dao.GetShopName(shopId)}",
+                $"'{productName}' - {quantity} pcs."
+            };
         }
     }
 }
