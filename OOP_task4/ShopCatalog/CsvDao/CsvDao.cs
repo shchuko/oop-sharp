@@ -159,8 +159,8 @@ namespace ShopCatalog.CsvDao
         private readonly string _shopsDataFilepath;
         private readonly string _productsDataFilepath;
         
-        private static readonly Regex ShopsDataFilepathRegex = new Regex(@"\s*(;|^)\s*shopData\s*=\s*(.*?)(;|$)");
-        private static readonly Regex ProductsDataFilepathRegex = new Regex(@"\s*(;|^)\s*productData\s*=\s*(.*?)(;|$)");
+        private static readonly Regex ShopsDataFilepathRegex = new Regex(@"\s*(;|^)\s*shopData\s*=\s*(.+?)(;|$)");
+        private static readonly Regex ProductsDataFilepathRegex = new Regex(@"\s*(;|^)\s*productData\s*=\s*(.+?)(;|$)");
 
         private static TempShopCatalog ParseCsvFiles(string shopDataFilepath, string productsDataFilepath)
         {
