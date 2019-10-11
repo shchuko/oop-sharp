@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using ShopCatalog.Exceptions;
@@ -15,6 +14,9 @@ namespace ShopCatalog
          */
         public string[] ExecuteCommand(string command)
         {
+            if (command.Length == 0 || command.Contains("get-help"))
+                return PrintHelp();
+            
             if (command.Contains("print-shops"))
                 return PrintShops();
 
@@ -475,6 +477,36 @@ namespace ShopCatalog
                 $"'{productName}' - {quantity} pcs."
             };
         }
-        
+
+        private string[] PrintHelp()
+        {
+            return new[]
+            {
+                "Supported commands (without brackets):",
+                "[get-help]\t - \t" + "print supported commands",
+                "[print-shops]\t - \t" + "print shops list",
+                "[print-products]\t - \t" + "print products list",
+                "[print-shop-products shop-id='<id>']\t - \t" + "print products in the shop with shop id <id>",
+                "[create-shop shop-id='<id>';shop-name='<name>';shop-address='<address>'\t - \t" 
+                    + "create and add shop to catalog",
+                "[create-product product-name='<name>']\t - \t" + "create and add product to catalog",
+                "[add-to-shop shop-id='<id>';product-name='<name>';price='<price>';quantity='<qt.>']\t - \t" +
+                    "add product to shop",
+                "[upd-price shop-id='<id>';product-name='<name>';price='<price>']\t - \t" + 
+                    "update product price",
+                "[upd-quantity shop-id='<id>';product-name='<name>';quantity='<quantity>']\t - \t" +
+                    "update product quantity",
+                "[find-min-product-price product-name='<name>']\t - \t" +
+                    "find shop with minimal price for product",
+                "[get-products-for-total shop-id='<id>';total='<total>']\t - \t" +
+                    "print list of products can be bought for fixed total price",
+                "[get-total shop-id='<id>';products=[prod1-name, prod1-quantity|prod2-name, prod2-quantity...]\t - \t" +
+                    "print total for purchase",
+                "[buy-products shop-id='<id>';products=[prod1-name, prod1-quantity|prod2-name, prod2-quantity...]\t - \t" + 
+                    "buy products if there's enough quantities",
+                "[find-min-total products=[prod1-name, prod1-quantity|prod2-name, prod2-quantity...]\t - \t" +
+                    "get shop with minimal total for purchase"
+            };
+        }
     }
 }
