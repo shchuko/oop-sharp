@@ -15,11 +15,24 @@ namespace OOP_task4
             string csvConnectString = "shopData=/home/shchuko/csvdata/shopData.csv;" +
                                       "productData=/home/shchuko/csvdata/productData.csv";
             Service service = Manager.CreateService(ServiceEngineTypes.CsvEngineType, csvConnectString);
-            string[] result = service.ExecuteCommand("");
-            foreach (string s in result)
+
+            while (true)
             {
-                Console.WriteLine(s);
+                Console.Write(">> ");
+                string command = Console.In.ReadLine();
+                if (command.Contains("exit"))
+                {
+                    Console.WriteLine("exit");
+                    break;
+                }
+
+                string[] result = service.ExecuteCommand(command);
+                foreach (string s in result)
+                {
+                    Console.WriteLine(s);
+                }
             }
+            
         }
     }
 }

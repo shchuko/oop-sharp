@@ -9,17 +9,46 @@ namespace ShopCatalog
     {
         public string[] ExecuteCommand(string command)
         {
-//            return ExecCreateShop("create-shop shop-id='5';shop-name='ПУД';shop-address='Симферополь'");
-//            return ExecCreateProduct("create-product product-name='Сало украинское'");
-//            return PrintProducts();
-//            return ExecAddProductToShop(
-//                "add-to-shop shop-id='5';product-name='Сало украинское';price='13.6';quantity='100'");
-//            return PrintShopWithMinPrice("where-is-min-price product-name='Сало украинское'");
-//            return PrintProductsForTotal("get-products-for-total shop-id='5';total='100000.5'");
-//            return PrintMinPriceShopId("where-is-cheaper products=[Шоколад ‘Аленка’,2|Телевизор PHILIPS,1]");
-//            return ExecUpdatePrice("upd-price shop-id='5';product-name='Сало украинское';price='15.5'");
-            return ExecUpdateQuantity("upd-quantity shop-id='5';product-name='Сало украинское';quantity='67'");
+            if (command.Contains("print-shops"))
+                return PrintShops();
 
+            if (command.Contains("print-products"))
+                return PrintProducts();
+
+            if (command.Contains("print-shop-products"))
+                return PrintProductsInShop(command);
+
+            if (command.Contains("create-shop"))
+                return ExecCreateShop(command);
+
+            if (command.Contains("create-product"))
+                return ExecCreateProduct(command);
+
+            if (command.Contains("add-to-shop"))
+                return ExecAddProductToShop(command);
+
+            if (command.Contains("upd-price"))
+                return ExecUpdatePrice(command);
+
+            if (command.Contains("upd-quantity"))
+                return ExecUpdateQuantity(command);
+
+            if (command.Contains("find-min-product-price"))
+                return PrintShopWithMinProductPrice(command);
+
+            if (command.Contains("get-products-for-total"))
+                return PrintProductsForTotal(command);
+
+            if (command.Contains("get-total"))
+                return PrintPurchaseTotal(command);
+
+            if (command.Contains("buy-products"))
+                return ExecBuyProducts(command);
+
+            if (command.Contains("find-min-total"))
+                return PrintMinTotalShopId(command);
+
+            return new[] {"Incorrect command"};
         }
 
         internal Service(IDao dao)
@@ -33,7 +62,6 @@ namespace ShopCatalog
         }
     
         private IDao _dao;
-        
         
         private string[] PrintShops()
         {
@@ -165,9 +193,9 @@ namespace ShopCatalog
             };
         }
 
-        private string[] PrintShopWithMinPrice(string args)
+        private string[] PrintShopWithMinProductPrice(string args)
         {
-            Regex regex = new Regex(@".*where-is-min-price\s*product-name='(.+?)'\s*");
+            Regex regex = new Regex(@".*find-min-product-price\s*product-name='(.+?)'\s*");
             if (!regex.IsMatch(args))
             {
                 return new []{"Err. Incorrect data"};
@@ -329,10 +357,10 @@ namespace ShopCatalog
             return new []{$"Buying successful. Total: {total}"};
         }
 
-        private string[] PrintMinPriceShopId(string args)
+        private string[] PrintMinTotalShopId(string args)
         {
             Regex regex = new Regex(
-                @".*where-is-cheaper\s+?products=\[(.+?)\]\s*");
+                @".*find-min-total\s+?products=\[(.+?)\]\s*");
 
             if (!regex.IsMatch(args))
             {
@@ -441,5 +469,6 @@ namespace ShopCatalog
                 $"'{productName}' - {quantity} pcs."
             };
         }
+        
     }
 }
