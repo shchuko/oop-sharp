@@ -593,7 +593,7 @@ namespace ShopCatalog.MariaDBDao
                     _connection.Open();
                 using (MySqlCommand command = _connection.CreateCommand())
                 {
-                    command.CommandText = @"SELECT COUNT(ShopId) FROM ShopProduct WHERE ShopID = @shopID AND ProductID = @productID";
+                    command.CommandText = @"SELECT ProductID FROM ShopProduct WHERE ShopID = @shopID AND ProductID = @productID";
                     command.Parameters.Add("@shopID", MySqlDbType.Int32).Value = shopId;
                     command.Parameters.Add("@productID", MySqlDbType.Int32).Value = productId;
 
