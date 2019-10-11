@@ -246,6 +246,12 @@ namespace ShopCatalog.CsvDao
         private static readonly Regex ShopsDataFilepathRegex = new Regex(@"\s*(;|^)\s*shopData\s*=\s*(.+?)(;|$)");
         private static readonly Regex ProductsDataFilepathRegex = new Regex(@"\s*(;|^)\s*productData\s*=\s*(.+?)(;|$)");
 
+        /**
+         * Create TempShopCatalog from csv files
+         * @param shopDataFilepath Path to shop data file
+         * @param productsDataFilepath Path to products data file
+         * @return created TempShopCatalog with csv files data
+         */
         private static TempShopCatalog ParseCsvFiles(string shopDataFilepath, string productsDataFilepath)
         {
             TempShopCatalog catalog = new TempShopCatalog();
@@ -254,6 +260,11 @@ namespace ShopCatalog.CsvDao
             return catalog;
         }
 
+        /**
+          * Load shops data from csv file to TempShopCatalog
+          * @param catalog Target to add into
+          * @param shopDataFilepath Path to shop data file
+          */
         private static void ParseShopData(ref TempShopCatalog catalog, string shopDataFilepath)
         {
             using (var reader = File.OpenText(shopDataFilepath))
@@ -273,6 +284,11 @@ namespace ShopCatalog.CsvDao
             }
         }
         
+        /**
+          * Load products data from csv file to TempShopCatalog
+          * @param catalog Target to add into
+          * @param productDataFilepath Path to products data file
+          */
         private static void ParseProductData(ref TempShopCatalog catalog, string productDataFilepath)
         {
             using (var reader = File.OpenText(productDataFilepath))
@@ -300,6 +316,12 @@ namespace ShopCatalog.CsvDao
             }
         }
 
+        /**
+         * Write data from TempShopCatalog to csv files. If files exist, they will be cleared
+         * @param catalog TempShopCatalog catalog to load data from
+         * @param shopDataFilepath Shop data target file
+         * @param productDataFilepath Products data target file
+         */
         private static void WriteDataToCsvFiles(TempShopCatalog catalog, string shopDataFilepath,
             string productDataFilepath)
         {

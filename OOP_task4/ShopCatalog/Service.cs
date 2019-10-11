@@ -7,6 +7,12 @@ namespace ShopCatalog
 {
     public class Service
     {
+        /**
+         * Execute command
+         * To show supported commands invoke this method with "get-help" parameter
+         * @param command Command to execute
+         * @return Array of strings with result
+         */
         public string[] ExecuteCommand(string command)
         {
             if (command.Contains("print-shops"))
