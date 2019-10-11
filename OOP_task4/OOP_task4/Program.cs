@@ -1,5 +1,8 @@
 ﻿using System;
+using System.IO;
 using ShopCatalog;
+using IniParser;
+using IniParser.Model;
 
 namespace OOP_task4
 {
@@ -7,20 +10,39 @@ namespace OOP_task4
     {
         static void Main(string[] args)
         {
-            string mariaDbServiceArgs = "server=localhost;port=3306;user id=shopAdmin; password=password; " +
-                                      "database=ShopDB; SslMode=none";
+            StartApp(args[0]);
+        }
+
+        private static void StartApp(string propertyFilepath)
+        {
+            (string, string) properties;
+            try
+            {
+                properties = ParsePropertyFile(propertyFilepath);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Property file reading error");
+                return;
+            }
             
-//            Service service = Manager.CreateService(ServiceEngineTypes.MariaDBEngineType, mariaDbServiceArgs);
+            Service service;
+            try
+            {
+                service = Manager.CreateService(properties.Item1, properties.Item2);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Creation service error");
+                return;
+            }
 
-            string csvConnectString = "shopData=/home/shchuko/csvdata/shopData.csv;" +
-                                      "productData=/home/shchuko/csvdata/productData.csv";
-            Service service = Manager.CreateService(ServiceEngineTypes.CsvEngineType, csvConnectString);
-
+            Console.WriteLine("Connection successful. Type 'exit' to exit");
             while (true)
             {
                 Console.Write(">> ");
                 string command = Console.In.ReadLine();
-                if (command.Contains("exit"))
+                if ("exit".Equals(command) || command == null) 
                 {
                     Console.WriteLine("exit");
                     break;
@@ -32,7 +54,15 @@ namespace OOP_task4
                     Console.WriteLine(s);
                 }
             }
+        }
+
+        private static (string, string) ParsePropertyFile(string filepath)
+        {
+            IniData data = new StringIniParser().ParseString(File.ReadAllText(filepath));
+            string driver = data["CATALOG_PROPERTIES"]["driver"];
+            string connectionString = data["CATALOG_PROPERTIES"]["connection-string"];
             
+            return (driver, connectionString);
         }
     }
 }

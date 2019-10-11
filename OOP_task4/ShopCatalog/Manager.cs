@@ -27,5 +27,10 @@ namespace ShopCatalog
             return new Service(dao);
         }
         
+        public static Service CreateService(string serviceEngineClassname, string arguments)
+        {
+            return CreateService(Type.GetType(serviceEngineClassname), arguments);
+        }
+        
     }
 }
