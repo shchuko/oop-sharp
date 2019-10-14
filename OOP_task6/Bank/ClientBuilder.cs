@@ -41,6 +41,7 @@ namespace Bank
         {
             if (_client.Name != null && _client.Surname != null)
             {
+                _client.UpdVerificationStatus();
                 return _client;
             }    
             
