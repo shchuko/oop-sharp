@@ -9,9 +9,9 @@
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="Bank" t="IncludeRecursive">
         <e p="Accounts" t="Include">
+          <e p="AbstractAccount.cs" t="Include" />
           <e p="IAccount.cs" t="Include" />
           <e p="Impl" t="Include">
-            <e p="AbstractAccount.cs" t="Include" />
             <e p="AccountFactory.cs" t="Include" />
             <e p="CreditAccount.cs" t="Include" />
             <e p="CurrentAccount.cs" t="Include" />
