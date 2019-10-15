@@ -1,4 +1,6 @@
-namespace Bank
+using Bank.Clients;
+
+namespace Bank.Accounts
 {
     public interface IAccount
     {
@@ -9,5 +11,9 @@ namespace Bank
         bool TransferTo(IAccount account, double subTotal);
         
         Client GetClient();
+
+        double GetTotal();
+
+        double GetRate();
     }
 }

@@ -1,6 +1,7 @@
 using System;
+using Bank.Clients;
 
-namespace Bank
+namespace Bank.Accounts.Impl
 {
     public class AccountFactory
     {
@@ -21,20 +22,20 @@ namespace Bank
 
         private IAccount CreateCurrentAccount(Client client, double rate)
         {
-            CurrentAbstractAccount abstractAccount = new CurrentAbstractAccount(client, rate);
-            return abstractAccount;
+            CurrentAccount account = new CurrentAccount(client, rate);
+            return account;
         }
 
         private IAccount CreateCreditAccount(Client client, double commission, double rate, double limit)
         {
-            CreditAbstractAccount abstractAccount = new CreditAbstractAccount(client, commission, rate, limit);
-            return abstractAccount;
+            CreditAccount account = new CreditAccount(client, commission, rate, limit);
+            return account;
         }
 
         private IAccount CreateDepositAccount(Client client, double rate, DateTime exceedTime)
         {
-            DepositAbstractAccount abstractAccount = new DepositAbstractAccount(client, rate, exceedTime);
-            return abstractAccount;
+            DepositAccount account = new DepositAccount(client, rate, exceedTime);
+            return account;
         }
         
     }

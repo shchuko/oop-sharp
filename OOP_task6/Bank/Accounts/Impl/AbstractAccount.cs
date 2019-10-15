@@ -1,6 +1,6 @@
-using System;
+using Bank.Clients;
 
-namespace Bank
+namespace Bank.Accounts
 {
     public abstract class AbstractAccount : IAccount
     {
@@ -46,6 +46,13 @@ namespace Bank
         {
             return _client;
         }
+
+        public double GetTotal()
+        {
+            return Total;
+        }
+
+        public abstract double GetRate();
 
 
         protected double Total;

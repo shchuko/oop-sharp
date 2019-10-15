@@ -1,4 +1,4 @@
-namespace Bank
+namespace Bank.Accounts.Wrappers
 {
     public class AccountSafeProtected : AccountWrapper
     {

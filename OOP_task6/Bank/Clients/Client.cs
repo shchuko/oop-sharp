@@ -1,4 +1,4 @@
-namespace Bank
+namespace Bank.Clients
 {
     public class Client
     {

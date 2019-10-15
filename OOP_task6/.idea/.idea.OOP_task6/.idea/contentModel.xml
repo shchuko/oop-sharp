@@ -8,19 +8,34 @@
     <e p="$USER_HOME$/.Rider2019.2/system/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_OOP_task6.-609293902.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="Bank" t="IncludeRecursive">
-        <e p="AbstractAccount.cs" t="Include" />
-        <e p="AccountFactory.cs" t="Include" />
-        <e p="AccountSafeProtected.cs" t="Include" />
-        <e p="AccountWrapper.cs" t="Include" />
+        <e p="Accounts" t="Include">
+          <e p="IAccount.cs" t="Include" />
+          <e p="Impl" t="Include">
+            <e p="AbstractAccount.cs" t="Include" />
+            <e p="AccountFactory.cs" t="Include" />
+            <e p="CreditAccount.cs" t="Include" />
+            <e p="CurrentAccount.cs" t="Include" />
+            <e p="DepositAccount.cs" t="Include" />
+          </e>
+          <e p="Wrappers" t="Include">
+            <e p="AccountSafeProtected.cs" t="Include" />
+            <e p="AccountWrapper.cs" t="Include" />
+          </e>
+        </e>
         <e p="Bank.cs" t="Include" />
         <e p="Bank.csproj" t="IncludeRecursive" />
-        <e p="ClassNotBuiltException.cs" t="Include" />
-        <e p="Client.cs" t="Include" />
-        <e p="ClientBuilder.cs" t="Include" />
-        <e p="CreditAbstractAccount.cs" t="Include" />
-        <e p="CurrentAbstractAccount.cs" t="Include" />
-        <e p="DepositAbstractAccount.cs" t="Include" />
-        <e p="IAccount.cs" t="Include" />
+        <e p="Clients" t="Include">
+          <e p="Client.cs" t="Include" />
+          <e p="ClientBuilder.cs" t="Include" />
+          <e p="Exceptions" t="Include">
+            <e p="ClassNotBuiltException.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Requests" t="Include">
+          <e p="Request.cs" t="Include" />
+          <e p="TakeCommissionRequest.cs" t="Include" />
+          <e p="UpdateByRateRequest.cs" t="Include" />
+        </e>
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">

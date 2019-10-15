@@ -1,10 +1,11 @@
 using System;
+using Bank.Clients;
 
-namespace Bank
+namespace Bank.Accounts.Impl
 {
-    public class DepositAbstractAccount : AbstractAccount
+    public class DepositAccount : AbstractAccount
     {
-        internal DepositAbstractAccount(Client client, double rate, DateTime exceedTime) : base(client)
+        internal DepositAccount(Client client, double rate, DateTime exceedTime) : base(client)
         {
             _rate = rate;
             _exceedTime = exceedTime;
@@ -18,7 +19,12 @@ namespace Bank
             Total -= subTotal;
             return true;
         }
-        
+
+        public override double GetRate()
+        {
+            return _rate;
+        }
+
         private double _rate;
         private DateTime _exceedTime;
     }

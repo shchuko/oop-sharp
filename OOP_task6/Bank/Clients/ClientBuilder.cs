@@ -1,4 +1,6 @@
-namespace Bank
+using Bank.Clients.Exceptions;
+
+namespace Bank.Clients
 {
     public class ClientBuilder
     {

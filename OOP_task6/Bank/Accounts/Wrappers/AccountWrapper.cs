@@ -1,4 +1,6 @@
-namespace Bank
+using Bank.Clients;
+
+namespace Bank.Accounts.Wrappers
 {
     public abstract class AccountWrapper : IAccount
     {
@@ -15,6 +17,16 @@ namespace Bank
         public virtual Client GetClient()
         {
             return _wrappee.GetClient();
+        }
+
+        public double GetTotal()
+        {
+            return _wrappee.GetTotal();
+        }
+
+        public double GetRate()
+        {
+            return _wrappee.GetRate();
         }
 
         public virtual bool TopUp(double subTotal)
