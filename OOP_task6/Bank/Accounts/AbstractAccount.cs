@@ -43,7 +43,7 @@ namespace Bank.Accounts
         }
 
         public abstract double GetRate();
-        public abstract string GetType();
+        public abstract string GetAccountType();
 
 
         protected double Total;

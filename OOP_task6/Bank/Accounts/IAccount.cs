@@ -16,6 +16,6 @@ namespace Bank.Accounts
 
         double GetRate();
 
-        string GetType();
+        string GetAccountType();
     }
 }

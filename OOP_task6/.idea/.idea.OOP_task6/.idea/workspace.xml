@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b339920f-5aaa-4a51-b552-4f92cbc05116" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.OOP_task6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OOP_task6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bank/Accounts/AbstractAccount.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/Accounts/AbstractAccount.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bank/Accounts/IAccount.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/Accounts/IAccount.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bank/Accounts/Impl/CreditAccount.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/Accounts/Impl/CreditAccount.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bank/Accounts/Impl/CurrentAccount.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/Accounts/Impl/CurrentAccount.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bank/Accounts/Impl/DepositAccount.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/Accounts/Impl/DepositAccount.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bank/Accounts/Wrappers/AccountWrapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/Accounts/Wrappers/AccountWrapper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP_task6/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OOP_task6/Program.cs" afterDir="false" />
-    </list>
+    <list default="true" id="b339920f-5aaa-4a51-b552-4f92cbc05116" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +51,6 @@
         <option value="$PROJECT_DIR$/Bank/AccountSafeOperations.cs" />
         <option value="$PROJECT_DIR$/Bank/AccountSafeProtected.cs" />
         <option value="$PROJECT_DIR$/Bank/Request.cs" />
-        <option value="$PROJECT_DIR$/Bank/Accounts/Wrappers/AccountSafeProtected.cs" />
         <option value="$PROJECT_DIR$/Bank/Clients/ClientBuilder.cs" />
         <option value="$PROJECT_DIR$/Bank/Clients/Client.cs" />
         <option value="$PROJECT_DIR$/Bank/Clients/ClassNotBuiltException.cs" />
@@ -77,10 +67,11 @@
         <option value="$PROJECT_DIR$/Bank/Clients/Exceptions/ClassNotBuiltException.cs" />
         <option value="$PROJECT_DIR$/Bank/Accounts/IAccount.cs" />
         <option value="$PROJECT_DIR$/Bank/Accounts/Wrappers/AccountWrapper.cs" />
-        <option value="$PROJECT_DIR$/Bank/Accounts/AbstractAccount.cs" />
         <option value="$PROJECT_DIR$/Bank/Accounts/Impl/CreditAccount.cs" />
         <option value="$PROJECT_DIR$/Bank/Accounts/Impl/CurrentAccount.cs" />
         <option value="$PROJECT_DIR$/Bank/Accounts/Impl/DepositAccount.cs" />
+        <option value="$PROJECT_DIR$/Bank/Accounts/AbstractAccount.cs" />
+        <option value="$PROJECT_DIR$/Bank/Accounts/Wrappers/AccountSafeProtected.cs" />
         <option value="$PROJECT_DIR$/OOP_task6/Program.cs" />
       </list>
     </option>
@@ -142,7 +133,7 @@
       <option name="presentableId" value="Default" />
       <updated>1571063375026</updated>
       <workItem from="1571063376535" duration="14634000" />
-      <workItem from="1571210091834" duration="1512000" />
+      <workItem from="1571210091834" duration="1746000" />
     </task>
     <task id="LOCAL-00001" summary="Create oop_task6. Create Client + ClientBuilder classes">
       <created>1571065408741</created>
@@ -186,7 +177,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571099123416</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Oop task 6 finish">
+      <created>1571211807596</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1571211807596</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,7 +212,8 @@
     <MESSAGE value="Create account types, wrapper" />
     <MESSAGE value="Move files. Task finish, not tested" />
     <MESSAGE value="Move files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Move files" />
+    <MESSAGE value="Oop task 6 finish" />
+    <option name="LAST_COMMIT_MESSAGE" value="Oop task 6 finish" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

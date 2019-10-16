@@ -5,6 +5,7 @@ using Bank.Accounts.Wrappers;
 using Bank.Clients;
 using Bank.Requests;
 
+
 namespace OOP_task6
 {
     class Program
@@ -26,9 +27,9 @@ namespace OOP_task6
             IAccount depositAccount = new AccountFactory().CreateAccount(client, 3, 0, 0, DateTime.Now.AddYears(1));
             IAccount currentAccount = new AccountFactory().CreateAccount(client, 1, 0, 0, DateTime.MinValue);
             
-            Console.WriteLine("Must be credit acc: " + creditAccount.GetType());
-            Console.WriteLine("Must be deposit acc: " + depositAccount.GetType());
-            Console.WriteLine("Must be current acc: " + currentAccount.GetType());
+            Console.WriteLine("Must be credit acc: " + creditAccount.GetAccountType());
+            Console.WriteLine("Must be deposit acc: " + depositAccount.GetAccountType());
+            Console.WriteLine("Must be current acc: " + currentAccount.GetAccountType());
 
             creditAccount.TopUp(300);
             depositAccount.TopUp(300);
