@@ -29,17 +29,7 @@ namespace Bank.Accounts
 
         public virtual bool TransferTo(IAccount abstractAccount, double subTotal)
         {
-            if (!GetClient().Equals(abstractAccount.GetClient()))
-                return false;
-            if (!WriteOff(subTotal))
-                return false;
-            if (!abstractAccount.TopUp(subTotal))
-            {
-                TopUp(subTotal);
-                return false;
-            }
-
-            return true;
+            return false;
         }
 
         public Client GetClient()
@@ -53,6 +43,7 @@ namespace Bank.Accounts
         }
 
         public abstract double GetRate();
+        public abstract string GetType();
 
 
         protected double Total;

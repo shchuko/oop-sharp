@@ -14,6 +14,11 @@ namespace Bank.Accounts.Impl
         {
             return _rate;
         }
+
+        public override string GetType()
+        {
+            return "CurrentAccount";
+        }
     }
     
 }

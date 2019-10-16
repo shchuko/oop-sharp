@@ -29,6 +29,11 @@ namespace Bank.Accounts.Wrappers
             return _wrappee.GetRate();
         }
 
+        public string GetType()
+        {
+            return _wrappee.GetType();
+        }
+
         public virtual bool TopUp(double subTotal)
         {
             return _wrappee.TopUp(subTotal);

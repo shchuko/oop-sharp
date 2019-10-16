@@ -25,6 +25,11 @@ namespace Bank.Accounts.Impl
             return _rate;
         }
 
+        public override string GetType()
+        {
+            return "CreditAccount";
+        }
+
         public double Commission => _commission;
 
         public double Rate => _rate;

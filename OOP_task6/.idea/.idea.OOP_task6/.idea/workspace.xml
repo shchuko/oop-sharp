@@ -2,23 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b339920f-5aaa-4a51-b552-4f92cbc05116" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Bank/Accounts/Impl/CurrentAccount.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Bank/Requests/Request.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Bank/Requests/TakeCommissionRequest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Bank/Requests/UpdateByRateRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.OOP_task6/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OOP_task6/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OOP_task6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OOP_task6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bank/AbstractAccount.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/Accounts/Impl/AbstractAccount.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bank/AccountFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/Accounts/Impl/AccountFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bank/AccountSafeProtected.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/Accounts/Wrappers/AccountSafeProtected.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bank/AccountWrapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/Accounts/Wrappers/AccountWrapper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bank/ClassNotBuiltException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/Clients/Exceptions/ClassNotBuiltException.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bank/Client.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/Clients/Client.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bank/ClientBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/Clients/ClientBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bank/CreditAbstractAccount.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/Accounts/Impl/CreditAccount.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bank/CurrentAbstractAccount.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bank/DepositAbstractAccount.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/Accounts/Impl/DepositAccount.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bank/IAccount.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/Accounts/IAccount.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bank/Accounts/AbstractAccount.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/Accounts/AbstractAccount.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bank/Accounts/IAccount.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/Accounts/IAccount.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bank/Accounts/Impl/CreditAccount.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/Accounts/Impl/CreditAccount.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bank/Accounts/Impl/CurrentAccount.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/Accounts/Impl/CurrentAccount.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bank/Accounts/Impl/DepositAccount.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/Accounts/Impl/DepositAccount.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bank/Accounts/Wrappers/AccountWrapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/Accounts/Wrappers/AccountWrapper.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OOP_task6/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OOP_task6/Program.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,7 +24,7 @@
     <setting file="file://$PROJECT_DIR$/Bank/Requests/TakeCommissionRequest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Bank/Requests/UpdateByRateRequest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Bank/Bank.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Bank/Accounts/Impl/AbstractAccount.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Bank/Accounts/AbstractAccount.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Bank/Accounts/Impl/AccountFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Bank/Accounts/Impl/CurrentAccount.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Bank/Accounts/Impl/DepositAccount.cs" root0="FORCE_HIGHLIGHTING" />
@@ -53,7 +43,6 @@
       <list>
         <option value="$PROJECT_DIR$/Bank/Class1.cs" />
         <option value="$PROJECT_DIR$/Bank/ClassNotBuiltException.cs" />
-        <option value="$PROJECT_DIR$/OOP_task6/Program.cs" />
         <option value="$PROJECT_DIR$/Bank/CreditAccount.cs" />
         <option value="$PROJECT_DIR$/Bank/CurrentAccount.cs" />
         <option value="$PROJECT_DIR$/Bank/DepositAccount.cs" />
@@ -75,8 +64,6 @@
         <option value="$PROJECT_DIR$/Bank/Clients/ClientBuilder.cs" />
         <option value="$PROJECT_DIR$/Bank/Clients/Client.cs" />
         <option value="$PROJECT_DIR$/Bank/Clients/ClassNotBuiltException.cs" />
-        <option value="$PROJECT_DIR$/Bank/Clients/Exceptions/ClassNotBuiltException.cs" />
-        <option value="$PROJECT_DIR$/Bank/Accounts/AbstractAccount.cs" />
         <option value="$PROJECT_DIR$/Bank/Accounts/Impl/DepositAbstractAccount.cs" />
         <option value="$PROJECT_DIR$/Bank/Accounts/Impl/CurrentAbstractAccount.cs" />
         <option value="$PROJECT_DIR$/Bank/Accounts/Impl/CreditAbstractAccount.cs" />
@@ -85,13 +72,16 @@
         <option value="$PROJECT_DIR$/Bank/Requests/TakeCommisionRequest.cs" />
         <option value="$PROJECT_DIR$/Bank/Requests/TakeCommissionRequest.cs" />
         <option value="$PROJECT_DIR$/Bank/Requests/UpdateByRateRequast.cs" />
-        <option value="$PROJECT_DIR$/Bank/Accounts/IAccount.cs" />
         <option value="$PROJECT_DIR$/Bank/Accounts/Impl/AbstractAccount.cs" />
+        <option value="$PROJECT_DIR$/Bank/Requests/UpdateByRateRequest.cs" />
+        <option value="$PROJECT_DIR$/Bank/Clients/Exceptions/ClassNotBuiltException.cs" />
+        <option value="$PROJECT_DIR$/Bank/Accounts/IAccount.cs" />
+        <option value="$PROJECT_DIR$/Bank/Accounts/Wrappers/AccountWrapper.cs" />
+        <option value="$PROJECT_DIR$/Bank/Accounts/AbstractAccount.cs" />
         <option value="$PROJECT_DIR$/Bank/Accounts/Impl/CreditAccount.cs" />
         <option value="$PROJECT_DIR$/Bank/Accounts/Impl/CurrentAccount.cs" />
         <option value="$PROJECT_DIR$/Bank/Accounts/Impl/DepositAccount.cs" />
-        <option value="$PROJECT_DIR$/Bank/Accounts/Wrappers/AccountWrapper.cs" />
-        <option value="$PROJECT_DIR$/Bank/Requests/UpdateByRateRequest.cs" />
+        <option value="$PROJECT_DIR$/OOP_task6/Program.cs" />
       </list>
     </option>
   </component>
@@ -107,6 +97,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="preferences.CSharpInteractiveConfiguration" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -150,7 +141,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1571063375026</updated>
-      <workItem from="1571063376535" duration="14184000" />
+      <workItem from="1571063376535" duration="14634000" />
+      <workItem from="1571210091834" duration="1512000" />
     </task>
     <task id="LOCAL-00001" summary="Create oop_task6. Create Client + ClientBuilder classes">
       <created>1571065408741</created>
@@ -180,20 +172,36 @@
       <option name="project" value="LOCAL" />
       <updated>1571096977411</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Move files. Task finish, not tested">
+      <created>1571099052555</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1571099052555</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Move files">
+      <created>1571099123416</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1571099123416</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -204,7 +212,9 @@
     <MESSAGE value="Create oop_task6. Create Client + ClientBuilder classes" />
     <MESSAGE value="Create Account and AccountFactory" />
     <MESSAGE value="Create account types, wrapper" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create account types, wrapper" />
+    <MESSAGE value="Move files. Task finish, not tested" />
+    <MESSAGE value="Move files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Move files" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -25,6 +25,11 @@ namespace Bank.Accounts.Impl
             return _rate;
         }
 
+        public override string GetType()
+        {
+            return "Deposit Account";
+        }
+
         private double _rate;
         private DateTime _exceedTime;
     }
