@@ -11,45 +11,56 @@ namespace Bank.Clients
 
         public ClientBuilder Reset()
         {
-            _client = new Client();
+            _name = null;
+            _address = null;
+            _surname = null;
+            _passportId = null;
             return this;
         }
 
         public ClientBuilder SetName(string name)
         {
-            _client.SetName(name);
+            _name = name;
             return this;
         }
 
         public ClientBuilder SetSurname(string surname)
         {
-            _client.SetSurname(surname);
+            _surname = surname;
             return this;
         }
 
         public ClientBuilder SetAddress(string address)
         {
-            _client.SetAddress(address);
+            _address = address;
             return this;
         }
 
         public ClientBuilder SetPassportId(string passportId)
         {
-            _client.SetPassportId(passportId);
+            _passportId = passportId;
             return this;
         }
 
         public Client Build()
         {
-            if (_client.Name != null && _client.Surname != null)
+            if (_name != null && _surname != null)
             {
-                _client.UpdVerificationStatus();
-                return _client;
+                Client client = new Client();
+                client.SetName(_name);
+                client.SetSurname(_surname);
+                client.SetPassportId(_passportId);
+                client.SetAddress(_address);
+                client.UpdVerificationStatus();
+                return client;
             }    
             
             throw new ClassNotBuiltException();
         }
         
-        private Client _client;
+        private string _name;
+        private string _surname;
+        private string _address;
+        private string _passportId;
     }
 }
