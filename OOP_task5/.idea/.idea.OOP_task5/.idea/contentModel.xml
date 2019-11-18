@@ -7,6 +7,19 @@
     <e p="$USER_HOME$/.Rider2019.2/system/extResources" t="IncludeRecursive" />
     <e p="$USER_HOME$/.Rider2019.2/system/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_OOP_task5.-2117769232.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
+      <e p="Geometry" t="IncludeRecursive">
+        <e p="Geometry.csproj" t="IncludeRecursive" />
+        <e p="Point.cs" t="Include" />
+        <e p="Triangle.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.2" t="Include">
+              <e p="Geometry.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
       <e p="OOP_task5" t="IncludeRecursive">
         <e p="OOP_task5.csproj" t="IncludeRecursive" />
         <e p="Program.cs" t="Include" />
