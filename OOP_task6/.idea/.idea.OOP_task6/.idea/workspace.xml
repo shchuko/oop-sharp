@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b339920f-5aaa-4a51-b552-4f92cbc05116" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OOP_task6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OOP_task6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bank/Clients/ClientBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/Clients/ClientBuilder.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -137,7 +136,7 @@
       <updated>1571063375026</updated>
       <workItem from="1571063376535" duration="14634000" />
       <workItem from="1571210091834" duration="2025000" />
-      <workItem from="1571290349761" duration="562000" />
+      <workItem from="1571290349761" duration="1405000" />
     </task>
     <task id="LOCAL-00001" summary="Create oop_task6. Create Client + ClientBuilder classes">
       <created>1571065408741</created>
@@ -195,7 +194,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571222236911</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="ClientBuilder bug fixes">
+      <created>1571290946680</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1571290946680</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -225,7 +231,8 @@
     <MESSAGE value="Move files" />
     <MESSAGE value="Oop task 6 finish" />
     <MESSAGE value="Syntax bug fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Syntax bug fixes" />
+    <MESSAGE value="ClientBuilder bug fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="ClientBuilder bug fixes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
