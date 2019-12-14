@@ -34,9 +34,17 @@ namespace OOP_Project_DataSaver
                 {
                     return;
                 }
-                
+
                 BasicRepoOperationsHandler(fileRepository, options);
-                fileRepository.Dispose();
+                try
+                {
+                    fileRepository.WriteData();
+                }
+                catch (IOException)
+                {
+                    Console.WriteLine("Wrong path to repo file");
+                    return;
+                }
             }
             else
             {

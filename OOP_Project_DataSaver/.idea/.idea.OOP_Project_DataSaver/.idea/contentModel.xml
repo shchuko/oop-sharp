@@ -16,7 +16,7 @@
         <e p="FileRepository.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
+          <e p="Build" t="Include">
             <e p="netcoreapp2.2" t="Include">
               <e p="FileCryptoRepository.AssemblyInfo.cs" t="Include" />
             </e>
@@ -29,7 +29,7 @@
         <e p="Program.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
+          <e p="Build" t="Include">
             <e p="netcoreapp2.2" t="Include">
               <e p="OOP_Project_DataSaver.AssemblyInfo.cs" t="Include" />
             </e>
